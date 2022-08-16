@@ -1,0 +1,817 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>SPSS2022-day2 Python</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<link rel="shortcut icon" href="/docs/favicon.ico">
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid="168837877"
+                  id="SPSS2022-day2"
+                  title="SPSS2022-day2 Python"
+                  environment="web"
+                  feedback-link="https://twitter.com/Aruminium_Bana7">
+    
+      <google-codelab-step label="はじめに" duration="0">
+        <p>今回は「Python」を扱う。</p>
+<p>基本文法を学び、しりとりプログラムを作成する。</p>
+<p>基本文法を学ぶ度に確認問題を用意してあるので、挑戦していただきたい。</p>
+<p>「基本文法」ではVSCode上で取り組み、最後にpushしてもらう。</p>
+<p><a href="https://utokyo-ipp.github.io/" target="_blank">Pythonプログラミング入門</a>を参考にします。</p>
+<p>「しりとりプログラム」は<a href="https://colab.research.google.com/?hl=ja" target="_blank">Google Colab</a>上で作成する。</p>
+<p>コーディングスタイルは<a href="https://pep8-ja.readthedocs.io/ja/latest/" target="_blank">PEP8(非公式日本語訳)</a>に準拠します。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="フォルダの作成&amp;Gitの理解を深める" duration="0">
+        <h2 is-upgraded><strong>フォルダ「day1」と「day2」を作成する</strong></h2>
+<p>フォルダ「SPSS2022」の現在の構成は以下の様になっている。</p>
+<p class="image-container"><img style="width: 498.00px" src="img/17401c217cfb88f1.png"></p>
+<p>※docs/は無視してください。(私が資料をおいているフォルダです。)</p>
+<h3 is-upgraded><strong>フォルダ「day1」を作成し、Hello.javaとHello.pyを入れる</strong></h3>
+<p class="image-container"><img style="width: 494.00px" src="img/3de1ba27f8974754.png"></p>
+<p>これも個人差があるが、ファイル名の色が緑色に変化しているのは、前回</p>
+<pre><code>$ git init</code></pre>
+<p>というコマンドを入力し、ファイルやフォルダをgitで管理するようにしたからだ。</p>
+<p>実は、こうした変更を管理しているフォルダが存在している。それは「.git」である。</p>
+<p>フォルダの前に「.」ピリオドがつくフォルダを「隠しフォルダ」と言い、普段私たちは見ることができません。</p>
+<p>しかしmacは「ls」、windowsは「dir」コマンドを使うことによって、確認することができる。</p>
+<h4 is-upgraded><strong>windows</strong></h4>
+<pre><code>$ dir</code></pre>
+<h4 is-upgraded><strong>mac</strong></h4>
+<pre><code>$ ls -a
+./    ../   .git/ day1/ docs/
+$ ls .git/
+COMMIT_EDITMSG  config          info/
+FETCH_HEAD      description     logs/
+HEAD            hooks/          objects/
+ORIG_HEAD       index           refs/</code></pre>
+<p>「-a」はコマンドオプションと呼ばれる。今回の場合は、隠れファイル等含めた全てを確認する。というコマンドになる。</p>
+<h3 is-upgraded><strong>フォルダ「day2」を作成する</strong></h3>
+<p class="image-container"><img style="width: 496.00px" src="img/e12e54ffc1607b61.png"></p>
+<p>今回から、毎回「day~」というフォルダを作成し、その中にファイルを保存する様にする。</p>
+<h3 is-upgraded><strong>ここまでの変更をpushする</strong></h3>
+<ol type="1" start="1">
+<li><h4 is-upgraded><strong>変更を確認する</strong></h4>
+</li>
+</ol>
+<p>「git status」というコマンドで確認する。簡単にいうと変更点を確認できる。</p>
+<pre><code>$ git status
+On branch main
+Your branch is up to date with &#39;origin/main&#39;.
+
+Changes not staged for commit:
+  (use &#34;git add/rm &lt;file&gt;...&#34; to update what will be committed)
+  (use &#34;git restore &lt;file&gt;...&#34; to discard changes in working directory)
+        deleted:    Hello.java
+        deleted:    Hello.py
+
+Untracked files:
+  (use &#34;git add &lt;file&gt;...&#34; to include in what will be committed)
+        day1/
+
+no changes added to commit (use &#34;git add&#34; and/or &#34;git commit -a&#34;)
+</code></pre>
+<p>これをみるとHello.javaとHello.pyが削除されていること、新しく「day1」フォルダが作成されていることをgitが教えてくれている。</p>
+<p>これらの情報をGitHub(リモートリポジトリ)に反映させる必要がある。</p>
+<p>そこで使うのが「git add」、「git commit」、「git push」である。</p>
+<p>「git add」で反映させるファイルやフォルダを指定する</p>
+<pre><code>$ git add Hello.java
+$ git add Hello.py
+$ git add day1/
+
+or
+
+$ git add -A</code></pre>
+<p>「git add -A」ですべての untracked とmodifiedなファイルやフォルダを指定できる</p>
+<p>再び「git status」で確認してみよう</p>
+<pre><code>$ git status
+On branch main
+Your branch is up to date with &#39;origin/main&#39;.
+
+Changes to be committed:
+  (use &#34;git restore --staged &lt;file&gt;...&#34; to unstage)
+        renamed:    Hello.java -&gt; day1/Hello.java
+        renamed:    Hello.py -&gt; day1/Hello.py</code></pre>
+<p>指定できていそうですね。次に「git commit」でpushするファイルやフォルダを確定させます。その際にコミットメッセージというのを加えます。</p>
+<pre><code>$ git commit -m &#34;add day1&#34;
+[main bafad8a] add day1
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ rename Hello.java =&gt; day1/Hello.java (100%)
+ rename Hello.py =&gt; day1/Hello.py (100%)</code></pre>
+<p>git commit -m &#34;コミットメッセージ&#34;で簡単にできます。 -m &#34;コミットメッセージ&#34;をつけないと、開かれたテキスト入力モード内でコミットメッセージを書くことになり、面倒になるので、必ずつけましょう</p>
+<p>「git push」でリモートリポジトリに反映させる</p>
+<pre><code>$ git push
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 332 bytes | 332.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/Aruminium/SPSS2022.git
+   00d3017..bafad8a  main -&gt; main</code></pre>
+<p>前回最初のpush時に「git push -u origin main」と入力したので、「main ブランチ」にいる時は「git push」で送れるようにしました。</p>
+<p>この「ブランチ」は非常に重要になりますが、本勉強会では「mainブランチ」のまま進めるので、わからない方は気にしなくて大丈夫です。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/beeda3f3939aa2b.png"></p>
+<p>自分のGitHubのSPSS2022にアクセスして反映されていることを確認しよう。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="変数" duration="0">
+        <h2 is-upgraded><strong>文字列</strong></h2>
+<p>文字列はシングルクォート<code>'...'</code>、またはダブルクォート<code>"..."</code>で囲んで記述します。</p>
+<pre><code>word = &#34;a&#34;
+print(word)
+# a</code></pre>
+<p>また、組み込み関数<code>str</code>を用いた記述もある。</p>
+<pre><code>word = str(123)
+print(word)
+# 123</code></pre>
+<p>文字列同士、連結することができる。</p>
+<pre><code>word1 = &#34;山田&#34;
+word2 = &#34;太郎&#34;
+name = word1 + word2
+print(name)
+# 山田太郎</code></pre>
+<h3 is-upgraded><strong>スライス</strong></h3>
+<p>スライスと呼ばれる機能を利用して部分文字列を得ることができます。</p>
+<p>また、essay[0]とすると、&#34;私&#34;が出力されることに注意する</p>
+<pre><code>essay = &#34;私の名前は山田太郎と申します。職業は会社員です。&#34;
+
+print(essay[5:]) # 文字列の6番目(山)から文字列の最後まで出力
+# 山田太郎と申します。職業は会社員です。
+
+print(essay[-1]) # 文字列の一番後ろ(。)を出力
+# 。 
+
+print(essay[0:4]) # 文字列の1〜5番目(私〜は)までを出力
+# 私の名前
+
+print(essay[5:12:2]) # 文字列の5番目から11番目まで2文字おきに取り出す
+# 山太とし</code></pre>
+<p>replaceという関数を用いると文字列の置き換えができる。</p>
+<p>replace(置き換える対象, 新しい文字列)で扱うことができる。</p>
+<pre><code>essay = &#34;私の名前は山田太郎と申します。職業は会社員です。&#34;
+new_essay = essay.replace(&#34;山田太郎&#34;, &#34;田中&#34;)
+print(new_essay)
+# 私の名前は田中と申します。職業は会社員です。</code></pre>
+<p>このような関数が他にもあるので、気になったら調べてみよう。</p>
+<h2 is-upgraded><strong>数値</strong></h2>
+<p>数値を定義するときはダブルクォート等は必要ない</p>
+<pre><code>age = 20
+pi = 3.14
+print(age)
+# 20
+print(pi)
+# 3.14</code></pre>
+<p>四則演算もできる</p>
+<pre><code>age = 20
+pi = 3.14
+print(age + 1)
+# 21
+
+print(age - 1)
+# 19
+
+print(pi * 2)
+# 6.28
+
+print(pi / 2)
+# 1.57</code></pre>
+<h3 is-upgraded><strong>おまけ</strong></h3>
+<p>複数の変数を出力することもできる。</p>
+<pre><code>name = &#34;Bana7&#34;
+age = 20
+print(f&#34;{name}は{age}歳です&#34;)
+# Bana7は20歳です</code></pre>
+<p>※f&#34;&#34;はf-stringと呼ばれるフォーマット文の記法の1つである。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="確認課題#2-1" duration="0">
+        <p>フォルダ「day2/」内に「work1.py」を作成する</p>
+<ol type="1" start="1">
+<li><h2 is-upgraded><strong>文字列の逆順 - </strong><a href="https://nlp100.github.io/ja/ch01.html#00-%E6%96%87%E5%AD%97%E5%88%97%E3%81%AE%E9%80%86%E9%A0%86" target="_blank"><strong>言語処理100本ノック 00.より</strong></a></h2>
+</li>
+</ol>
+<p>文字列&#34;stressed&#34;の文字を逆に(末尾から先頭に向かって)並べた文字列を出力</p>
+<h3 is-upgraded><strong>SPSS2022/day2/work1.py</strong></h3>
+<pre><code>str1 = &#34;stressed&#34;
+ans1 = スライスを使う
+print(ans1)</code></pre>
+<ol type="1" start="2">
+<li><h2 is-upgraded><strong>「パタトクカシーー」 -  </strong><a href="https://nlp100.github.io/ja/ch01.html#01-%E3%83%91%E3%82%BF%E3%83%88%E3%82%AF%E3%82%AB%E3%82%B7%E3%83%BC%E3%83%BC" target="_blank"><strong>言語処理100本ノック 01.より</strong></a></h2>
+</li>
+</ol>
+<p>「パタトクカシーー」という文字列の1,3,5,7文字目を取り出して連結した文字列を出力</p>
+<h3 is-upgraded><strong>SPSS2022/day2/work1.py</strong></h3>
+<pre><code>str2 = &#34;パタトクカシーー&#34;
+ans2 = スライスを使う
+print(ans2)</code></pre>
+<ol type="1" start="3">
+<li><h2 is-upgraded><strong>「パトカー」+「タクシー」=「パタトクカシーー」 - </strong><a href="https://nlp100.github.io/ja/ch01.html#02-%E3%83%91%E3%83%88%E3%82%AB%E3%83%BC%E3%82%BF%E3%82%AF%E3%82%B7%E3%83%BC%E3%83%91%E3%82%BF%E3%83%88%E3%82%AF%E3%82%AB%E3%82%B7%E3%83%BC%E3%83%BC" target="_blank"><strong>言語処理100本ノック 03.より</strong></a></h2>
+</li>
+</ol>
+<p>※コピペして、動作を確かめてください。</p>
+<p>「パトカー」+「タクシー」の文字を先頭から交互に連結して文字列「パタトクカシーー」を出力</p>
+<h3 is-upgraded><strong>SPSS2022/day2/work1.py</strong></h3>
+<pre><code>str3 = &#34;パトカー&#34;
+str4 = &#34;タクシー&#34;
+ans3 = &#34;&#34;.join([i + j for i, j in zip(str3, str4)])
+print(ans3)</code></pre>
+<h2 is-upgraded><strong>出力イメージ</strong></h2>
+<pre><code>$ python3 work1.py
+desserts
+パトカー
+パタトクカシーー</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="条件分岐" duration="0">
+        <h2 is-upgraded><strong>if文</strong></h2>
+<pre><code>if 条件式:
+    条件式が「真」の時実行される。
+else:
+    条件式が「偽」の時実行される。</code></pre>
+<p>Pythonはインデント(字下げ)によって、プログラムの範囲を制限する。</p>
+<p>字下げはスペースキーやTabキーを押すことで出来る。また、字下げはPEP8ではスペース4つ分であると、指定している。</p>
+<p>つまり、</p>
+<pre><code>if 条件式:
+条件式が「真」の時実行される。
+else:
+条件式が「偽」の時実行される。</code></pre>
+<p>こういったプログラムを書くとエラーが発生するので、気をつけよう</p>
+<p>文字列の比較の例</p>
+<p>in を使うと 変数「name」のなかに&#34;山田&#34;が含まれているかどうかを確認できる。</p>
+<p>in は後述するリスト型にも使える。</p>
+<pre><code>name = &#34;田中&#34;
+if &#34;山田&#34; in name:
+    print(&#34;山田です&#34;)
+else:
+    print(&#34;山田ではないです&#34;)
+
+# 山田ではないです
+
+name = &#34;田中と山田&#34;
+if &#34;山田&#34; in name:
+    print(&#34;山田です&#34;)
+else:
+    print(&#34;山田ではないです&#34;)
+
+# 山田です</code></pre>
+<p>単純に変数「name」と&#34;山田&#34;を比較するときは「==」を使う。</p>
+<pre><code>name = &#34;田中&#34;
+if &#34;山田&#34; == name:
+    print(&#34;山田です&#34;)
+else:
+    print(&#34;山田ではないです&#34;)
+
+# 山田ではないです
+
+name = &#34;田中と山田&#34;
+if &#34;山田&#34; == name:
+    print(&#34;山田です&#34;)
+else:
+    print(&#34;山田ではないです&#34;)
+# 山田ではないです</code></pre>
+<p>数値の比較</p>
+<pre><code>age = 10
+if age &lt; 18: # ageが18未満なら
+    print(&#34;未成年です&#34;)
+else:
+    print(&#34;成年です&#34;)
+
+# 未成年です
+
+if age &lt;= 18: # ageが18以下なら
+   print(&#34;18歳以下です&#34;)
+
+# print(18歳以下です)</code></pre>
+<p>「&lt;」や「&lt;=」、「==」は比較演算子と呼ばれる。他にも「&gt;」、「&gt;=」、「!=」がある。</p>
+<p>また、以下のような記法もある。</p>
+<pre><code>age = 10
+
+if age &lt; 18: # ageが18未満なら
+    print(&#34;未成年です&#34;)
+else:
+    print(&#34;成年です&#34;)
+
+# 未成年です
+
+if not age &lt; 18: # ageが18未満ではないなら
+    print(&#34;成年です&#34;)
+else:
+    print(&#34;未成年です&#34;)
+
+# 未成年です</code></pre>
+<p>また条件式は複数書くことができる</p>
+<pre><code>if 条件式1 and 条件式2:
+    # 真
+else:
+    # 偽
+
+if 条件式1 or 条件式2:
+    # 真
+else:
+    # 偽</code></pre>
+<p>and は 条件式1と条件式2が「真」の時「真」を返す。</p>
+<p>or は条件式1か条件式2がどちらかが「真」であれば「真」を返す</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="確認課題#2-2" duration="0">
+        <p>フォルダ「day2/」内に「work2.py」を作成する</p>
+<p>変数「name」,「password」に任意の値を入力し、name が tanaka かつ、passwordが0000なら、&#34;田中です&#34;と出力し、それ以外なら&#34;田中ではありません&#34;と出力するプログラムを作成せよ。ただし入力は以下を参考にする。</p>
+<h3 is-upgraded><strong>SPSS2022/day2/work2.py</strong></h3>
+<pre><code>name = input(&#34;nameを入力してください &gt;&#34;)
+password = input(&#34;passwordを入力してください &gt;&#34;)
+
+# ここに条件式を書く</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="繰り返し" duration="0">
+        <p>for文</p>
+<pre><code>for 変数 in 文字列,リスト,辞書:
+    実行文</code></pre>
+<p>if文と同様にインデントに気をつけてください</p>
+<p>文字列から1文字ずつ取得することができる。</p>
+<pre><code>for c in &#34;Apple&#34;:
+    print(&#34;Now character is &#34;+c)
+# Now character is A
+# Now character is p
+# Now character is p
+# Now character is l
+# Now character is e</code></pre>
+<p>後述するリスト型での繰り返し処理</p>
+<pre><code>name_list = [&#34;tanaka&#34;, &#34;yamada&#34;, &#34;taro&#34;]
+
+for name in name_list:
+    print(f&#34;Hi! {name}&#34;)
+
+# Hi! tanaka
+# Hi! yamada
+# Hi! taro</code></pre>
+<p>後述する辞書型での繰り返し処理</p>
+<pre><code>member_list = {&#34;tanaka&#34;: 20, &#34;yamada&#34;: 10, &#34;taro&#34;: 5}
+
+# memberリストのkeyとvalueを取得する
+for name, age in member_list.items():
+    print(f&#34;{name}&#39;s age is {age}.&#34;)
+
+# tanaka&#39;s age is 20
+# yamada&#39;s age is 10
+# taro&#39;s age is 5</code></pre>
+<p>5回繰り返す -&gt; range(5)</p>
+<pre><code>for i in range(5):
+    print(i)
+    print(&#34;Hello!&#34;)
+
+# 0
+# Hello!
+# 1
+# Hello!
+# 2
+# Hello!
+# 3
+# Hello!
+# 4
+# Hello!</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="確認課題#2-3" duration="0">
+        <p>フォルダ「day2/」内に「work3.py」を作成する</p>
+<p>田中くんは、&#34;Hello&#34;とあいさつを12回繰り返して言う。</p>
+<p>しかし、3の倍数の回のときは、&#34;Hello&#34;ではなく&#34;こんにちは&#34;とあいさつすることになった。これを満たすプログラムを作成せよ。</p>
+<p>3の倍数は、「数値%3==0」で表される。%はあまりを求める演算子</p>
+<p>12%3(12を3で割った余り)は0なので、12%3==0は「真」である。</p>
+<p>また、以下に続くプログラムを作成する</p>
+<h3 is-upgraded><strong>SPSS2022/day2/work3.py</strong></h3>
+<pre><code>for i in range(1,13):
+    ここからプログラムを作成する</code></pre>
+<h2 is-upgraded><strong>出力イメージ</strong></h2>
+<pre><code>Hello!
+Hello!
+こんにちは
+Hello!
+Hello!
+こんにちは
+Hello!
+Hello!
+こんにちは
+Hello!
+Hello!
+こんにちは</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="リスト(list)" duration="0">
+        <p>変数名 = [要素1, 要素2, ...]で表されるものをリストと言う。</p>
+<p>以下の変数は全てリストである。</p>
+<pre><code>numbers = [0, 10, 20, 30, 40, 50]
+fruits = [&#34;apple&#34;, &#34;banana&#34;, &#34;cherry&#34;]
+
+print(numbers)
+# [0, 10, 20, 30, 40, 50]
+
+print(fruits)
+# [&#39;apple&#39;, &#39;banana&#39;, &#39;cherry&#39;]</code></pre>
+<p>これらの変数にも先述したスライスという機能があります。</p>
+<pre><code>numbers = [0, 10, 20, 30, 40, 50]
+
+print(numbers[0])
+# 0
+
+print(numbers[0:3])
+# [0, 10, 20]
+
+print(numbers[0:5:2])
+# [0, 20, 40]</code></pre>
+<p>またnumbers[0]のような0番目の要素のことを、「インデックス」と呼びます。</p>
+<p>リスト型は0番目から始まるので、0-indexのように呼ばれています。</p>
+<p>文字列と異なり、リストは変更可能な変数です。numbers[2]の値を変えてみます。</p>
+<pre><code>numbers = [0, 10, 20, 30, 40, 50]
+
+print(numbers[2])
+# 20
+
+numbers[2] = 100
+
+print(numbers[2])
+# 100</code></pre>
+<p>リストに値を追加します。例えば、append()を使うとリストの末尾に指定した要素を付け加えることができます。</p>
+<pre><code>numbers = [0, 10, 20, 30, 40, 50]
+
+print(numbers)
+# [0, 10, 20, 30, 40, 50]
+
+numbers.append(60)
+numbers.append(100)
+
+print(numbers)
+# [0, 10, 20, 30, 40, 50, 60, 100]</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="確認課題#2-4" duration="0">
+        <p>フォルダ「day2/」内に「work4.py」を作成する</p>
+<p>変数「student_list」があります。</p>
+<p>この変数には、生徒のリストが入ります。しかし、うっかりしていたため、出席番号を書いていませんでした。また、リストは「あいうえお順」で並んでいないことも判明しました。そこで、student_listから出席番号を計算し出力しよう。</p>
+<p>出席番号は苗字によって「あいうえお順」で決まり、「あ」から番号が始まります。</p>
+<p>また、リストは苗字がひらがなの状態で与えられます。</p>
+<p>以下のプログラムの続きを作成する</p>
+<pre><code>numbers = [&#34;いとう&#34;, &#34;さとう&#34;, &#34;すずき&#34;, &#34;わたなべ&#34;, &#34;たかはし&#34;, &#34;たなか&#34;, &#34;いとう&#34;, &#34;いのうえ&#34;, &#34;やまぐち&#34;, &#34;さいとう&#34;]
+
+# あいうえお順で並び替えされる
+numbers.sort()
+
+# enumerate(リスト)でリストの要素と同時にindex番号を取得できる
+# index番号は0番から始まる。
+for index, name in enumerate(numbers):
+    # 処理</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="関数" duration="0">
+        <p>関数は処理をまとめた再利用可能なコードです。</p>
+<ul>
+<li>名前を持つ</li>
+<li>手続きの流れを含む</li>
+<li>返り値を返す。</li>
+</ul>
+<p>関数の定義は</p>
+<pre><code>def 関数名(引数):
+    処理</code></pre>
+<p>の様にします。引数はなくても大丈夫です。実際に関数の定義をしてみましょう</p>
+<pre><code>def greeting():
+    print(&#34;Hello&#34;)</code></pre>
+<p>関数を定義したら、呼ぶことができます</p>
+<pre><code>greeting()
+# Hello</code></pre>
+<p>関数で受け取った引数を元に処理を行い、その結果を返り値と言う形で返します。</p>
+<p>返り値は<code>return</code>で定義します。返り値がない場合は<code>None</code>が返されます。</p>
+<p>先のgreeting()は返り値がない。つまり返り値はNoneです。</p>
+<pre><code>def add(a, b):
+    return a+b</code></pre>
+<p>関数addは返り値として変数aと変数bを足し合わせた値を返します。</p>
+<p>Pythonは動的型付け言語なので、必ずしも変数aとbに整数が入るとは限らないと言うことに注意しましょう。</p>
+<p>また、def add(a, b)のaとbは仮引数と呼ばれ、変数aとbはその関数の中でのみ参照することができます。この変数が扱える範囲のことを「スコープ」と呼びます。</p>
+<p>つまり、</p>
+<pre><code>def add(a, b):
+    # このインデント内でのみaとbを使うことができる
+    return a+b
+
+x = 4
+y = 5
+print(add(x, y))
+# 9</code></pre>
+<p>この場合では、xがaの役割をyがbの役割をします。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="確認課題#2-5" duration="0">
+        <p>フォルダ「day2/」内に「work5.py」を作成する</p>
+<p>2つの変数を引数にとる四則演算を行う関数を作成せよ。x = 1, y = 4とする。</p>
+<p>以下に続くプログラムを作成する。</p>
+<pre><code># 足し算
+def add(a, b):
+    処理
+
+# 引き算
+
+
+# 掛け算
+
+
+# 割り算
+
+
+x = 1
+y = 4
+print(add(x, y))
+print(sub(x, y))
+print(mul(x, y))
+print(div(x, y))</code></pre>
+<p>動作</p>
+<pre><code>5
+-3
+4
+0.25</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="クラス" duration="0">
+        <p>クラスとは、オブジェクトの種類を意味します。</p>
+<p>新しいクラスを定義すると、そのクラスに属するオブジェクトを作ることができる様になります。</p>
+<p>それらのオブジェクトの方は、その新しいクラスになります。</p>
+<p>一般にクラス定義は以下の様な形をしています。</p>
+<pre><code>class クラス名:
+    def メソッド名(self, 引数, ...):
+         処理内容
+    def メソッド名(self, 引数, ...):
+        処理内容
+    ...</code></pre>
+<p>実際にクラスを作成します。</p>
+<pre><code>class HelloForEver:
+    def readline(self):
+        return &#34;Hello.\n&#34;</code></pre>
+<p>以下の様にしてこのクラスのオブジェクトを作ることができます。</p>
+<pre><code>f = HelloForEver()</code></pre>
+<p>このことを「インスタンス化」するといいます。</p>
+<p>クラスの初期化</p>
+<p>以下のクラスがあります。</p>
+<pre><code>class User:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    def profile(self):
+        print(f&#34;{self.name}さんは{age}歳です&#34;)</code></pre>
+<p>この __init__(self, name, age)はインスタンス化される時に、勝手に実行されます。</p>
+<p>またこのクラスをインスタンス化する際は、</p>
+<pre><code>user1 = User(&#34;tanaka&#34;, 30)
+user2 = User(&#34;yamada&#34;, 37)
+user3 = User(&#34;watanabe&#34;, 40)</code></pre>
+<p>の様にインスタンス化します。__init__()に引数「name」と「age」を用意したので、インスタンス化する際に必要になりました。</p>
+<p>この時、「self」はそのインスタンス化されたオブジェクトに自身を表します。</p>
+<p>user1の関数profile()を呼んでみると、</p>
+<pre><code>user1.profile()
+# tanakaさんは30歳です</code></pre>
+<p>と表示されることがわかります。</p>
+<p>このときの「self.name」は「user1.name」と表されます。</p>
+<p>同様に「self.age」は「user1.age」と表されます。</p>
+<p>いずれの変数もインスタンス化する際に</p>
+<pre><code>user1 = User(&#34;tanaka&#34;, 30)</code></pre>
+<p>と初期化されているので表示されています。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="確認課題#2-6" duration="0">
+        <p>フォルダ「day2/」内に「work6.py」を作成する</p>
+<p>確認課題#2-5で作成した関数をClass Calculatorに導入しよう。</p>
+<pre><code>class Calculator:
+    def __init__(self):
+        self.output = 0
+
+    def add(self, a, b):
+        return a+b
+
+    def sub(self, a, b):
+        return a-b
+
+    def mul(self, a, b):
+        return a*b
+
+    def div(self, a, b):
+        return a/b
+
+    def calculation(self):
+        a = int(input(&#34;1つ目の値を入力してください &gt;&#34;))
+        calc = input(&#34;+,-,*,/ &gt;&#34;)
+        b = int(input(&#34;2つ目の値を入力してください &gt;&#34;))
+     
+     # calcによって演算方法を変える
+
+        print(self.output)
+
+calculator = Calculator()
+calculator.calculation()
+</code></pre>
+<p>動作</p>
+<pre><code>1つ目の値を入力してください &gt;2
++,-,*,/ &gt;+
+2つ目の値を入力してください &gt;4
+6</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="しりとりプログラム作成" duration="0">
+        <p>なんとなく、Pythonについてわかってきただろうか。</p>
+<p>次からは応用として、しりとりプログラムを作成する。</p>
+<ol type="1" start="1">
+<li>データ収集</li>
+<li>プログラム作成</li>
+</ol>
+<p>といった、AI作成の様なプロセスを体験できるので、やってみよう。(実際のAI作成はこのしりとりプログラムを作成するより大変です。)</p>
+<p>今回はQiitaと呼ばれる、エンジニアの掲示板サイトに作り方を投稿したので、それをみながら作っていこう。(記事を参考に作成する練習をします。)</p>
+<ol type="1" start="1">
+<li><a href="https://qiita.com/Bana7/items/4f7009e33f0ffbb9f275" target="_blank">データ収集</a></li>
+<li><a href="https://qiita.com/Bana7/items/192d8eee7a73938d477b" target="_blank">プログラム作成</a></li>
+</ol>
+<p>を参考にしていただきたい。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/eac771b13dd87dd8.png"></p>
+<p>しりとりすることができたら、OK</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="最後に" duration="0">
+        <p>1時間に収まるように、基本文法について列挙しました。(かなり詳細を省略しており、まだ基本文法はあります。)</p>
+<p>Pythonというプログラミング言語が少しでも分かっていただけたら幸いです。</p>
+<p>「print と書けば表示されるんだな。」そんな具合で大丈夫です。</p>
+<p>詳しく基本文法について学びたい方は、末尾の「参考」から基本文法を学んでみてください。</p>
+<p>当初は画像認識AIのプログラムを作成する予定でしたが、時間が足りないので割愛することになりました。</p>
+<p>day3は「Java」をやります。おおよそ、今回と同じ構成になります。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="確認課題の答え" duration="0">
+        <p>解答例です。出力があっていたり、要件を満たしていれば正解です。</p>
+<h2 is-upgraded><strong>確認課題#2-1</strong></h2>
+<h3 is-upgraded><strong>SPSS2022/day2/work1.py</strong></h3>
+<pre><code># 問1
+str1 = &#34;stressed&#34;
+ans1 = str1[::-1]
+print(ans1)
+
+# 問2
+str2 = &#34;パタトクカシーー&#34;
+ans2 = str2[::2]
+print(ans2)
+
+# 問3
+str3 = &#34;パトカー&#34;
+str4 = &#34;タクシー&#34;
+ans3 = &#34;&#34;.join([i + j for i, j in zip(str3, str4)])
+print(ans3)</code></pre>
+<h2 is-upgraded><strong>確認課題#2-2</strong></h2>
+<h3 is-upgraded><strong>SPSS2022/day2/work2.py</strong></h3>
+<pre><code>name = input(&#34;nameを入力してください &gt;&#34;)
+password = input(&#34;passwordを入力してください &gt;&#34;)
+
+if name == &#34;tanaka&#34; and password == &#34;0000&#34;:
+    print(&#34;田中です&#34;)
+else:
+    print(&#34;田中ではありません&#34;)</code></pre>
+<h2 is-upgraded><strong>確認課題#2-3</strong></h2>
+<h3 is-upgraded><strong>SPSS2022/day2/work3.py</strong></h3>
+<pre><code>for i in range(1,13):
+    if i % 3 == 0:
+        print(&#34;こんにちは&#34;)
+    else:
+        print(&#34;Hello!&#34;)</code></pre>
+<h2 is-upgraded><strong>確認課題#2-4</strong></h2>
+<h3 is-upgraded><strong>SPSS2022/day2/work4.py</strong></h3>
+<pre><code>numbers = [&#34;いとう&#34;, &#34;さとう&#34;, &#34;すずき&#34;, &#34;わたなべ&#34;, &#34;たかはし&#34;, &#34;たなか&#34;, &#34;いとう&#34;, &#34;いのうえ&#34;, &#34;やまぐち&#34;, &#34;さいとう&#34;]
+
+# あいうえお順で並び替えされる
+numbers.sort()
+
+# enumerate(リスト)でリストの要素と同時にindex番号を取得できる
+for index, name in enumerate(numbers):
+    print(f&#34;{name}さんの出席番号は{index+1}です&#34;)</code></pre>
+<h2 is-upgraded><strong>確認課題#2-5</strong></h2>
+<h3 is-upgraded><strong>SPSS2022/day2/work5.py</strong></h3>
+<pre><code>def add(a, b):
+    return a+b
+
+def sub(a, b):
+    return a-b
+
+def mul(a, b):
+    return a*b
+
+def div(a, b):
+    return a/b
+
+a = 1
+b = 4
+print(add(a, b))
+print(sub(a, b))
+print(mul(a, b))
+print(div(a, b))</code></pre>
+<h2 is-upgraded><strong>確認課題#2-6</strong></h2>
+<h3 is-upgraded><strong>SPSS2022/day2/work6.py</strong></h3>
+<pre><code>class Calculator:
+    def __init__(self):
+        self.output = 0
+
+    def add(self, a, b):
+        return a+b
+
+    def sub(self, a, b):
+        return a-b
+
+    def mul(self, a, b):
+        return a*b
+
+    def div(self, a, b):
+        return a/b
+
+    def calculation(self):
+        a = int(input(&#34;1つ目の値を入力してください &gt;&#34;))
+        calc = input(&#34;+,-,*,/ &gt;&#34;)
+        b = int(input(&#34;2つ目の値を入力してください &gt;&#34;))
+        if calc == &#34;+&#34;:
+            self.output = self.add(a, b)
+        if calc == &#34;-&#34;:
+            self.output = self.sub(a, b)
+        if calc == &#34;*&#34;:
+            self.output = self.mul(a, b)
+        if calc == &#34;/&#34;:
+            self.output = self.div(a, b)
+        print(self.output)
+
+calculator = Calculator()
+calculator.calculation()
+</code></pre>
+<h2 is-upgraded><strong>全てできましたか？最後にpushして終了です。</strong></h2>
+<pre><code>$ git add -A
+$ git commit -m &#34;day2 done&#34;
+$ git push</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="参考" duration="0">
+        <ul>
+<li><a href="https://www.javadrive.jp/python/" target="_blank">Python入門</a></li>
+<li><a href="https://utokyo-ipp.github.io/" target="_blank">Pythonプログラミング入門Pythonプログラミング入門</a></li>
+<li><a href="https://qiita.com/ymzkjpx/items/00ff664da60c37458aaa" target="_blank">GitのHEADとは何者なのか</a></li>
+<li><a href="https://nlp100.github.io/ja/" target="_blank">言語処理100本ノック 2020 (Rev 2)</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
