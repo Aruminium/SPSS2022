@@ -2,10 +2,18 @@
 <!doctype html>
 
 <html>
-<head>
+<head prefix="og: http://ogp.me/ns#">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <meta name="theme-color" content="#4F7DC9">
   <meta charset="UTF-8">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="SPSS2022-day3 Java" />
+  <meta property="og:description" content="Javaについてざっと勉強する。主に設計の話になります" />
+  <meta property="og:url" content="https://aruminium.github.io/SPSS2022/day3/index.html#0" />
+  <meta property="og:site_name" content="SPSS2022" />
+  <meta property="og:image" content="https://aruminium.github.io/SPSS2022/day3/img/SPSS2022day3.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@Aruminium_Bana7" />
   <title>SPSS2022-day3 Java</title>
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
@@ -297,7 +305,7 @@ public class Product {
 <pre><code>package work2;
 
 public interface IMember {
-    public double calculate();
+    public double priceCut();
 }</code></pre>
 <p>※ interfaceについては後述します。interfaceの定義例としても見てください</p>
 <h3 is-upgraded><strong>SPSS2022/day3/work2/Platinum.java</strong></h3>
