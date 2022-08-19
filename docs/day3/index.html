@@ -1,67 +1,112 @@
-
-<!doctype html>
+<!DOCTYPE html>
 
 <html>
-<head>
-  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-  <meta name="theme-color" content="#4F7DC9">
-  <meta charset="UTF-8">
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="SPSS2022-day3 Java" />
-  <meta property="og:description" content="Javaについてざっと勉強する。主に設計の話になります" />
-  <meta property="og:url" content="https://aruminium.github.io/SPSS2022/day3/index.html#0" />
-  <meta property="og:site_name" content="SPSS2022" />
-  <meta property="og:image" content="https://aruminium.github.io/SPSS2022/day3/img/SPSS2022day3.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@Aruminium_Bana7" />
-  <title>SPSS2022-day3 Java</title>
-  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
-  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
-  <style>
-    .success {
-      color: #1e8e3e;
-    }
-    .error {
-      color: red;
-    }
-  </style>
-</head>
-<link rel="shortcut icon" href="../favicon.ico">
-<body>
-  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
-  <google-codelab codelab-gaid="168837877"
-                  id="SPSS2022-day1"
-                  title="SPSS2022-day3 Java"
-                  environment="web"
-                  feedback-link="https://twitter.com/Aruminium_Bana7">
-    
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="theme-color" content="#4F7DC9" />
+    <meta charset="UTF-8" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="SPSS2022-day3 Java" />
+    <meta
+      property="og:description"
+      content="Javaについてざっと勉強する。主に設計の話になります"
+    />
+    <meta
+      property="og:url"
+      content="https://aruminium.github.io/SPSS2022/day3/index.html#0"
+    />
+    <meta property="og:site_name" content="SPSS2022" />
+    <meta
+      property="og:image"
+      content="https://aruminium.github.io/SPSS2022/day3/img/SPSS2022day3.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@Aruminium_Bana7" />
+    <title>SPSS2022-day3 Java</title>
+    <link
+      rel="stylesheet"
+      href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono"
+    />
+    <link
+      rel="stylesheet"
+      href="//fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      rel="stylesheet"
+      href="https://storage.googleapis.com/codelab-elements/codelab-elements.css"
+    />
+    <style>
+      .success {
+        color: #1e8e3e;
+      }
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+  <link rel="shortcut icon" href="../favicon.ico" />
+  <body>
+    <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+    <google-codelab
+      codelab-gaid="168837877"
+      id="SPSS2022-day1"
+      title="SPSS2022-day3 Java"
+      environment="web"
+      feedback-link="https://twitter.com/Aruminium_Bana7"
+    >
       <google-codelab-step label="はじめに" duration="0">
         <p>今回は「Java」を扱う。</p>
-<p>設計に関わる話をしてから、基本文法(本当に少しだけ)について触れていく。</p>
-<p>設計の話は眠たくなると思ったので、最初に述べている。まずは「13」のアクセス修飾子から初めても良いかもしれない。</p>
-<p class="image-container"><img style="width: 225.00px" src="img/81d82b213cd20317.png"></p>
-<h2 is-upgraded><strong>なぜ設計に触れるのか</strong></h2>
-<p>Java入門や、資料を見ていると、Javaの基本的な使い方は教えてくれるが、その使い方が全くオブジェクト指向プログラミングになっていない。</p>
-<p>オブジェクト指向の3大要素として「継承，カプセル化，多態性（ポリモーフィズム)」が挙げられるが、その特性を無視しているように思える。</p>
-<p>結果的にバグを量産する継承やポリモーフィズム、容易に変更可能なカプセル化を実装することになる。</p>
-<p>そのためこの「Java」の資料では、今回扱う「SOLID原則」の名前だけでも良いので覚えて欲しい。</p>
-<h2 is-upgraded><strong>day3フォルダを作成する</strong></h2>
-<p>SPSS2022/day3 とフォルダを作成してください。</p>
-
-
+        <p>
+          設計に関わる話をしてから、基本文法(本当に少しだけ)について触れていく。
+        </p>
+        <p>
+          設計の話は眠たくなると思ったので、最初に述べている。まずは「13」のアクセス修飾子から初めても良いかもしれない。
+        </p>
+        <p class="image-container">
+          <img style="width: 225px" src="img/81d82b213cd20317.png" />
+        </p>
+        <h2 is-upgraded><strong>なぜ設計に触れるのか</strong></h2>
+        <p>
+          Java入門や、資料を見ていると、Javaの基本的な使い方は教えてくれるが、その使い方が全くオブジェクト指向プログラミングになっていない。
+        </p>
+        <p>
+          オブジェクト指向の3大要素として「継承，カプセル化，多態性（ポリモーフィズム)」が挙げられるが、その特性を無視しているように思える。
+        </p>
+        <p>
+          結果的にバグを量産する継承やポリモーフィズム、容易に変更可能なカプセル化を実装することになる。
+        </p>
+        <p>
+          そのためこの「Java」の資料では、今回扱う「SOLID原則」の名前だけでも良いので覚えて欲しい。
+        </p>
+        <h2 is-upgraded><strong>day3フォルダを作成する</strong></h2>
+        <p>SPSS2022/day3 とフォルダを作成してください。</p>
       </google-codelab-step>
-    
+
       <google-codelab-step label="VSCodeの設定" duration="0">
         <p>Javaの説明に入る前にVSCodeの設定について簡単に理解しよう。</p>
-<p>第1回目で「設定 -&gt; java:homeで検索 -&gt; setting.jsonで開く」で設定をしたのは覚えているだろうか。</p>
-<p>VSCodeはこの、setting.jsonで設定を管理しており、java:homeを設定したことによって、VSCode側に「私はjdk-17.0.4を使いますね〜」と教えている。</p>
-<p>これによってVSCode側はjdk-17.0.4を用いたビルドや補完をしてくれるということになる。</p>
-<p>今回はJDK(Java Development Kit)を活用するので、必ずjava:homeの設定をしよう。</p>
-<p>また、<code>.vscode</code>フォルダを作成して、その中に<code>settings.json</code>を追加すると、VSCodeのプロジェクト別に設定を変えることができる。</p>
-<h2 is-upgraded><strong>settings.jsonを作成しよう</strong></h2>
-<h3 is-upgraded><strong>SPSS2022/.vscode/settings.json</strong></h3>
-<pre><code>{
+        <p>
+          第1回目で「設定 -&gt; java:homeで検索 -&gt;
+          setting.jsonで開く」で設定をしたのは覚えているだろうか。
+        </p>
+        <p>
+          VSCodeはこの、setting.jsonで設定を管理しており、java:homeを設定したことによって、VSCode側に「私はjdk-17.0.4を使いますね〜」と教えている。
+        </p>
+        <p>
+          これによってVSCode側はjdk-17.0.4を用いたビルドや補完をしてくれるということになる。
+        </p>
+        <p>
+          今回はJDK(Java Development
+          Kit)を活用するので、必ずjava:homeの設定をしよう。
+        </p>
+        <p>
+          また、<code>.vscode</code>フォルダを作成して、その中に<code>settings.json</code>を追加すると、VSCodeのプロジェクト別に設定を変えることができる。
+        </p>
+        <h2 is-upgraded><strong>settings.jsonを作成しよう</strong></h2>
+        <h3 is-upgraded><strong>SPSS2022/.vscode/settings.json</strong></h3>
+        <pre><code>{
   &#34;[python]&#34;:{
     &#34;editor.tabSize&#34;: 4,
     &#34;editor.insertSpaces&#34;: true
@@ -70,180 +115,226 @@
     &#34;day3&#34;
   ]
 }</code></pre>
-<ul>
-<li>[python]はpythonを記述する際の設定で、今回はTabを押した際にspace4つ分インデントするような設定になっている。</li>
-<li>java.project.sorcePathsはjavaのプロジェクトのパスを指定することができる。今回はday3と指定した。指定しないと後述するpackageの記述に影響が出る。</li>
-</ul>
-<p class="image-container"><img style="width: 601.70px" src="img/beb353b9ee4eb7be.png"></p>
-
-
+        <ul>
+          <li>
+            [python]はpythonを記述する際の設定で、今回はTabを押した際にspace4つ分インデントするような設定になっている。
+          </li>
+          <li>
+            java.project.sorcePathsはjavaのプロジェクトのパスを指定することができる。今回はday3と指定した。指定しないと後述するpackageの記述に影響が出る。
+          </li>
+        </ul>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/beb353b9ee4eb7be.png" />
+        </p>
       </google-codelab-step>
-    
+
       <google-codelab-step label="Javaの特徴" duration="0">
         <h2 is-upgraded><strong>どのOSでも使える</strong></h2>
-<p>Windows、Mac、Linuxなど、あらゆる環境で動作する。</p>
-<p>理由は「JVM(Java Virtual Machine)」と呼ばれる環境でJavaを動作させるからである。</p>
-<p>→OSに依存せず、安定した動作をする。</p>
-<h2 is-upgraded><strong>オブジェクト指向</strong></h2>
-<p>オブジェクト指向とは、「ソフトウェアで扱う事柄について、データを操作(メソッド)をまとめて1つのオブジェクトとして捉える」ことである。</p>
-<h3 is-upgraded><strong>データとは</strong></h3>
-<p>いわゆる変数のこと。Javaでは変数のことをフィールド(field)またはメンバ変数と呼ぶ。</p>
-<p>フィールドは、オブジェクトの性質をもつ。</p>
-<h2 is-upgraded><strong>パッケージ</strong></h2>
-<p>簡単に表すと、クラスの集まりである。</p>
-<p>パッケージは以下のように表される。</p>
-<p><code>package パッケージ名;</code></p>
-<p>パッケージ名はフォルダ名になる。</p>
-<p>例えば、Carsというパッケージ(フォルダ)がある。Carsの中には車のクラスが置かれている。</p>
-<p>Carsのパッケージの中のBlackCarというクラスをCarsパッケージ外から呼び出すには以下の様にします。</p>
-<p><code>import Cars.BlackCar;</code></p>
-<p>これで簡単にBlackCarクラスを使うことができます。</p>
-<h3 is-upgraded><strong>メソッドとは</strong></h3>
-<p> いわゆる関数のこと。メソッドの目的はオブジェクト内のフィールドを操作することである。メンバメソッドと呼ぶこともある。</p>
-<h3 is-upgraded><strong>クラスとは</strong></h3>
-<p>大半のオブジェクト指向言語では、クラスという仕組みがある。(ない言語もある)</p>
-<p>クラスには、オブジェクトを作る際のデータやメソッドを定義してあり、いわばオブジェクトの設計図である。</p>
-<h2 is-upgraded><strong>コンパイル言語</strong></h2>
-<p>javaはコンパイル言語なので比較的早いです。</p>
-<p>Pythonはスクリプト言語でコンパイルをしません。</p>
-<h3 is-upgraded><strong>コンパイルとは</strong></h3>
-<p>コンピュータが扱いやすい形にファイルを作成すること</p>
-<p>javaの場合は「.java」ファイルをコンパイルによって「.class」というファイルで生成している。</p>
-<p>この「.class」ファイルをJVM上で実行している。</p>
-
-
+        <p>Windows、Mac、Linuxなど、あらゆる環境で動作する。</p>
+        <p>
+          理由は「JVM(Java Virtual
+          Machine)」と呼ばれる環境でJavaを動作させるからである。
+        </p>
+        <p>→OSに依存せず、安定した動作をする。</p>
+        <h2 is-upgraded><strong>オブジェクト指向</strong></h2>
+        <p>
+          オブジェクト指向とは、「ソフトウェアで扱う事柄について、データを操作(メソッド)をまとめて1つのオブジェクトとして捉える」ことである。
+        </p>
+        <h3 is-upgraded><strong>データとは</strong></h3>
+        <p>
+          いわゆる変数のこと。Javaでは変数のことをフィールド(field)またはメンバ変数と呼ぶ。
+        </p>
+        <p>フィールドは、オブジェクトの性質をもつ。</p>
+        <h2 is-upgraded><strong>パッケージ</strong></h2>
+        <p>簡単に表すと、クラスの集まりである。</p>
+        <p>パッケージは以下のように表される。</p>
+        <p><code>package パッケージ名;</code></p>
+        <p>パッケージ名はフォルダ名になる。</p>
+        <p>
+          例えば、Carsというパッケージ(フォルダ)がある。Carsの中には車のクラスが置かれている。
+        </p>
+        <p>
+          Carsのパッケージの中のBlackCarというクラスをCarsパッケージ外から呼び出すには以下の様にします。
+        </p>
+        <p><code>import Cars.BlackCar;</code></p>
+        <p>これで簡単にBlackCarクラスを使うことができます。</p>
+        <h3 is-upgraded><strong>メソッドとは</strong></h3>
+        <p>
+          いわゆる関数のこと。メソッドの目的はオブジェクト内のフィールドを操作することである。メンバメソッドと呼ぶこともある。
+        </p>
+        <h3 is-upgraded><strong>クラスとは</strong></h3>
+        <p>
+          大半のオブジェクト指向言語では、クラスという仕組みがある。(ない言語もある)
+        </p>
+        <p>
+          クラスには、オブジェクトを作る際のデータやメソッドを定義してあり、いわばオブジェクトの設計図である。
+        </p>
+        <h2 is-upgraded><strong>コンパイル言語</strong></h2>
+        <p>javaはコンパイル言語なので比較的早いです。</p>
+        <p>Pythonはスクリプト言語でコンパイルをしません。</p>
+        <h3 is-upgraded><strong>コンパイルとは</strong></h3>
+        <p>コンピュータが扱いやすい形にファイルを作成すること</p>
+        <p>
+          javaの場合は「.java」ファイルをコンパイルによって「.class」というファイルで生成している。
+        </p>
+        <p>この「.class」ファイルをJVM上で実行している。</p>
       </google-codelab-step>
-    
+
       <google-codelab-step label="Javaの命名指針" duration="0">
         <p>大抵のプログラミング言語には命名指針(ルール)がある。</p>
-<p>ルールに沿ってコーディングすることは、結論から言うと可読性が向上する。</p>
-<h2 is-upgraded><strong>クラス</strong></h2>
-<p>Pascal記法</p>
-<ul>
-<li>先頭を大文字</li>
-<li>それ以外を小文字</li>
-<li>言葉の区切りは大文字</li>
-</ul>
-<p>例</p>
-<ul>
-<li><code>PermissionsIntro</code></li>
-<li><code>AsyncTask</code></li>
-</ul>
-<h2 is-upgraded><strong>メソッド</strong></h2>
-<p>camelCase記法</p>
-<ul>
-<li>先頭を小文字</li>
-<li>言葉の区切りで大文字</li>
-<li>予約語ではない英単語と略語を組み合わせることが多い</li>
-</ul>
-<p>例</p>
-<ul>
-<li><code>fileSend()</code></li>
-<li><code>checkVersion()</code></li>
-</ul>
-<h3 is-upgraded><strong>フィールドの値に対する取得と設定メソッド</strong></h3>
-<p>フィールドの値を取得するメソッド - 先頭をget</p>
-<p>フィールドの値を設定するメソッド - 先頭をset</p>
-<p>以降camelCase記法</p>
-<p>例</p>
-<ul>
-<li><code>getCount()</code></li>
-<li><code>setDate()</code></li>
-</ul>
-<h3 is-upgraded><strong>Boolean変数を返すメソッド</strong></h3>
-<p>メソッド名が命題を表す様に命名する</p>
-<ul>
-<li>is + 形容詞</li>
-<li>has + 過去分詞</li>
-<li>can + 動詞</li>
-</ul>
-<p>例</p>
-<ul>
-<li><code>isEmpty()</code></li>
-<li><code>hasChanged()</code></li>
-<li><code>canAccess()</code></li>
-</ul>
-<h2 is-upgraded><strong>定数名</strong></h2>
-<p>全て大文字</p>
-<p>区切りはアンダースコア&#34;_&#34;で結合</p>
-<p>例</p>
-<ul>
-<li><code>LENGTH</code></li>
-<li><code>MIN_VALUE</code></li>
-</ul>
-<h2 is-upgraded><strong>フィールド</strong></h2>
-<p>camelCase記法</p>
-<p>例</p>
-<ul>
-<li><code>count</code></li>
-<li><code>startDate</code></li>
-</ul>
-<h2 is-upgraded><strong>識別子の対称性</strong></h2>
-<p>英単語の対称性を意識する</p>
-<table>
-<tr><td colspan="1" rowspan="1"><p>add</p>
-</td><td colspan="1" rowspan="1"><p>remove</p>
-</td></tr>
-<tr><td colspan="1" rowspan="1"><p>insert</p>
-</td><td colspan="1" rowspan="1"><p>delete</p>
-</td></tr>
-<tr><td colspan="1" rowspan="1"><p>get</p>
-</td><td colspan="1" rowspan="1"><p>set</p>
-</td></tr>
-<tr><td colspan="1" rowspan="1"><p>start</p>
-</td><td colspan="1" rowspan="1"><p>stop</p>
-</td></tr>
-<tr><td colspan="1" rowspan="1"><p>begin</p>
-</td><td colspan="1" rowspan="1"><p>end</p>
-</td></tr>
-</table>
-
-
+        <p>
+          ルールに沿ってコーディングすることは、結論から言うと可読性が向上する。
+        </p>
+        <h2 is-upgraded><strong>クラス</strong></h2>
+        <p>Pascal記法</p>
+        <ul>
+          <li>先頭を大文字</li>
+          <li>それ以外を小文字</li>
+          <li>言葉の区切りは大文字</li>
+        </ul>
+        <p>例</p>
+        <ul>
+          <li><code>PermissionsIntro</code></li>
+          <li><code>AsyncTask</code></li>
+        </ul>
+        <h2 is-upgraded><strong>メソッド</strong></h2>
+        <p>camelCase記法</p>
+        <ul>
+          <li>先頭を小文字</li>
+          <li>言葉の区切りで大文字</li>
+          <li>予約語ではない英単語と略語を組み合わせることが多い</li>
+        </ul>
+        <p>例</p>
+        <ul>
+          <li><code>fileSend()</code></li>
+          <li><code>checkVersion()</code></li>
+        </ul>
+        <h3 is-upgraded>
+          <strong>フィールドの値に対する取得と設定メソッド</strong>
+        </h3>
+        <p>フィールドの値を取得するメソッド - 先頭をget</p>
+        <p>フィールドの値を設定するメソッド - 先頭をset</p>
+        <p>以降camelCase記法</p>
+        <p>例</p>
+        <ul>
+          <li><code>getCount()</code></li>
+          <li><code>setDate()</code></li>
+        </ul>
+        <h3 is-upgraded><strong>Boolean変数を返すメソッド</strong></h3>
+        <p>メソッド名が命題を表す様に命名する</p>
+        <ul>
+          <li>is + 形容詞</li>
+          <li>has + 過去分詞</li>
+          <li>can + 動詞</li>
+        </ul>
+        <p>例</p>
+        <ul>
+          <li><code>isEmpty()</code></li>
+          <li><code>hasChanged()</code></li>
+          <li><code>canAccess()</code></li>
+        </ul>
+        <h2 is-upgraded><strong>定数名</strong></h2>
+        <p>全て大文字</p>
+        <p>区切りはアンダースコア&#34;_&#34;で結合</p>
+        <p>例</p>
+        <ul>
+          <li><code>LENGTH</code></li>
+          <li><code>MIN_VALUE</code></li>
+        </ul>
+        <h2 is-upgraded><strong>フィールド</strong></h2>
+        <p>camelCase記法</p>
+        <p>例</p>
+        <ul>
+          <li><code>count</code></li>
+          <li><code>startDate</code></li>
+        </ul>
+        <h2 is-upgraded><strong>識別子の対称性</strong></h2>
+        <p>英単語の対称性を意識する</p>
+        <table>
+          <tr>
+            <td colspan="1" rowspan="1"><p>add</p></td>
+            <td colspan="1" rowspan="1"><p>remove</p></td>
+          </tr>
+          <tr>
+            <td colspan="1" rowspan="1"><p>insert</p></td>
+            <td colspan="1" rowspan="1"><p>delete</p></td>
+          </tr>
+          <tr>
+            <td colspan="1" rowspan="1"><p>get</p></td>
+            <td colspan="1" rowspan="1"><p>set</p></td>
+          </tr>
+          <tr>
+            <td colspan="1" rowspan="1"><p>start</p></td>
+            <td colspan="1" rowspan="1"><p>stop</p></td>
+          </tr>
+          <tr>
+            <td colspan="1" rowspan="1"><p>begin</p></td>
+            <td colspan="1" rowspan="1"><p>end</p></td>
+          </tr>
+        </table>
       </google-codelab-step>
-    
+
       <google-codelab-step label="クラス設計に重要な原則" duration="0">
-        <p>クラス設計をすることは、拡張性向上や可読性向上につながる。実装速度こそ落ちるが、開発が進むにつれて設計は効果を発揮する。</p>
-<p>設計はすぐに理解できるものではないし、実際にソースコードに落とし込むのは大変。</p>
-<p>最初はとりあえずソースコードを書いてみて、リファクタリングするのが、精神的な不安が少なく、おすすめ。</p>
-<p><strong>リファクタリング(Refactoring) - 「外部から見た時の挙動は変えずに、プログラムの内部構造を整理すること」</strong></p>
-<p>例えば、以下のコードは何を表しているかわかるだろうか。</p>
-<pre><code>public double func(int a){
+        <p>
+          クラス設計をすることは、拡張性向上や可読性向上につながる。実装速度こそ落ちるが、開発が進むにつれて設計は効果を発揮する。
+        </p>
+        <p>
+          設計はすぐに理解できるものではないし、実際にソースコードに落とし込むのは大変。
+        </p>
+        <p>
+          最初はとりあえずソースコードを書いてみて、リファクタリングするのが、精神的な不安が少なく、おすすめ。
+        </p>
+        <p>
+          <strong
+            >リファクタリング(Refactoring) -
+            「外部から見た時の挙動は変えずに、プログラムの内部構造を整理すること」</strong
+          >
+        </p>
+        <p>例えば、以下のコードは何を表しているかわかるだろうか。</p>
+        <pre><code>public double func(int a){
     return a * 1.10
 } </code></pre>
-<p>正解は、税込み価格を計算するメソッドである。</p>
-<p>これをリファクタリングすると</p>
-<pre><code>public double includeTax(){
+        <p>正解は、税込み価格を計算するメソッドである。</p>
+        <p>これをリファクタリングすると</p>
+        <pre><code>public double includeTax(){
     return price + price*TAX_RATE;
 }</code></pre>
-<p>「値段+値段×税率」を計算していることが考えられるようになる。</p>
-<p><strong>→「3日後の自分は他人である。」という格言があるように、3日後の自分でもわかるソースコードを書くように意識する。常に自分のソースコードが「良いコード」なのかを疑うべきである。</strong></p>
-
-
+        <p>「値段+値段×税率」を計算していることが考えられるようになる。</p>
+        <p>
+          <strong
+            >→「3日後の自分は他人である。」という格言があるように、3日後の自分でもわかるソースコードを書くように意識する。常に自分のソースコードが「良いコード」なのかを疑うべきである。</strong
+          >
+        </p>
       </google-codelab-step>
-    
+
       <google-codelab-step label="SOLID原則" duration="0">
-        <p>設計の考え方はたくさんあるが今回は取り立てて有名なSOLID原則について理解する。</p>
-<p>SOLID原則とは</p>
-<ul>
-<li>SRP - 単一責任の原則</li>
-<li>OCP - オープンクローズドの原則</li>
-<li>LSP - リスコフの置換原則</li>
-<li>ISP - インターフェース分離の原則</li>
-<li>DIP - 依存性逆転の原理</li>
-</ul>
-<p>の頭文字を取ったものである。</p>
-<p>オブジェクト指向プログラミングのガイドラインのようなもので、これに則ることで「良いコード」に繋がります。</p>
-
-
+        <p>
+          設計の考え方はたくさんあるが今回は取り立てて有名なSOLID原則について理解する。
+        </p>
+        <p>SOLID原則とは</p>
+        <ul>
+          <li>SRP - 単一責任の原則</li>
+          <li>OCP - オープンクローズドの原則</li>
+          <li>LSP - リスコフの置換原則</li>
+          <li>ISP - インターフェース分離の原則</li>
+          <li>DIP - 依存性逆転の原理</li>
+        </ul>
+        <p>の頭文字を取ったものである。</p>
+        <p>
+          オブジェクト指向プログラミングのガイドラインのようなもので、これに則ることで「良いコード」に繋がります。
+        </p>
       </google-codelab-step>
-    
-      <google-codelab-step label="SRP(Single Responsibility Principle) - 単一責任の原則" duration="0">
+
+      <google-codelab-step
+        label="SRP(Single Responsibility Principle) - 単一責任の原則"
+        duration="0"
+      >
         <p>クラスを変更する理由は、単一でなければならない。</p>
-<p>△ クラスの「責任(役割)」は、単一でなければならない</p>
-<p>◯ クラスを「変更する理由」は単一でなければならない</p>
-<p>単一責任が守られていない例</p>
-<h3 is-upgraded><strong>Product.java</strong></h3>
-<pre><code>package work1;
+        <p>△ クラスの「責任(役割)」は、単一でなければならない</p>
+        <p>◯ クラスを「変更する理由」は単一でなければならない</p>
+        <p>単一責任が守られていない例</p>
+        <h3 is-upgraded><strong>Product.java</strong></h3>
+        <pre><code>package work1;
 
 public class Product {
     private final String productName;
@@ -258,13 +349,21 @@ public class Product {
         return price*1.10;
     }
 }</code></pre>
-<p>商品クラスです。一見良さそうに見えます。ではここに、料金を半額にするメソッドや料金を1/4にするメソッドを追加すると、商品クラスの内容が膨大になります。</p>
-<p>今回の例ではフィールドの数が2つと少ないですが、フィールドが10個あり、それらのメソッドが100個あると仮定します。</p>
-<p>そして税率が変更されたので料金に関するメソッド全てを変更することになった際にすぐに対応できるでしょうか。</p>
-<p>これは単一責任の原則に違反しています。</p>
-<h3 is-upgraded><strong>そこで、例としてpriceをクラス化させます。</strong></h3>
-<h3 is-upgraded><strong>Price.java</strong></h3>
-<pre><code>public class Price{
+        <p>
+          商品クラスです。一見良さそうに見えます。ではここに、料金を半額にするメソッドや料金を1/4にするメソッドを追加すると、商品クラスの内容が膨大になります。
+        </p>
+        <p>
+          今回の例ではフィールドの数が2つと少ないですが、フィールドが10個あり、それらのメソッドが100個あると仮定します。
+        </p>
+        <p>
+          そして税率が変更されたので料金に関するメソッド全てを変更することになった際にすぐに対応できるでしょうか。
+        </p>
+        <p>これは単一責任の原則に違反しています。</p>
+        <h3 is-upgraded>
+          <strong>そこで、例としてpriceをクラス化させます。</strong>
+        </h3>
+        <h3 is-upgraded><strong>Price.java</strong></h3>
+        <pre><code>public class Price{
     private static double TAX_RATE = 0.10;
     private final int price;
 
@@ -280,9 +379,9 @@ public class Product {
         return price + price*TAX_RATE;
     }
 }</code></pre>
-<p>するとProduct.javaが以下のように書けることがわかります。</p>
-<h3 is-upgraded><strong>Product.java</strong></h3>
-<pre><code>public class Product {
+        <p>するとProduct.javaが以下のように書けることがわかります。</p>
+        <h3 is-upgraded><strong>Product.java</strong></h3>
+        <pre><code>public class Product {
     private final String productName;
     private final Price price;
 
@@ -291,25 +390,36 @@ public class Product {
         this.price = new Price(price);
     }
 }</code></pre>
-<p>この時クラスPriceを「値オブジェクト」と言い、「final修飾子」を用いた「不変(イミュータブル)」であることが求められます。</p>
-<p>しかし、なんでもかんでも値オブジェクトを定義することが良いわけではなく、ユースケースによって異なります。</p>
-
-
+        <p>
+          この時クラスPriceを「値オブジェクト」と言い、「final修飾子」を用いた「不変(イミュータブル)」であることが求められます。
+        </p>
+        <p>
+          しかし、なんでもかんでも値オブジェクトを定義することが良いわけではなく、ユースケースによって異なります。
+        </p>
       </google-codelab-step>
-    
-      <google-codelab-step label="OCP(Open Closed Principle) - オープンクローズドの原則" duration="0">
-        <p>ソフトウェアの構成要素は拡張に対して開いていて、修正に対して閉じていなければならない</p>
-<p>つまり、ソフトウェアの振る舞いは、既存のソースコードを変更せずに拡張できるようにすべきであると言うこと。</p>
-<p>SPSS2022/day3/work2/に以下のコードを追加してください</p>
-<h3 is-upgraded><strong>SPSS2022/day3/work2/IMember.java</strong></h3>
-<pre><code>package work2;
+
+      <google-codelab-step
+        label="OCP(Open Closed Principle) - オープンクローズドの原則"
+        duration="0"
+      >
+        <p>
+          ソフトウェアの構成要素は拡張に対して開いていて、修正に対して閉じていなければならない
+        </p>
+        <p>
+          つまり、ソフトウェアの振る舞いは、既存のソースコードを変更せずに拡張できるようにすべきであると言うこと。
+        </p>
+        <p>SPSS2022/day3/work2/に以下のコードを追加してください</p>
+        <h3 is-upgraded><strong>SPSS2022/day3/work2/IMember.java</strong></h3>
+        <pre><code>package work2;
 
 public interface IMember {
     public double priceCut();
 }</code></pre>
-<p>※ interfaceについては後述します。interfaceの定義例としても見てください</p>
-<h3 is-upgraded><strong>SPSS2022/day3/work2/Platinum.java</strong></h3>
-<pre><code>package work2;
+        <p>
+          ※ interfaceについては後述します。interfaceの定義例としても見てください
+        </p>
+        <h3 is-upgraded><strong>SPSS2022/day3/work2/Platinum.java</strong></h3>
+        <pre><code>package work2;
 
 class Platinum implements IMember{
     private static double DISCOUNT = 0.3;
@@ -324,8 +434,8 @@ class Platinum implements IMember{
         return totalAmount - totalAmount*DISCOUNT;
     }
 }</code></pre>
-<h3 is-upgraded><strong>SPSS2022/day3/work2/Gold.java</strong></h3>
-<pre><code>package work2;
+        <h3 is-upgraded><strong>SPSS2022/day3/work2/Gold.java</strong></h3>
+        <pre><code>package work2;
 
 class Gold implements IMember{
     private static double DISCOUNT = 0.2;
@@ -340,8 +450,8 @@ class Gold implements IMember{
         return totalAmount - totalAmount*DISCOUNT;
     }
 }</code></pre>
-<h3 is-upgraded><strong>SPSS2022/day3/work2/Silver.java</strong></h3>
-<pre><code>package work2;
+        <h3 is-upgraded><strong>SPSS2022/day3/work2/Silver.java</strong></h3>
+        <pre><code>package work2;
 
 class Silver implements IMember {
     private static double DISCOUNT = 0.1;
@@ -356,8 +466,8 @@ class Silver implements IMember {
         return totalAmount - totalAmount*DISCOUNT;
     }
 }</code></pre>
-<h3 is-upgraded><strong>SPSS2022/day3/work2/Main.java</strong></h3>
-<pre><code>package work2;
+        <h3 is-upgraded><strong>SPSS2022/day3/work2/Main.java</strong></h3>
+        <pre><code>package work2;
 
 import java.util.ArrayList;
 
@@ -374,18 +484,27 @@ public class Main {
         }
     }
 }</code></pre>
-<p>これらのソースコードは会員別の値段を表している。</p>
-<p>IMemberというinterfaceを用いたことによって、拡張がしやすくなり、修正する必要がないということだ。このinterfaceの特徴を「多態性(ポリモーフィズム)」と言い、これがOCPにも繋がる。</p>
-<p>例えば新しくBronze会員を設けることにした。Bronze.javaは上記のGold.javaのソースコードのように書き、DISCOUNTの値を変えれば良いだけである。</p>
-
-
+        <p>これらのソースコードは会員別の値段を表している。</p>
+        <p>
+          IMemberというinterfaceを用いたことによって、拡張がしやすくなり、修正する必要がないということだ。このinterfaceの特徴を「多態性(ポリモーフィズム)」と言い、これがOCPにも繋がる。
+        </p>
+        <p>
+          例えば新しくBronze会員を設けることにした。Bronze.javaは上記のGold.javaのソースコードのように書き、DISCOUNTの値を変えれば良いだけである。
+        </p>
       </google-codelab-step>
-    
-      <google-codelab-step label="LSP(Liskov substitution principle) - リスコフの置換原則" duration="0">
-        <p>サブクラス(派生型)は、そのスーパークラス(基底型)と置換可能でなければならない</p>
-<p>interfaceがここで言う完全にスーパークラスだとは言いきれないため多少語弊があるが、ニュアンスとして伝える。</p>
-<p>先のGold.javaが以下のようになっているとする。</p>
-<pre><code>package work2;
+
+      <google-codelab-step
+        label="LSP(Liskov substitution principle) - リスコフの置換原則"
+        duration="0"
+      >
+        <p>
+          サブクラス(派生型)は、そのスーパークラス(基底型)と置換可能でなければならない
+        </p>
+        <p>
+          interfaceがここで言う完全にスーパークラスだとは言いきれないため多少語弊があるが、ニュアンスとして伝える。
+        </p>
+        <p>先のGold.javaが以下のようになっているとする。</p>
+        <pre><code>package work2;
 
 class Gold implements IMember{
     private static double DISCOUNT = 0.2;
@@ -400,30 +519,39 @@ class Gold implements IMember{
         return totalAmount;
     }
 }</code></pre>
-<p>priceCut()の振る舞いが変わっていることが確認できるだろうか。</p>
-<p>Gold.javaはIMemberのサブクラスであり、IMemberの関数の1つであるpriceCutは値引き後の値段を返す振る舞いをする。</p>
-<p>interfaceで例を説明しており、より誤解を生みそうなので省略すると、要するに同じ振る舞いをさせろということである。</p>
-<p>ドリンクバーで何かしらのボタンを押したらドリンクが出てきてほしい。ボタンを押したらガソリンが出てくるのはおかしい。</p>
-
-
+        <p>priceCut()の振る舞いが変わっていることが確認できるだろうか。</p>
+        <p>
+          Gold.javaはIMemberのサブクラスであり、IMemberの関数の1つであるpriceCutは値引き後の値段を返す振る舞いをする。
+        </p>
+        <p>
+          interfaceで例を説明しており、より誤解を生みそうなので省略すると、要するに同じ振る舞いをさせろということである。
+        </p>
+        <p>
+          ドリンクバーで何かしらのボタンを押したらドリンクが出てきてほしい。ボタンを押したらガソリンが出てくるのはおかしい。
+        </p>
       </google-codelab-step>
-    
-      <google-codelab-step label="ISP(Interface Segregation Principle) - インターフェース分離の原則" duration="0">
-        <p>不必要なメソッドに依存しなくても良いように、分離できるインターフェースは分離しよう</p>
-<p>以下のコード例を見てみよう</p>
-<pre><code>public interface IAnimal {
+
+      <google-codelab-step
+        label="ISP(Interface Segregation Principle) - インターフェース分離の原則"
+        duration="0"
+      >
+        <p>
+          不必要なメソッドに依存しなくても良いように、分離できるインターフェースは分離しよう
+        </p>
+        <p>以下のコード例を見てみよう</p>
+        <pre><code>public interface IAnimal {
     public void eat();
     public void sleep();
     public void fly();
 }</code></pre>
-<p>IAnimalは動物の</p>
-<ul>
-<li>食べる</li>
-<li>眠る</li>
-<li>飛ぶ</li>
-</ul>
-<p>を示したインターフェースである。これを実装すると、</p>
-<pre><code>public class Bird implements IAnimal{
+        <p>IAnimalは動物の</p>
+        <ul>
+          <li>食べる</li>
+          <li>眠る</li>
+          <li>飛ぶ</li>
+        </ul>
+        <p>を示したインターフェースである。これを実装すると、</p>
+        <pre><code>public class Bird implements IAnimal{
     @Override
     public void eat(){
         // 食べる
@@ -438,9 +566,9 @@ class Gold implements IMember{
         // 飛ぶ
     };
 }</code></pre>
-<p>Birdクラスは動物であり、「食べる、眠る、飛ぶ」ことができる。</p>
-<p>次に、Dogクラスを実装すると</p>
-<pre><code>public class Dog implements IAnimal{
+        <p>Birdクラスは動物であり、「食べる、眠る、飛ぶ」ことができる。</p>
+        <p>次に、Dogクラスを実装すると</p>
+        <pre><code>public class Dog implements IAnimal{
     @Override
     public void eat(){
         // 食べる
@@ -455,17 +583,19 @@ class Gold implements IMember{
         // 犬は飛べないのに...
     };
 }</code></pre>
-<p>Dogクラスは動物であるが、飛ぶことができない。従ってメソッドflyは不必要である。こうした不必要なメソッドの実装を強制させないようにインターフェースを分離しましょうということ。</p>
-<p>以下のように分離させてみる。</p>
-<pre><code>public interface IAnimal {
+        <p>
+          Dogクラスは動物であるが、飛ぶことができない。従ってメソッドflyは不必要である。こうした不必要なメソッドの実装を強制させないようにインターフェースを分離しましょうということ。
+        </p>
+        <p>以下のように分離させてみる。</p>
+        <pre><code>public interface IAnimal {
     public void eat();
     public void sleep();
 }</code></pre>
-<pre><code>public interface IFly{
+        <pre><code>public interface IFly{
     public void fly();
 }</code></pre>
-<p>新しくIFlyインターフェースを定義する。</p>
-<pre><code>public class Bird implements IAnimal, IFly{
+        <p>新しくIFlyインターフェースを定義する。</p>
+        <pre><code>public class Bird implements IAnimal, IFly{
     @Override
     public void eat(){
         // 食べる
@@ -480,8 +610,8 @@ class Gold implements IMember{
         // 飛ぶ
     };
 }</code></pre>
-<p>BirdにはIAnimalとIFlyのインターフェースを実装。</p>
-<pre><code>public class Dog implements IAnimal{
+        <p>BirdにはIAnimalとIFlyのインターフェースを実装。</p>
+        <pre><code>public class Dog implements IAnimal{
     @Override
     public void eat(){
         // 食べる
@@ -491,21 +621,22 @@ class Gold implements IMember{
         // 眠る
     };
 }</code></pre>
-<p>一方DogはIAnimalのみを実装すれば良い。</p>
-
-
+        <p>一方DogはIAnimalのみを実装すれば良い。</p>
       </google-codelab-step>
-    
-      <google-codelab-step label="DIP(Dependency Inversion Principle) - 依存性逆転の原則" duration="0">
+
+      <google-codelab-step
+        label="DIP(Dependency Inversion Principle) - 依存性逆転の原則"
+        duration="0"
+      >
         <p>具象クラスではなく抽象クラスに依存しよう</p>
-<ul>
-<li>具象クラス: 具体的な処理が書かれたクラス</li>
-<li>抽象クラス: 具体的な処理が書かれていないクラス</li>
-</ul>
-<p>これまで散々見てきた「interface」がまた登場します。</p>
-<p>例えばHumanというクラスがあります。</p>
-<h3 is-upgraded><strong>Human.java</strong></h3>
-<pre><code>public class Human {
+        <ul>
+          <li>具象クラス: 具体的な処理が書かれたクラス</li>
+          <li>抽象クラス: 具体的な処理が書かれていないクラス</li>
+        </ul>
+        <p>これまで散々見てきた「interface」がまた登場します。</p>
+        <p>例えばHumanというクラスがあります。</p>
+        <h3 is-upgraded><strong>Human.java</strong></h3>
+        <pre><code>public class Human {
     public String name;
 
     public Human(String name){
@@ -516,28 +647,41 @@ class Gold implements IMember{
         System.out.println(name);
     }
 }</code></pre>
-<p>これをMainクラスでインスタンス化します。</p>
-<h3 is-upgraded><strong>Main.java</strong></h3>
-<pre><code>public class Main {
+        <p>これをMainクラスでインスタンス化します。</p>
+        <h3 is-upgraded><strong>Main.java</strong></h3>
+        <pre><code>public class Main {
     public static void main(String[] args) {
         Human human = new Human(&#34;Bana7&#34;);
         human.profile();
     }
 }</code></pre>
-<h2 is-upgraded><strong>依存関係とは</strong></h2>
-<p>その前に、依存関係とは何でしょうか。</p>
-<p>この時の依存関係はMainクラスで「Human human = ...」とHuman型の変数を定義していることから、「MainクラスはHumanクラスに依存する」ということになり、わかりやすく図(UML図の一つであるクラス図)にすると以下のようになる。(矢印の方向に注目してください)</p>
-<p class="image-container"><img style="width: 124.00px" src="img/dd591ddf18bf7706.png"></p>
-<p>MainクラスはHumanクラスに依存するため、Humanクラスについて「知る」必要があります。同様にして、Dogクラスや、Penguinクラスがある場合は、それらについて「知る」必要があります。</p>
-<p>「知る」というのは、メソッドやフィールドがどう振る舞うかを知るということです。</p>
-<p class="image-container"><img style="width: 375.00px" src="img/bab49685ba540c77.png"></p>
-<p>Mainクラスは3つのクラスについて「知る」必要があり、大変なので、interfaceを実装します。</p>
-<h3 is-upgraded><strong>IAnimal.java</strong></h3>
-<pre><code>public interface IAnimal {
+        <h2 is-upgraded><strong>依存関係とは</strong></h2>
+        <p>その前に、依存関係とは何でしょうか。</p>
+        <p>
+          この時の依存関係はMainクラスで「Human human =
+          ...」とHuman型の変数を定義していることから、「MainクラスはHumanクラスに依存する」ということになり、わかりやすく図(UML図の一つであるクラス図)にすると以下のようになる。(矢印の方向に注目してください)
+        </p>
+        <p class="image-container">
+          <img style="width: 124px" src="img/dd591ddf18bf7706.png" />
+        </p>
+        <p>
+          MainクラスはHumanクラスに依存するため、Humanクラスについて「知る」必要があります。同様にして、Dogクラスや、Penguinクラスがある場合は、それらについて「知る」必要があります。
+        </p>
+        <p>
+          「知る」というのは、メソッドやフィールドがどう振る舞うかを知るということです。
+        </p>
+        <p class="image-container">
+          <img style="width: 375px" src="img/bab49685ba540c77.png" />
+        </p>
+        <p>
+          Mainクラスは3つのクラスについて「知る」必要があり、大変なので、interfaceを実装します。
+        </p>
+        <h3 is-upgraded><strong>IAnimal.java</strong></h3>
+        <pre><code>public interface IAnimal {
     public void profile();
 }</code></pre>
-<h3 is-upgraded><strong>Human.java</strong></h3>
-<pre><code>public class Human implements IAnimal{
+        <h3 is-upgraded><strong>Human.java</strong></h3>
+        <pre><code>public class Human implements IAnimal{
     public String name;
 
     public Human(String name){
@@ -549,33 +693,45 @@ class Gold implements IMember{
         System.out.println(name);
     }
 }</code></pre>
-<p>これをMainクラスでインスタンス化します。</p>
-<h3 is-upgraded><strong>Main.java</strong></h3>
-<pre><code>public class Main {
+        <p>これをMainクラスでインスタンス化します。</p>
+        <h3 is-upgraded><strong>Main.java</strong></h3>
+        <pre><code>public class Main {
     public static void main(String[] args) {
         IAnimal human = new Human(&#34;Bana7&#34;);
         human.profile();
     }
 }</code></pre>
-<p>この時の依存関係はMainクラスで「IAnimal human = ...」とIAnimal型の変数を定義していることから、「MainクラスはIAnimalクラスに依存する」ということになります。</p>
-<p>一方、Humanクラスは「public class Human implements IAnimal」とインターフェースであるIAnimalを使うことを宣言していることから、「HumanクラスはIAnimalクラスに依存する」ということになります。</p>
-<p>同様に図(UML図の一つであるクラス図)で表すと以下のようになります。</p>
-<p class="image-container"><img style="width: 126.00px" src="img/5afb5d5499bf98b4.png"></p>
-<p>interfaceは抽象クラスです。IAnimalの具象クラスはHumanです。最初はMainは具象クラスのHumanに依存していましたが、interfaceを使うことにより抽象クラスに依存することができました、Humanクラスも同様です。</p>
-<p>抽象クラスに依存することにより</p>
-<p>「中身はわからないけど、profileというメソッドを使うと返り値はないけど、何か実行されるんだな」</p>
-<p>ということがMainクラスの視点ではわかります。</p>
-<p>これが依存性逆転の原理です。</p>
-<p class="image-container"><img style="width: 375.00px" src="img/53fbef7e6cadafeb.png"></p>
-<p>のように数が増えてくると、その効果が顕著になってくる。</p>
-
-
+        <p>
+          この時の依存関係はMainクラスで「IAnimal human =
+          ...」とIAnimal型の変数を定義していることから、「MainクラスはIAnimalクラスに依存する」ということになります。
+        </p>
+        <p>
+          一方、Humanクラスは「public class Human implements
+          IAnimal」とインターフェースであるIAnimalを使うことを宣言していることから、「HumanクラスはIAnimalクラスに依存する」ということになります。
+        </p>
+        <p>同様に図(UML図の一つであるクラス図)で表すと以下のようになります。</p>
+        <p class="image-container">
+          <img style="width: 126px" src="img/5afb5d5499bf98b4.png" />
+        </p>
+        <p>
+          interfaceは抽象クラスです。IAnimalの具象クラスはHumanです。最初はMainは具象クラスのHumanに依存していましたが、interfaceを使うことにより抽象クラスに依存することができました、Humanクラスも同様です。
+        </p>
+        <p>抽象クラスに依存することにより</p>
+        <p>
+          「中身はわからないけど、profileというメソッドを使うと返り値はないけど、何か実行されるんだな」
+        </p>
+        <p>ということがMainクラスの視点ではわかります。</p>
+        <p>これが依存性逆転の原理です。</p>
+        <p class="image-container">
+          <img style="width: 375px" src="img/53fbef7e6cadafeb.png" />
+        </p>
+        <p>のように数が増えてくると、その効果が顕著になってくる。</p>
       </google-codelab-step>
-    
+
       <google-codelab-step label="確認課題#3-1" duration="0">
         <p>以下のファイルを作成し、実行できることを確認しよう</p>
-<h3 is-upgraded><strong>SPSS2022/day3/work1/Main.java</strong></h3>
-<pre><code>package work1;
+        <h3 is-upgraded><strong>SPSS2022/day3/work1/Main.java</strong></h3>
+        <pre><code>package work1;
 
 public class Main {
     public static void main(String[] args) {
@@ -583,8 +739,8 @@ public class Main {
         System.out.println(price.includeTax());
     }
 }</code></pre>
-<h3 is-upgraded><strong>SPSS2022/day3/work1/Price.java</strong></h3>
-<pre><code>package work1;
+        <h3 is-upgraded><strong>SPSS2022/day3/work1/Price.java</strong></h3>
+        <pre><code>package work1;
 
 public class Price{
     private static double TAX_RATE = 0.10;
@@ -602,68 +758,99 @@ public class Price{
         return price + price*TAX_RATE;
     }
 }</code></pre>
-<h2 is-upgraded><strong>実行の仕方</strong></h2>
-<p class="image-container"><img style="width: 601.70px" src="img/a3e28b043b5737ac.png"></p>
-<p>ここの<code>Run|Debug</code>の<code>Runの方をクリックする。</code></p>
-<p class="image-container"><img style="width: 510.00px" src="img/ee7c057fec6ed82a.png"></p>
-<p><code>1100.0</code>と出力されていることを確認する。</p>
-
-
+        <h2 is-upgraded><strong>実行の仕方</strong></h2>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/a3e28b043b5737ac.png" />
+        </p>
+        <p>
+          ここの<code>Run|Debug</code>の<code>Runの方をクリックする。</code>
+        </p>
+        <p class="image-container">
+          <img style="width: 510px" src="img/ee7c057fec6ed82a.png" />
+        </p>
+        <p><code>1100.0</code>と出力されていることを確認する。</p>
       </google-codelab-step>
-    
+
       <google-codelab-step label="アクセス修飾子" duration="0">
-        <p class="image-container"><img style="width: 601.70px" src="img/8a460e6d4c436890.png"></p>
-<p>参考: <a href="https://www.mum-meblog.com/entry/research-detail/plant_uml" target="_blank">https://www.mum-meblog.com/entry/research-detail/plant_uml</a></p>
-<p>4つありますが、まずは「public」と「private」この2つの意味をしっかり理解しましょう。</p>
-
-
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/8a460e6d4c436890.png" />
+        </p>
+        <p>
+          参考:
+          <a
+            href="https://www.mum-meblog.com/entry/research-detail/plant_uml"
+            target="_blank"
+            >https://www.mum-meblog.com/entry/research-detail/plant_uml</a
+          >
+        </p>
+        <p>
+          4つありますが、まずは「public」と「private」この2つの意味をしっかり理解しましょう。
+        </p>
       </google-codelab-step>
-    
+
       <google-codelab-step label="基本のデータ型" duration="0">
-        <p>Pythonでは触れなかったが、プログラミング言語には「型」というものがある。</p>
-<p>そして、プログラミング言語は「動的型付け言語」か「静的型付け言語」のいずれかに分類することができる。</p>
-<p>Javaは静的型付け言語で、Pythonが動的型付け言語である。</p>
-<p>静的型付け言語は、変数を定義する際に一緒に型を定義する。</p>
-<p class="image-container"><img style="width: 601.70px" src="img/d4b83ac55d7e0e7d.png"></p>
-<p>参考: <a href="https://java-code.jp/68" target="_blank">https://java-code.jp/68</a></p>
-<p>基本型は別名「プリミティブ型」とも呼ぶ。</p>
-<p>「int は整数で、floatとかは小数点、Stringで文字列を定義できるんだなぁ」程度の理解でまずは大丈夫。必要になったら調べよう。</p>
-<p>定義は以下のようにする</p>
-<pre><code>int x;
+        <p>
+          Pythonでは触れなかったが、プログラミング言語には「型」というものがある。
+        </p>
+        <p>
+          そして、プログラミング言語は「動的型付け言語」か「静的型付け言語」のいずれかに分類することができる。
+        </p>
+        <p>Javaは静的型付け言語で、Pythonが動的型付け言語である。</p>
+        <p>静的型付け言語は、変数を定義する際に一緒に型を定義する。</p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/d4b83ac55d7e0e7d.png" />
+        </p>
+        <p>
+          参考:
+          <a href="https://java-code.jp/68" target="_blank"
+            >https://java-code.jp/68</a
+          >
+        </p>
+        <p>基本型は別名「プリミティブ型」とも呼ぶ。</p>
+        <p>
+          「int
+          は整数で、floatとかは小数点、Stringで文字列を定義できるんだなぁ」程度の理解でまずは大丈夫。必要になったら調べよう。
+        </p>
+        <p>定義は以下のようにする</p>
+        <pre><code>int x;
 String name;</code></pre>
-<p>コレクション型(リストまたは配列)は以下の様に定義する。</p>
-<pre><code>import java.util.ArrayList;
+        <p>コレクション型(リストまたは配列)は以下の様に定義する。</p>
+        <pre><code>import java.util.ArrayList;
 
 ...省略
 ArrayList&lt;Integer&gt; numbers = new ArrayList&lt;&gt;();
 numbers.add(10);</code></pre>
-<p>ArrayList&lt;参照型&gt; numbers = new ArrayList&lt;&gt;();</p>
-<p>で定義でき、members.add(10);で追加できる。</p>
-<p>また参照型で定義するので、ArrayList&lt;int&gt; ... の様にはできない。</p>
-<p>型について詳しく知りたい方は、例えばC言語を学んでみるとより詳しくなれると思います。</p>
-
-
+        <p>ArrayList&lt;参照型&gt; numbers = new ArrayList&lt;&gt;();</p>
+        <p>で定義でき、members.add(10);で追加できる。</p>
+        <p>
+          また参照型で定義するので、ArrayList&lt;int&gt; ... の様にはできない。
+        </p>
+        <p>
+          型について詳しく知りたい方は、例えばC言語を学んでみるとより詳しくなれると思います。
+        </p>
       </google-codelab-step>
-    
+
       <google-codelab-step label="クラスとインスタンス化" duration="0">
         <p>クラスの定義の仕方は</p>
-<pre><code>public class クラス名 {
+        <pre><code>public class クラス名 {
     //処理
 }</code></pre>
-<p>実際に定義してみる。</p>
-<h3 is-upgraded><strong>Human.java</strong></h3>
-<pre><code>public class Human {
+        <p>実際に定義してみる。</p>
+        <h3 is-upgraded><strong>Human.java</strong></h3>
+        <pre><code>public class Human {
     String name;
     int age;
 }</code></pre>
-<p>この時、nameとageのことをフィールド(変数)と呼ぶ。</p>
-<h2 is-upgraded><strong>コンストラクタ</strong></h2>
-<p>pythonのクラス定義でいうと、「__init__(self)」である。</p>
-<p>コンストラクタは後述する、インスタンス化の際に自動で呼ばれるメソッドである。</p>
-<p>コンストラクタの名前はクラス名と同じであり、戻り値は記述しない。</p>
-<p>戻り値はPythonと同じで「return ...」のことである。</p>
-<h3 is-upgraded><strong>Human.java</strong></h3>
-<pre><code>public class Human {
+        <p>この時、nameとageのことをフィールド(変数)と呼ぶ。</p>
+        <h2 is-upgraded><strong>コンストラクタ</strong></h2>
+        <p>pythonのクラス定義でいうと、「__init__(self)」である。</p>
+        <p>
+          コンストラクタは後述する、インスタンス化の際に自動で呼ばれるメソッドである。
+        </p>
+        <p>コンストラクタの名前はクラス名と同じであり、戻り値は記述しない。</p>
+        <p>戻り値はPythonと同じで「return ...」のことである。</p>
+        <h3 is-upgraded><strong>Human.java</strong></h3>
+        <pre><code>public class Human {
     String name;
     int age;
     public Human(String name, int age){
@@ -671,13 +858,19 @@ numbers.add(10);</code></pre>
         this.age = age;
     }
 }</code></pre>
-<p>「this」は自分自身(インスタンス)を表す。Pythonでいう「self」である。</p>
-<p>フィールド名にnameとageがあったら、コンストラクタの引数の名前は同じくnameとageとするのが一般的なので、thisをつけて区別させる。</p>
-<h2 is-upgraded><strong>メソッド</strong></h2>
-<p>いわゆる関数 「データ型 + 関数名(データ型 + 引数名)」で定義できる。</p>
-<p>引数はなくても大丈夫。</p>
-<h3 is-upgraded><strong>Human.java</strong></h3>
-<pre><code>public class Human {
+        <p>
+          「this」は自分自身(インスタンス)を表す。Pythonでいう「self」である。
+        </p>
+        <p>
+          フィールド名にnameとageがあったら、コンストラクタの引数の名前は同じくnameとageとするのが一般的なので、thisをつけて区別させる。
+        </p>
+        <h2 is-upgraded><strong>メソッド</strong></h2>
+        <p>
+          いわゆる関数 「データ型 + 関数名(データ型 + 引数名)」で定義できる。
+        </p>
+        <p>引数はなくても大丈夫。</p>
+        <h3 is-upgraded><strong>Human.java</strong></h3>
+        <pre><code>public class Human {
     String name;
     int age;
     public Human(String name, int age){
@@ -694,71 +887,99 @@ numbers.add(10);</code></pre>
         this.name = name;
     }
 }</code></pre>
-<p>「System.out.println()」で標準出力(Shellに値が表示される)</p>
-<p>「void」型がない -&gt; 戻り値がないことを示す。</p>
-<p>getフィールド名や、setフィールド名「アクセサ」と呼ばれ、それぞれゲッター、セッターと呼ばれる。</p>
-<h2 is-upgraded><strong>インスタンス化</strong></h2>
-<p>通常クラスのインスタンス化(実際にオブジェクトを生成すること)は以下の様にする。</p>
-<h3 is-upgraded><strong>Main.java</strong></h3>
-<pre><code>public class Main {
+        <p>「System.out.println()」で標準出力(Shellに値が表示される)</p>
+        <p>「void」型がない -&gt; 戻り値がないことを示す。</p>
+        <p>
+          getフィールド名や、setフィールド名「アクセサ」と呼ばれ、それぞれゲッター、セッターと呼ばれる。
+        </p>
+        <h2 is-upgraded><strong>インスタンス化</strong></h2>
+        <p>
+          通常クラスのインスタンス化(実際にオブジェクトを生成すること)は以下の様にする。
+        </p>
+        <h3 is-upgraded><strong>Main.java</strong></h3>
+        <pre><code>public class Main {
     public static void main(String[] args) {
         Human human = new Human(&#34;Bana7&#34;, 20);
         human.profile();
     }
 }
 </code></pre>
-<p>クラス名 + 変数名(インスタンス変数名) = new クラス名(引数);</p>
-<p>でインスタンスできる。</p>
-<p>またクラスで宣言したメソッドには、</p>
-<p>インスタンス変数名.メソッド名で呼ぶことができる。</p>
-<h3 is-upgraded><strong>ちなみに</strong></h3>
-<pre><code>public static void main(String[] args) {
+        <p>クラス名 + 変数名(インスタンス変数名) = new クラス名(引数);</p>
+        <p>でインスタンスできる。</p>
+        <p>またクラスで宣言したメソッドには、</p>
+        <p>インスタンス変数名.メソッド名で呼ぶことができる。</p>
+        <h3 is-upgraded><strong>ちなみに</strong></h3>
+        <pre><code>public static void main(String[] args) {
 
 }</code></pre>
-<p>はmainメソッドと呼ばれ、javaを実行する際はこのmainメソッドがエントリーポイントになります。</p>
-<p>「static」は静的という意味で、インスタンス化しなくても使えるという意味です。</p>
-<p>「static + データ型 + 変数名 = &#34;何か&#34;」で定数も定義できます。</p>
-<p>また度々出ていた「final」は代入時以降、値を変えることができなくする修飾子です。</p>
-<p>このfinalを使うと「イミュータブル(不変)」にでき、オブジェクト指向プログラミングでは結構重要な修飾子です。</p>
-
-
+        <p>
+          はmainメソッドと呼ばれ、javaを実行する際はこのmainメソッドがエントリーポイントになります。
+        </p>
+        <p>
+          「static」は静的という意味で、インスタンス化しなくても使えるという意味です。
+        </p>
+        <p>
+          「static + データ型 + 変数名 = &#34;何か&#34;」で定数も定義できます。
+        </p>
+        <p>
+          また度々出ていた「final」は代入時以降、値を変えることができなくする修飾子です。
+        </p>
+        <p>
+          このfinalを使うと「イミュータブル(不変)」にでき、オブジェクト指向プログラミングでは結構重要な修飾子です。
+        </p>
       </google-codelab-step>
-    
+
       <google-codelab-step label="継承&#43;ポリモーフィズム" duration="0">
         <h2 is-upgraded><strong>継承</strong></h2>
-<p>オブジェクト指向の特徴の1つである。</p>
-<p>継承を使うと、クラスの内容を「継承」して別のクラスでも扱うことができる。</p>
-<p>継承は</p>
-<ul>
-<li>interface</li>
-<li>extend (abstractな抽象クラス)</li>
-</ul>
-<p>がある。</p>
-<p>interfaceの使い方は、設計パートで説明している。extendの方は、バグを量産する元になりうるので最初の内は学ぶべきではないため、省略する。基本的にはinterfaceを使って欲しいところである。(個人的な意見なので、人によって意見は変わる)</p>
-<h2 is-upgraded><strong>ポリモーフィズム</strong></h2>
-<p>オブジェクト指向の特徴の1つである。</p>
-<p>あるメソッドなどが、引数や返り値の数やデータ型などの異なる複数の実装を持ち、呼び出し時に使い分ける様にできることである。</p>
-<p>つまり依存関係が弱い「疎結合」であるということ、オブジェクト指向プログラミングでは疎結合であるほど、拡張性が高くなり、バグが発生しづらくなる。</p>
-<p>このポリモーフィズムもinterfaceを用いてOCPのwork2のところで実装している。</p>
-
-
+        <p>オブジェクト指向の特徴の1つである。</p>
+        <p>
+          継承を使うと、クラスの内容を「継承」して別のクラスでも扱うことができる。
+        </p>
+        <p>継承は</p>
+        <ul>
+          <li>interface</li>
+          <li>extend (abstractな抽象クラス)</li>
+        </ul>
+        <p>がある。</p>
+        <p>
+          interfaceの使い方は、設計パートで説明している。extendの方は、バグを量産する元になりうるので最初の内は学ぶべきではないため、省略する。基本的にはinterfaceを使って欲しいところである。(個人的な意見なので、人によって意見は変わる)
+        </p>
+        <h2 is-upgraded><strong>ポリモーフィズム</strong></h2>
+        <p>オブジェクト指向の特徴の1つである。</p>
+        <p>
+          あるメソッドなどが、引数や返り値の数やデータ型などの異なる複数の実装を持ち、呼び出し時に使い分ける様にできることである。
+        </p>
+        <p>
+          つまり依存関係が弱い「疎結合」であるということ、オブジェクト指向プログラミングでは疎結合であるほど、拡張性が高くなり、バグが発生しづらくなる。
+        </p>
+        <p>
+          このポリモーフィズムもinterfaceを用いてOCPのwork2のところで実装している。
+        </p>
       </google-codelab-step>
-    
+
       <google-codelab-step label="カプセル化" duration="0">
         <p>オブジェクト指向の特徴の1つである。</p>
-<p>よくその例として、先述のgetterとsetterがあるが、このカプセル化は非常に弱い物になっていると考えられる。</p>
-<p>詳しくは「ドメイン駆動設計(DDD)」を学ぶ、「継承や、ポリモーフィズム」と共にオブジェクト指向プログラミングについて理解できるので省略する。</p>
-<p>※ 省略するのはここでカプセル化の弱さについて説明すると、圧倒的に時間が足りないため</p>
-
-
+        <p>
+          よくその例として、先述のgetterとsetterがあるが、このカプセル化は非常に弱い物になっていると考えられる。
+        </p>
+        <p>
+          詳しくは「ドメイン駆動設計(DDD)」を学ぶ、「継承や、ポリモーフィズム」と共にオブジェクト指向プログラミングについて理解できるので省略する。
+        </p>
+        <p>
+          ※
+          省略するのはここでカプセル化の弱さについて説明すると、圧倒的に時間が足りないため
+        </p>
       </google-codelab-step>
-    
+
       <google-codelab-step label="確認課題#3-2" duration="0">
-        <p>本資料8「OCP(Open Closed Principle) - オープンクローズドの原則」のwork2にクラスBronzeを追加しなさい。</p>
-<p>DISCOUNT = 0.05とする。(実装内容は他のGold.java等を参考にする)</p>
-<p>またMainクラスを以下の様に訂正する。</p>
-<h3 is-upgraded><strong>SPSS2022/day3/work2/Main.java</strong></h3>
-<pre><code>package work2;
+        <p>
+          本資料8「OCP(Open Closed Principle) -
+          オープンクローズドの原則」のwork2にクラスBronzeを追加しなさい。
+        </p>
+        <p>DISCOUNT = 0.05とする。(実装内容は他のGold.java等を参考にする)</p>
+        <p>またMainクラスを以下の様に訂正する。</p>
+        <h3 is-upgraded><strong>SPSS2022/day3/work2/Main.java</strong></h3>
+        <pre><code>package work2;
 
 import java.util.ArrayList;
 
@@ -777,26 +998,24 @@ public class Main {
     }
 
 }</code></pre>
-<p>Runを押して以下の様に出力されることを確認する。</p>
-<pre><code>Platinum会員は10000円を7000円で買うことができます
+        <p>Runを押して以下の様に出力されることを確認する。</p>
+        <pre><code>Platinum会員は10000円を7000円で買うことができます
 Gold会員は10000円を8000円で買うことができます
 Silver会員は10000円を9000円で買うことができます
 Bronze会員は10000円を9500円で買うことができます</code></pre>
-
-
       </google-codelab-step>
-    
+
       <google-codelab-step label="最後に" duration="0">
         <p>今回は設計に重きをおいてjavaについて説明した。</p>
-<p>この資料はjava入門よりも、java入門での向き合い方の方が近いのかもしれない。</p>
-<p>いずれにせよ、Javaについて学ぶ際は「設計」を意識してみよう。</p>
-
-
+        <p>
+          この資料はjava入門よりも、java入門での向き合い方の方が近いのかもしれない。
+        </p>
+        <p>いずれにせよ、Javaについて学ぶ際は「設計」を意識してみよう。</p>
       </google-codelab-step>
-    
+
       <google-codelab-step label="確認課題#3-2の答え" duration="0">
         <h3 is-upgraded><strong>SPSS2022/day3/work2/Bronze.java</strong></h3>
-<pre><code>package work2;
+        <pre><code>package work2;
 
 public class Bronze implements IMember{
     private static double DISCOUNT = 0.05;
@@ -811,30 +1030,54 @@ public class Bronze implements IMember{
         return totalAmount - totalAmount*DISCOUNT;
     }
 }</code></pre>
-<p>確認できたら、githubにpushしよう。</p>
-
-
+        <p>確認できたら、githubにpushしよう。</p>
       </google-codelab-step>
-    
+
       <google-codelab-step label="参考" duration="0">
         <ul>
-<li><a href="https://qiita.com/rkonno/items/1b30daf83854fecbb814" target="_blank">Java言語の命名指針</a></li>
-<li><a href="https://polymer.apphy.u-fukui.ac.jp/~koishi/lecture/program1.php?type=nyumon" target="_blank">プログラミング(1)「コンパイルと実行」</a></li>
-<li><a href="https://www2.akita-nct.ac.jp/take/note/soft4e/pdf/soft4e-01-01.pdf" target="_blank">Javaの特徴</a></li>
-<li><a href="https://zenn.dev/rafael612/articles/5d68b432d219f8" target="_blank">SOLID原則 ◆オープン・クローズドの原則◆</a></li>
-<li><a href="https://www.mum-meblog.com/entry/research-detail/plant_uml" target="_blank">VSCodeとPlantUMLでクラス図を描く</a></li>
-</ul>
-
-
+          <li>
+            <a
+              href="https://qiita.com/rkonno/items/1b30daf83854fecbb814"
+              target="_blank"
+              >Java言語の命名指針</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://polymer.apphy.u-fukui.ac.jp/~koishi/lecture/program1.php?type=nyumon"
+              target="_blank"
+              >プログラミング(1)「コンパイルと実行」</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www2.akita-nct.ac.jp/take/note/soft4e/pdf/soft4e-01-01.pdf"
+              target="_blank"
+              >Javaの特徴</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://zenn.dev/rafael612/articles/5d68b432d219f8"
+              target="_blank"
+              >SOLID原則 ◆オープン・クローズドの原則◆</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.mum-meblog.com/entry/research-detail/plant_uml"
+              target="_blank"
+              >VSCodeとPlantUMLでクラス図を描く</a
+            >
+          </li>
+        </ul>
       </google-codelab-step>
+    </google-codelab>
     
-  </google-codelab>
-
-  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
-  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
-  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
-  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
-  <script src="//support.google.com/inapp/api.js"></script>
-
-</body>
+    <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+    <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+    <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+    <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+    <script src="//support.google.com/inapp/api.js"></script>
+  </body>
 </html>

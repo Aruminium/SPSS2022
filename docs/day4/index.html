@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="theme-color" content="#4F7DC9" />
+    <meta charset="UTF-8" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="SPSS2022-day4 Docker+SQL" />
+    <meta
+      property="og:description"
+      content="DockerでMySQL環境を構築し、試してみる"
+    />
+    <meta
+      property="og:url"
+      content="https://aruminium.github.io/SPSS2022/day4/index.html#0"
+    />
+    <meta property="og:site_name" content="SPSS2022" />
+    <meta
+      property="og:image"
+      content="https://aruminium.github.io/SPSS2022/day4/img/SPSS2022day4.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@Aruminium_Bana7" />
+    <title>SPSS2022-day4 SQL&#43;Docker</title>
+    <link
+      rel="stylesheet"
+      href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono"
+    />
+    <link
+      rel="stylesheet"
+      href="//fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      rel="stylesheet"
+      href="https://storage.googleapis.com/codelab-elements/codelab-elements.css"
+    />
+    <style>
+      .success {
+        color: #1e8e3e;
+      }
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+  <link rel="shortcut icon" href="../favicon.ico" />
+  <body>
+    <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+    <google-codelab
+      codelab-gaid="168837877"
+      id="SPSS2022-day4"
+      title="SPSS2022-day4 SQL&#43;Docker"
+      environment="web"
+      feedback-link="https://twitter.com/Aruminium_Bana7"
+    >
+      <google-codelab-step label="はじめに" duration="0">
+        <p>今回は「SQL+Docker」を扱う。</p>
+        <ul>
+          <li>Docker上にMySQLコンテナを立ち上げる</li>
+          <li>Dockerのコンテナに入る方法</li>
+          <li>SQLの基本</li>
+        </ul>
+        <p>について学びます。</p>
+        <p>実際に使うのはday5の「Linebot」です。</p>
+        <p class="image-container">
+          <img style="width: 279px" src="img/d74b18b2dc2e81ad.png" />
+        </p>
+        <p class="image-container">
+          <img style="width: 337px" src="img/bb2f9fc61469078.png" />
+        </p>
+      </google-codelab-step>
+
+      <google-codelab-step label="SQLとは" duration="0">
+        <p>データベースを操作する言語である。</p>
+        <p>データベースは何かたくさんの情報が入る箱だと思っていただきたい。</p>
+        <p>
+          データベースがなければ、あらゆるサービスは成り立たず、データベースとSQLは非常に重要である。
+        </p>
+        <p>例えばwebサービスの例だと、</p>
+        <ol type="1" start="1">
+          <li>サインアップでデータベースに個人情報を登録</li>
+          <li>ログイン時に、その情報と一致しなければ、ログイン拒否</li>
+        </ol>
+        <p>
+          また、ゲームでよくある「フレンドコード」は、一意なIDになっており、こうした一意な情報を元にプレイヤーを管理していたりする。
+        </p>
+        <p>
+          パスワードを忘れたことはないだろうか。パスワードを再登録するために、メールアドレスが聞かれるが、これも入力したメールアドレスが、「データベースに保存されているか」などを判断している。
+        </p>
+        <p>そして、データベースには種類がある。</p>
+        <p class="image-container">
+          <img
+            alt="階層型データベース"
+            style="width: 601.7px"
+            src="img/48d42b8f80d39c74.png"
+          />
+        </p>
+        <p>
+          参考:
+          <a
+            href="https://static.it-trend.jp/article/img/89-0066_1.png"
+            target="_blank"
+            >https://static.it-trend.jp/article/img/89-0066_1.png</a
+          >
+        </p>
+        <h2 is-upgraded><strong>データベースの例</strong></h2>
+        <ol type="1" start="1">
+          <li>
+            PostgreSQL - リレーショナル型. 無償で使え、小規模システムに使われる
+          </li>
+          <li>MySQL - リレーショナル型. OSSで基本は無料</li>
+          <li>SQLite - リレーショナル型. OSSでコンパクト</li>
+        </ol>
+        <p>他にもあります。</p>
+        <p>今回はMySQLを使っていきます。</p>
+        <p>
+          そしてSQLという言語を「〇〇.sql」に書いたり、データベース上で書くことになります。
+        </p>
+      </google-codelab-step>
+
+      <google-codelab-step label="今回使うSQLコマンド" duration="0">
+        <p>
+          以下のコマンドを「〇〇.sql」に書いたり、データベース上に書いて実行する。
+        </p>
+        <p>「末尾に;」をつけることに注意しよう。</p>
+        <p>
+          「mysql&gt;」はコマンドラインでmysql上で操作していることを示しています。
+        </p>
+        <h2 is-upgraded><strong>データベース作成</strong></h2>
+        <pre><code>CREATE DATABASE データベース名;</code></pre>
+        <p>例 「test」というデータベース作成</p>
+        <pre><code>mysql&gt; CREATE DATABASE users;</code></pre>
+        <h2 is-upgraded><strong>データを選択する</strong></h2>
+        <pre><code>USE データベース名;</code></pre>
+        <p>例 「test」データベースを使うことを示す。</p>
+        <pre><code>mysql&gt; USE users;</code></pre>
+        <h2 is-upgraded><strong>データベースの中身を確認</strong></h2>
+        <pre><code>SHOW DATABASES;</code></pre>
+        <p>例 データベースはいくつあるだろうか</p>
+        <pre><code>mysql&gt; SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| test               |
++--------------------+
+5 rows in set (0.00 sec)</code></pre>
+        <h2 is-upgraded>
+          <strong>テーブルを作成 (USEで使うデータベースを指定後)</strong>
+        </h2>
+        <pre><code>CREATE TABLE テーブル名(
+    カラム名 型 その他,
+    カラム名 型 その他
+);</code></pre>
+        <p>例 「test」データベースに新しく、「users」テーブルを作成</p>
+        <pre><code>mysql&gt; create table item_category (
+    id int auto_increment not null primary key,
+    name varchar(32) not null 
+);</code></pre>
+        <p>※小文字でもコマンド認識されます。</p>
+        <h3 is-upgraded>
+          <strong
+            >idは整数値で、勝手に加算されて(入力不要になる)、必ず情報が入っており(not
+            null)、重複しない値である。</strong
+          >
+        </h3>
+        <h3 is-upgraded>
+          <strong
+            >nameは32文字までの文字列で(varchar(32))、必ず情報が入る。</strong
+          >
+        </h3>
+        <h2 is-upgraded><strong>テーブルにデータ追加</strong></h2>
+        <pre><code>SELECT 列名 [表示用列名] FROM テーブル名; </code></pre>
+        <p>例 usersというテーブルにyamada, tanaka, Bana7を追加</p>
+        <pre><code>mysql&gt; insert into users(name) values (&#34;Yamada&#34;), (&#34;Tanaka&#34;), (&#34;Bana7&#34;);</code></pre>
+        <h2 is-upgraded><strong>データ検索(SLECT)</strong></h2>
+        <pre><code>SELECT 列名 [表示用列名] FROM テーブル名; </code></pre>
+        <p>
+          例 usersというテーブルから全て(*)の情報を選択、加えてidだけをみる。
+        </p>
+        <pre><code>mysql&gt; SELECT * FROM users;
++----+--------+
+| id | name   |
++----+--------+
+|  1 | Yamada |
+|  2 | Tanaka |
+|  3 | Bana7  |
++----+--------+
+3 rows in set (0.00 sec)
+mysql&gt; select id from users;
++----+
+| id |
++----+
+|  1 |
+|  2 |
+|  3 |
++----+
+3 rows in set (0.00 sec)</code></pre>
+      </google-codelab-step>
+
+      <google-codelab-step label="今回使うDocker知識" duration="0">
+        <p>まず、Dockerコマンドを使う際は、DockerDesktopを起動しましょう。</p>
+        <p>画面左下のアイコンの色が緑色になっていれば起動できている。</p>
+        <p>
+          今回は、Docker-compose.ymlとDockerfileを用いたコンテナ構築を行う。
+        </p>
+        <h2 is-upgraded><strong>Docker-compose.ymlとは</strong></h2>
+        <p>コンテナを複数管理できるファイルである。</p>
+        <p>役割として家づくりで換言すると、お家を建ててくれます。</p>
+        <p>お家内装はDockerfileに任せます。</p>
+        <h2 is-upgraded><strong>Dockerifleとは</strong></h2>
+        <p>コンテナ(お家)の内装を書きます。</p>
+        <p>今回扱う例で言うと、「MySQL」を使うための設定をします。</p>
+      </google-codelab-step>
+
+      <google-codelab-step label="MySQLの環境をDockerで用意しよう" duration="0">
+        <p>SPSS2022/day4を作成</p>
+        <p>以下のファイルを作成しよう</p>
+        <h3 is-upgraded><strong>SPSS2022/day4/docker-compose.yml</strong></h3>
+        <pre><code>version: &#34;3&#34;
+services:
+  mysql: #コンテナ名
+    build:
+      context: ./mysql/ #mysqlにある
+      dockerfile: Dockerfile # Dockerfileでビルドします
+    volumes: # データを保存する(ローカルのどのファイルを:コンテナのどのファイルに)
+      - ./mysql/initdb.d:/docker-entrypoint-initdb.d
+    environment: #環境変数 今回はMySQLのパスワードをrootにした
+      - MYSQL_ROOT_PASSWORD=root
+    expose:
+      - 3306
+</code></pre>
+        <h3 is-upgraded><strong>SPSS2022/day4/mysql/my.cnf</strong></h3>
+        <pre><code>[mysqld]
+character-set-server=utf8
+
+[mysql]
+default-character-set=utf8
+
+[client]
+default-character-set=utf8</code></pre>
+        <p>my.cnfはMySQLの設定ファイル</p>
+        <h3 is-upgraded><strong>SPSS2022/day4/mysql/Dockerfile</strong></h3>
+        <pre><code>FROM mysql
+COPY ./my.cnf /etc/mysql/conf.d/my.cnf
+
+CMD [&#34;mysqld&#34;] # mysqlを起動してもらう(正確にはmysqlのデーモン起動)</code></pre>
+        <h3 is-upgraded>
+          <strong>SPSS2022/day4/mysql/initdb.d/users.sql</strong>
+        </h3>
+        <pre><code>CREATE DATABASE test;
+USE test;
+
+CREATE TABLE users (
+  id int auto_increment not null PRIMARY key,
+  name varchar(32) not null
+);</code></pre>
+        <p>Dockeではinitdb.dにおいたsqlファイルを勝手に実行してくれます。</p>
+        <h2 is-upgraded><strong>コンテナ起動</strong></h2>
+        <pre><code>$ docker compose up -d</code></pre>
+        <p>docker composeはdocker-compose.ymlがあるファルダ上で使える。</p>
+        <p>必ずday4ファルダ上で実行(cd コマンドで移動してからコマンド使う)</p>
+        <h2 is-upgraded><strong>コンテナが起動していることを確認</strong></h2>
+        <p>コマンド上及び、DockerDesktopで確認する。</p>
+        <pre><code>$ docker ps
+CONTAINER ID   IMAGE        COMMAND                  CREATED             STATUS             PORTS                 NAMES
+35e899702abd   day4_mysql   &#34;docker-entrypoint.s...&#34;   About an hour ago   Up About an hour   3306/tcp, 33060/tcp   day4-mysql-1</code></pre>
+        <p>
+          コマンド上で確認する方はこの時NAMESに注目する。この例ではNAMESは「day4-mysql-1」である。
+        </p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/af1adb7d7887f2e1.png" />
+        </p>
+        <h2 is-upgraded><strong>コンテナに入る</strong></h2>
+        <p>コマンドで入る方は、先のNAMESを用いて、</p>
+        <pre><code>$ docker exec -it day4-mysql-1 /bin/bash
+bash-4.4# </code></pre>
+        <p>bash-4.4# のようになっていればOK</p>
+        <p>DockerDesktopの方は</p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/370d8fd8aa40d944.png" />
+        </p>
+        <p>CLIと表示されているボタンをクリックする。</p>
+        <p>新しくシェルが立ち上がります。</p>
+        <h2 is-upgraded>
+          <strong>dockerコンテナからmysqlにログインする</strong>
+        </h2>
+        <pre><code>bash-4.4# mysql -u root -p -h 127.0.0.1
+
+Enter password: 今回の場合&#34;root&#34;と入力
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 8.0.30 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type &#39;help;&#39; or &#39;\h&#39; for help. Type &#39;\c&#39; to clear the current input statement.
+
+mysql&gt; </code></pre>
+        <p>mysql&gt;となればOK</p>
+        <h2 is-upgraded>
+          <strong>テーブルが作成されているか確認し、使うことを示す。</strong>
+        </h2>
+        <p>
+          mysql&gt;
+          となっていれば準備完了です。あとはここでsqlコマンドを入力するだけです。
+        </p>
+        <pre><code>mysql&gt; show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| test               |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql&gt; use test
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql&gt; </code></pre>
+        <p>Database changedとなっていれば、OKです。</p>
+        <p>この状態で確認課題を行ってください。</p>
+      </google-codelab-step>
+
+      <google-codelab-step label="確認課題#4" duration="0">
+        <p>以下の条件を満たすテーブルをtestというデータベースに作成しよう</p>
+        <ol type="1" start="1">
+          <li>
+            <h2 is-upgraded>
+              <strong>usersテーブルに</strong
+              ><strong>任意のデータをinsertしよう</strong>
+            </h2>
+          </li>
+          <li>
+            <h2 is-upgraded><strong>insertしたデータを表示する</strong></h2>
+          </li>
+        </ol>
+        <p>ヒントは今回使うSQLコマンドのところを参考にしてください。</p>
+        <p>確認できたらpushしてください</p>
+      </google-codelab-step>
+
+      <google-codelab-step label="最後に" duration="0">
+        <p>今日はDocker上にMySQL環境を構築して、軽く弄ってみました。</p>
+        <p>
+          このままでは、不便なので、5日目には実際にLinebotとデータベースを連携させます。
+        </p>
+      </google-codelab-step>
+    </google-codelab>
+
+    <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+    <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+    <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+    <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+    <script src="//support.google.com/inapp/api.js"></script>
+  </body>
+</html>

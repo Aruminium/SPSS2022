@@ -9,5 +9,9 @@
   },
   "java.project.sourcePaths": [
     "day3"
+  ],
+  "cSpell.words": [
+    "entrypoint",
+    "initdb"
   ]
 }
