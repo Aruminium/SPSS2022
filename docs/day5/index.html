@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="theme-color" content="#4F7DC9" />
+    <meta charset="UTF-8" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="SPSS2022-day5 LineBot" />
+    <meta
+      property="og:description"
+      content="LineBotで構築し、バックエンドについて理解する"
+    />
+    <meta
+      property="og:url"
+      content="https://aruminium.github.io/SPSS2022/day5/index.html#0"
+    />
+    <meta property="og:site_name" content="SPSS2022" />
+    <meta
+      property="og:image"
+      content="https://aruminium.github.io/SPSS2022/day5/img/SPSS2022day5.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@Aruminium_Bana7" />
+    <title>SPSS2022-day5 LineBot</title>
+    <link
+      rel="stylesheet"
+      href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono"
+    />
+    <link
+      rel="stylesheet"
+      href="//fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      rel="stylesheet"
+      href="https://storage.googleapis.com/codelab-elements/codelab-elements.css"
+    />
+    <style>
+      .success {
+        color: #1e8e3e;
+      }
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+  <link rel="shortcut icon" href="../favicon.ico" />
+  <body>
+    <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+    <google-codelab
+      codelab-gaid="168837877"
+      id="SPSS2022-day5"
+      title="SPSS2022-day5 LineBot"
+      environment="web"
+      feedback-link="https://twitter.com/Aruminium_Bana7"
+    >
+      <google-codelab-step label="はじめに" duration="0">
+        <p>今回は1~4日目のまとめとして、「Linebot」を扱う。</p>
+        <p>実際にLinebotの構成をDockerで構築し、その仕組みを理解する。</p>
+        <p>いわゆる、バックエンドを体験してみよう。</p>
+      </google-codelab-step>
+
+      <google-codelab-step label="バックエンドとは" duration="0">
+        <p>前回「SQL+Docker」ではデータベースを扱いました。</p>
+        <p>
+          バックエンドは、このデータベースの操作や、WebAPIの処理といった、ユーザからは見えない処理を担う分野です。
+        </p>
+        <p>今回のLineBotの構成は以下のようになっています。</p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/4d1f33477d455d9c.png" />
+        </p>
+        <p>
+          ユーザはメッセージを送信したら、何かしらの応答が得られることがわかります。ユーザはこの時、裏で何が行われているかはわかりません。
+        </p>
+        <h3 is-upgraded><strong>ngrok</strong></h3>
+        <p>
+          ngrok(エングロック)はトンネリングという技術を用いてローカルサーバーを一般に公開できるツールです。
+        </p>
+        <p>もっと端的に換言すると、「http -&gt; https」にしています。</p>
+        <p>
+          lineはhttpで通信することができません。そのためhttpsで通信できるngrokが必要です。
+        </p>
+        <p>
+          理由としては、Linebotでは個人情報を扱います。httpでは個人情報が筒抜けになりますが、httpsだと個人情報が暗号化されるので、安全になるからです。
+        </p>
+        <h3 is-upgraded><strong>Flask</strong></h3>
+        <p>flask(フラスク、フラスコ)はwebフレームワークです。</p>
+        <p>
+          一般にこうしたwebフレームワークでは「web API」を作ることができます。
+        </p>
+        <p>web APIでは</p>
+        <ul>
+          <li>https://〇〇にアクセスされたら「htmlファイル」を返す</li>
+          <li>
+            https://〇〇にアクセス(postリクエスト)されたら、データベースに情報を保存
+          </li>
+          <li>
+            https://〇〇にアクセスされたら、(データベースなどから)情報を返す(レスポンス)
+          </li>
+        </ul>
+        <p>こうしたことを行ってくれます。</p>
+        <p>googleの検索エンジンのChromeもこのwebAPIと言えるでしょう。</p>
+        <h3 is-upgraded><strong>Spring</strong></h3>
+        <p>Springは略名で、Spring Frameworkと呼びます。</p>
+        <p>これもwebフレームワークです。</p>
+        <h3 is-upgraded><strong>Nginx</strong></h3>
+        <p>nginxはwebサーバーの1つです。</p>
+        <p>webサーバーは先のwebAPIの前で活躍します。</p>
+        <p>
+          webサーバーを用いることによって「ユーザがどこにアクセスしているのか」を把握し、webAPIに流したり、振り分けたりすることができます。
+        </p>
+        <p>
+          webAPI側でもそういったことはできますが、webサーバはその特化型といえます。
+        </p>
+        <h2 is-upgraded><strong>バックエンドによく使われる言語</strong></h2>
+        <ul>
+          <li>PHP</li>
+          <li>GO</li>
+          <li>Python</li>
+          <li>Ruby</li>
+          <li>C#</li>
+          <li>Java</li>
+          <li>JavaScript</li>
+        </ul>
+        <p>
+          個人的には汎用性の高い「Java」をおすすめしたいところだが、学習コストが高いので、バックエンドを自分で構築したい場合、まずは「PythonのFlask」を学習すると良いと思われる。
+        </p>
+      </google-codelab-step>
+
+      <google-codelab-step label="確認課題#5" duration="0">
+        <p>
+          <a
+            href="https://github.com/Aruminium/Java_Python_Linbot_Starters_kit"
+            target="_blank"
+            >Java_Python_Linbot_Starters_kit</a
+          >にアクセスしてREADME.mdに記載されている手順通りにやってみよう。
+        </p>
+        <p>まずはSPSS2022上でgit cloneをしてcd しておこう。</p>
+        <pre><code>$ git clone https://github.com/Aruminium/Java_Python_Linbot_Starters_kit.git
+$ cd Java_Python_Linbot_Starters_kit</code></pre>
+        <p>手順通りにできたらしりとりで遊んでみよう。</p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/5372f91fe45d6cf3.png" />
+        </p>
+        <h2 is-upgraded><strong>プロセスを止めよう</strong></h2>
+        <p>
+          現在、ngrokとDockerが動いているので、辞める時はこれらのプロセスを止める必要がある。
+        </p>
+        <p>基本的なプロセスを止める方法は「ctrl + (z or c)」で止められる。</p>
+        <p>まずはngrokのプロセスを止めよう。</p>
+        <h2 is-upgraded><strong>Dockerのプロセスを止める</strong></h2>
+        <p>Dockerのプロセスは「docker compose down」で止めることができる。</p>
+        <pre><code>$ docker compose down
+[+] Running 7/7
+ ⠿ Container dbclient                         Removed              1.2s
+ ⠿ Container nginx                            Removed              0.2s
+ ⠿ Container spring                           Removed              2.4s
+ ⠿ Container flask                            Removed              0.4s
+ ⠿ Container mysql                            Removed              1.2s
+ ⠿ Network java_python_apitest_nginx_network  Removed              0.1s
+ ⠿ Network java_python_apitest_default        Removed              0.1s</code></pre>
+        <p>
+          また、DockerDesktopの場合はゴミ箱アイコンをクリックすると止めることができる。
+        </p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/2e6c59f515635008.png" />
+        </p>
+        <p>
+          「docker ps」コマンドで何も表示がされない。またはDocker
+          Desktopの画面に何もない状態になっていることを確認する。
+        </p>
+        <p>確認できたら、pushしよう</p>
+      </google-codelab-step>
+
+      <google-codelab-step label="最後に" duration="0">
+        <p>今回はLinebotを動作させて、バックエンドの仕組みについて勉強した。</p>
+        <p>今回バックエンドとして「JavaのSpring framework」を利用した。</p>
+        <p>
+          興味がある方は、「Spring
+          framework」の勉強をしてみることも良いかもしれない。
+        </p>
+        <p>明日の後半1日目(6日目)は「HTML+CSS」を扱う。</p>
+        <p>後半の内容は前半より楽しく、易しいので期待してほしい。</p>
+        <p>
+          改めて、この勉強会のコンセプトは「実装を主としている」ので、「なんとなくプログラミングがわかる」状態になっていれば幸いである。
+        </p>
+        <p>あくまで、何を勉強するかの導火線にしていただきたい。</p>
+      </google-codelab-step>
+
+      <google-codelab-step
+        label="補足 - バックエンドとフロントエンド"
+        duration="0"
+      >
+        <p>前半ではバックエンドの知識を学んだ。</p>
+        <p>後半ではフロントエンドについて学ぶ。</p>
+        <p>
+          今後注意すべき事は、例えば「Java」ではバックエンドとフロントエンドを作ることができ、ややこしくなると言うことだ。
+        </p>
+        <p>
+          バックエンドをSpring Framework、フロントエンドをApache
+          Wicketのフレームワークで作ることができる。
+        </p>
+        <p>
+          こうした時、「このソースコードはバックエンドなのかフロントエンドなのか」という状態に陥り、良くないコードを書いてしまう可能性があるので、しっかりとそのフレームワークの特徴を理解しておこう。
+        </p>
+      </google-codelab-step>
+    </google-codelab>
+
+    <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+    <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+    <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+    <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+    <script src="//support.google.com/inapp/api.js"></script>
+  </body>
+</html>
