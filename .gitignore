@@ -4,3 +4,4 @@ out/
 day3/uml.pu
 codelab.json
 .DS_Store
+docs/node_modules
