@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="theme-color" content="#4F7DC9" />
+    <meta charset="UTF-8" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="SPSS2022-day6 HTML+CSS" />
+    <meta
+      property="og:description"
+      content="React.jsでモダンなフロントエンド開発"
+    />
+    <meta
+      property="og:url"
+      content="https://aruminium.github.io/SPSS2022/day7/index.html#0"
+    />
+    <meta property="og:site_name" content="SPSS2022" />
+    <meta
+      property="og:image"
+      content="https://aruminium.github.io/SPSS2022/day7/img/SPSS2022day7.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@Aruminium_Bana7" />
+
+    <title>SPSS2022-day7 React.js</title>
+    <link
+      rel="stylesheet"
+      href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono"
+    />
+    <link
+      rel="stylesheet"
+      href="//fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      rel="stylesheet"
+      href="https://storage.googleapis.com/codelab-elements/codelab-elements.css"
+    />
+    <style>
+      .success {
+        color: #1e8e3e;
+      }
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+  <link rel="shortcut icon" href="../favicon.ico" />
+  <body>
+    <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+    <google-codelab
+      codelab-gaid="168837877"
+      id="SPSS2022-day7"
+      title="SPSS2022-day7 React.js"
+      environment="web"
+      feedback-link="https://twitter.com/Aruminium_Bana7"
+    >
+      <google-codelab-step label="はじめに" duration="0">
+        <p>今回は「React.js」を扱う。</p>
+        <p>
+          day6の「HTML+CSS」では難しかった表現も、React.jsを用いることによって簡単になる。
+        </p>
+        <p class="image-container">
+          <img
+            alt="第1回】React.jsとは何か〜その特徴やjQueryとの違い〜 | Tech Brook"
+            style="width: 300px"
+            src="img/6544c5a01201f1d1.png"
+          />
+        </p>
+        <p>
+          しかし、その簡単さがゆえに、HTMLとCSS、JavaScriptの基本が疎かになり得るので、注意しよう。
+        </p>
+      </google-codelab-step>
+
+      <google-codelab-step label="React.jsとは" duration="0">
+        <p>
+          React.jsはFacebook社が開発したUIパーツを構築するための「JavaScriptライブラリ」です。
+        </p>
+        <p>
+          React.jsと共に人気のある「Vue.js」は「JavaScriptフレームワーク」です。
+        </p>
+        <p>(ちなみにNode.jsはJavaScript実行環境)</p>
+        <h2 is-upgraded><strong>フレームワーク</strong></h2>
+        <p>プログラムの枠組みであり、設計も勝手に行ってくれる。</p>
+        <h2 is-upgraded><strong>ライブラリ</strong></h2>
+        <p>プログラムの集まり。設計は自分でやる。</p>
+        <p>
+          細かい基準は定かではありませんが、フレームワークの方が効率が良いことが多いです。
+        </p>
+        <p>逆に言うと、ライブラリの方が自由度は高くなります。</p>
+        <p>
+          React.jsは基本的にはwebページを作成できますが、「React
+          Native」ではReact.jsと同じような書き方でモバイル開発ができます。
+        </p>
+        <p>コンポーネントやpropsといった特徴もある。</p>
+        <h2 is-upgraded><strong>コンポーネント</strong></h2>
+        <p>React.jsで画面に表示される部品</p>
+        <p>表示に必要なデータや処理を1つにまとめたもの</p>
+        <p>部品を再利用できる。</p>
+        <h2 is-upgraded><strong>props</strong></h2>
+        <p>データのまとまり</p>
+        <p>コンポーネントにpropsを渡すことで同じようなUIを簡単に実装できる。</p>
+        <p>またpropsを引数にとるコンポーネントは関数コンポーネントと呼ぶ。</p>
+        <p>今回はnpmを用いてReact.jsを導入する</p>
+      </google-codelab-step>
+
+      <google-codelab-step label="npmとは" duration="0">
+        <p>
+          npmは「Node Package
+          Manager」の略でday1でインストールしたNode.jsのモジュールを管理するツールです。
+        </p>
+        <p class="image-container">
+          <img
+            alt="JavaScriptの応用】パッケージマネージャー -Npm | ワードプレステーマTCD"
+            style="width: 288px"
+            src="img/ae529b1c55d6e38a.png"
+          />
+        </p>
+        <pre><code>$ npm install パッケージ名</code></pre>
+        <p>でローカルインストールでき、</p>
+        <pre><code>$ npm install -g パッケージ名</code></pre>
+        <p>のように-gをつけるとグローバルインストールになる。</p>
+        <p>
+          ローカルインストールでは、プロジェクトのルート配下のnode_modeulesにパッケージが保存され、グローバルインストールではnpmのルート配下のnode_modulesに保存される。
+        </p>
+        <p>
+          また、ローカルインストール時はパッケージのversionなどの情報がpackage.jsonに保存される。このpackage.jsonがあると、チーム開発でメンバーに今日することで開発環境を統一することができる。
+        </p>
+      </google-codelab-step>
+
+      <google-codelab-step label="React.jsの環境構築" duration="0">
+        <h2 is-upgraded><strong>npxをインストールする</strong></h2>
+        <p>
+          npmパッケージのnpxを使うことでreactの環境を簡単に構築することができる。
+        </p>
+        <p>まずはnpxをインストールしよう</p>
+        <p>
+          <a href="https://www.npmjs.com/package/npx" target="_blank">npx</a
+          >はこちら
+        </p>
+        <pre><code>$ npm install -g npx</code></pre>
+        <h2 is-upgraded><strong>npxでreact環境を簡単に構築</strong></h2>
+        <p>SPSS2022/上でコマンドを実行しよう</p>
+        <p>コマンド実行後1分程度時間がかかるので気長に待とう</p>
+        <pre><code>$ npx create-react-app day7</code></pre>
+        <p>SPSS2022/day7があることを確認する</p>
+        <h2 is-upgraded>
+          <strong>作成されたフォルダ内のファイルを確認</strong>
+        </h2>
+        <p class="image-container">
+          <img style="width: 328px" src="img/4f0c9c502b66f48e.png" />
+        </p>
+        <h2 is-upgraded><strong>Public</strong></h2>
+        <p>
+          今回の場合だとpublicフォルダは公開フォルダとなり、ユーザに見えるものが入っているアセット達です。index.htmlを見てみると(コメントは消しています)
+        </p>
+        <h3 is-upgraded><strong>SPSS2022/day7/public/index.html</strong></h3>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;en&#34;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&#34;utf-8&#34; /&gt;
+    &lt;link rel=&#34;icon&#34; href=&#34;%PUBLIC_URL%/favicon.ico&#34; /&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1&#34; /&gt;
+    &lt;meta name=&#34;theme-color&#34; content=&#34;#000000&#34; /&gt;
+    &lt;meta
+      name=&#34;description&#34;
+      content=&#34;Web site created using create-react-app&#34;
+    /&gt;
+    &lt;link rel=&#34;apple-touch-icon&#34; href=&#34;%PUBLIC_URL%/logo192.png&#34; /&gt;
+    &lt;link rel=&#34;manifest&#34; href=&#34;%PUBLIC_URL%/manifest.json&#34; /&gt;
+    &lt;title&gt;React App&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;noscript&gt;You need to enable JavaScript to run this app.&lt;/noscript&gt;
+    &lt;div id=&#34;root&#34;&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <p>
+          この&lt;div
+          id=&#34;root&#34;&gt;&lt;/div&gt;がReactによって描き直される仕組みになっています。
+        </p>
+        <h2 is-upgraded><strong>src</strong></h2>
+        <p>開発に関わるソースコードはこのディレクトリに配置します。</p>
+        <p>
+          さまざまなファイルが置かれていますが、index.jsとApp.jsが重要になります。
+        </p>
+        <h3 is-upgraded><strong>index.js</strong></h3>
+        <p>
+          index.jsはページに表示の処理が書かれています。index.jsが先の&lt;div
+          id=&#34;root&#34;&gt;を読み込んで処理をしています。
+        </p>
+        <h3 is-upgraded><strong>SPSS2022/day7/src/index.js</strong></h3>
+        <pre><code>import React from &#39;react&#39;;
+import ReactDOM from &#39;react-dom/client&#39;;
+import &#39;./index.css&#39;;
+import App from &#39;./App&#39;;
+import reportWebVitals from &#39;./reportWebVitals&#39;;
+
+const root = ReactDOM.createRoot(document.getElementById(&#39;root&#39;));
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;App /&gt;
+  &lt;/React.StrictMode&gt;
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();</code></pre>
+        <p>コンポーネントとは</p>
+        <pre><code>&lt;App /&gt;</code></pre>
+        <p>のことであり、最初の状態だとApp.jsに処理が書かれています。</p>
+        <p>読み込む際は</p>
+        <pre><code>import App from &#39;./App&#39;;</code></pre>
+        <p>のように読み込みます。</p>
+        <h3 is-upgraded><strong>SPSS2022/day7/src/App.js</strong></h3>
+        <pre><code>import logo from &#39;./logo.svg&#39;;
+import &#39;./App.css&#39;;
+
+function App() {
+  return (
+    &lt;div className=&#34;App&#34;&gt;
+      &lt;header className=&#34;App-header&#34;&gt;
+        &lt;img src={logo} className=&#34;App-logo&#34; alt=&#34;logo&#34; /&gt;
+        &lt;p&gt;
+          Edit &lt;code&gt;src/App.js&lt;/code&gt; and save to reload.
+        &lt;/p&gt;
+        &lt;a
+          className=&#34;App-link&#34;
+          href=&#34;https://reactjs.org&#34;
+          target=&#34;_blank&#34;
+          rel=&#34;noopener noreferrer&#34;
+        &gt;
+          Learn React
+        &lt;/a&gt;
+      &lt;/header&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;
+
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();</code></pre>
+        <p>今回はこのApp.jsを書き換えてReact.jsを体験してみよう。</p>
+      </google-codelab-step>
+
+      <google-codelab-step label="React.jsを動かす" duration="0">
+        <p>
+          React.jsに限らずnpmのパッケージを動かすには「package.json」の「scripts」を見よう。
+        </p>
+        <h3 is-upgraded><strong>SPSS2022/day7/package.json</strong></h3>
+        <pre><code>...省略
+  &#34;scripts&#34;: {
+    &#34;start&#34;: &#34;react-scripts start&#34;,
+    &#34;build&#34;: &#34;react-scripts build&#34;,
+    &#34;test&#34;: &#34;react-scripts test&#34;,
+    &#34;eject&#34;: &#34;react-scripts eject&#34;
+  },
+...省略</code></pre>
+        <p>
+          scriptsをみると「start, build, test,
+          eject」が設定されていることがわかりました。
+        </p>
+        <p>※但し今回はstartコマンドしか使いません</p>
+        <h2 is-upgraded><strong>起動</strong></h2>
+        <pre><code>$ npm run start
+Compiled successfully!
+
+You can now view day7 in the browser.
+
+  Local:            http://localhost:3000
+  On Your Network:  http://192.168.0.21:3000
+
+Note that the development build is not optimized.
+To create a production build, use npm run build.
+
+webpack compiled successfully
+</code></pre>
+        <p>ブラウザで「localhost:3000」と入力しよう</p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/17bdaa0956b8d6d8.png" />
+        </p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/e984c57cf2d798a5.png" />
+        </p>
+        <h2 is-upgraded><strong>止める </strong></h2>
+        <p>止めるには「Ctrl + z」or「Ctrl + c」で止めることができる</p>
+        <p>ブラウザを確認して止まっていることを確認しよう</p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/8faae9ee4a42dec3.png" />
+        </p>
+      </google-codelab-step>
+
+      <google-codelab-step label="コンポーネント" duration="0">
+        <p>App.jsをシンプルにする。</p>
+        <h3 is-upgraded><strong>SPSS2022/day7/src/App.js</strong></h3>
+        <pre><code>import &#39;./App.css&#39;;
+
+function App() {
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Github&lt;/h1&gt;
+      &lt;a href=&#34;https://github.com/&#34;&gt;こちら&lt;/a&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+        <p>詳細は割愛しますが、必ずdivタグの中に書いてください。</p>
+        <p class="image-container">
+          <img style="width: 554px" src="img/dbaabe22254a5a0c.png" />
+        </p>
+        <p>ブラウザで確認して変更されていることを確認してください。</p>
+        <p>
+          コンポーネントが活きてくるのは、何回も同じUIを表示させたい時です。
+        </p>
+        <p>index.jsを以下のように変えてみましょう</p>
+        <h3 is-upgraded><strong>SPSS2022/day7/src/index.js</strong></h3>
+        <pre><code>import React from &#39;react&#39;;
+import ReactDOM from &#39;react-dom/client&#39;;
+import &#39;./index.css&#39;;
+import App from &#39;./App&#39;;
+import reportWebVitals from &#39;./reportWebVitals&#39;;
+
+const root = ReactDOM.createRoot(document.getElementById(&#39;root&#39;));
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;App /&gt;
+    &lt;App /&gt;
+    &lt;App /&gt;
+  &lt;/React.StrictMode&gt;
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();</code></pre>
+        <p>&lt;App/&gt;コンポーネントを3つにしてみました。</p>
+        <p>ブラウザで確認しよう。</p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/da54f43df3f8cdf1.png" />
+        </p>
+        <p>3つあることを確認しよう</p>
+      </google-codelab-step>
+
+      <google-codelab-step label="props" duration="0">
+        <p>先のコンポーネントで3つの要素を表示させた。</p>
+        <p>
+          しかし、「h1タグのテキストとaタグのhrefだけを変えたい！」といった要望が考えられる。
+        </p>
+        <p>
+          この要望を達成するために必要な機能がpropsだ。propsを用いることによって動的なコンポーネント通称関数コンポーネントを扱うことができる。
+        </p>
+        <p>App.jsにpropsの設定をしよう。</p>
+        <h3 is-upgraded><strong>SPSS2022/day7/src/App.js</strong></h3>
+        <pre><code>import &#39;./App.css&#39;;
+
+function App(props) {
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;{props.site}&lt;/h1&gt;
+      &lt;a href={props.url}&gt;こちら&lt;/a&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+        <p>次にindex.jsを書き換える。</p>
+        <h3 is-upgraded><strong>SPSS2022/day7/src/index.js</strong></h3>
+        <pre><code>import React from &#39;react&#39;;
+import ReactDOM from &#39;react-dom/client&#39;;
+import &#39;./index.css&#39;;
+import App from &#39;./App&#39;;
+import reportWebVitals from &#39;./reportWebVitals&#39;;
+
+const root = ReactDOM.createRoot(document.getElementById(&#39;root&#39;));
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;App site=&#34;GitHub&#34; url=&#34;https://github.com/&#34;/&gt;
+    &lt;App site=&#34;Twitter&#34; url=&#34;https://twitter.com/&#34;/&gt;
+    &lt;App site=&#34;Instagram&#34; url=&#34;https://www.instagram.com/&#34;/&gt;
+  &lt;/React.StrictMode&gt;
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();</code></pre>
+        <p>ブラウザを確認すると</p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/321a639b4f9c805f.png" />
+        </p>
+        <p>もちろん「こちら」をクリックするとそれぞれのサイトに遷移する</p>
+        <p>
+          このようにpropsを用いた関数コンポーネントで便利なwebページ作りができる
+        </p>
+      </google-codelab-step>
+
+      <google-codelab-step label="確認課題#7" duration="0">
+        <p>自由にApp.jsを書き換えて楽しもう</p>
+        <h3 is-upgraded><strong>SPSS2022/day7/src/App.js</strong></h3>
+        <pre><code>import &#39;./App.css&#39;;
+
+function App(props) {
+  return (
+    &lt;div&gt;
+        自由に書いてみよう
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+      </google-codelab-step>
+
+      <google-codelab-step label="最後に" duration="0">
+        <p>今回はReact.jsについて学んだ。</p>
+        <p>
+          今回学んだ内容は基礎中の基礎で、Reactはさまざまな機能を持っている。
+        </p>
+        <p>興味がある方は「React tutorial」をやってみても良いかもしれない。</p>
+        <p>次回は「UIフレームワーク+Figma」を扱う。</p>
+        <p>UIフレームワークを用いると更に爆速でwebサイトを作ることができる。</p>
+      </google-codelab-step>
+
+      <google-codelab-step label="参考" duration="0">
+        <ul>
+          <li>
+            <a
+              href="https://qiita.com/maitake9116/items/7825d90c09f3e2f87dea"
+              target="_blank"
+              >npm入門</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://ja.reactjs.org/docs/getting-started.html"
+              target="_blank"
+              >Reactスタートガイド</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://developer.mozilla.org/ja/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/React_getting_started#%E3%81%BE%E3%81%A8%E3%82%81"
+              target="_blank"
+              >Reactを始める</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://qiita.com/C_HERO/items/318fe65871f8e53e8c80"
+              target="_blank"
+              >【Vue.js】10分でできる！ ～ Vue.jsのインストール →
+              プロジェクト作成と起動まで～</a
+            >
+          </li>
+        </ul>
+      </google-codelab-step>
+    </google-codelab>
+
+    <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+    <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+    <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+    <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+    <script src="//support.google.com/inapp/api.js"></script>
+  </body>
+</html>

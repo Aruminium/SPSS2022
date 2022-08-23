@@ -10,19 +10,25 @@ type TwitterIntentTweetProps = {
   in_reply_to?: string;
 } & Omit<React.ComponentProps<"a">, "href" | "target" | "rel">;
 
-export const TwitterIntentTweet = React.forwardRef<HTMLAnchorElement, TwitterIntentTweetProps>(
+export const TwitterIntentTweet = React.forwardRef<
+  HTMLAnchorElement,
+  TwitterIntentTweetProps
+>(
   (
     { text, url, hashtags, via, related, in_reply_to, ...intrinsicProps },
-    forwardedRef,
+    forwardedRef
   ) => {
     const _url = new URL("https://twitter.com/intent/tweet");
 
     if (text !== undefined) _url.searchParams.set("text", text);
     if (url !== undefined) _url.searchParams.set("url", url);
-    if (hashtags !== undefined) _url.searchParams.set("hashtags", hashtags.join(","));
+    if (hashtags !== undefined)
+      _url.searchParams.set("hashtags", hashtags.join(","));
     if (via !== undefined) _url.searchParams.set("via", via);
-    if (related !== undefined) _url.searchParams.set("related", related.join(","));
-    if (in_reply_to !== undefined) _url.searchParams.set("in_reply_to", in_reply_to);
+    if (related !== undefined)
+      _url.searchParams.set("related", related.join(","));
+    if (in_reply_to !== undefined)
+      _url.searchParams.set("in_reply_to", in_reply_to);
 
     return (
       <Button size="small" color="primary">
@@ -35,5 +41,5 @@ export const TwitterIntentTweet = React.forwardRef<HTMLAnchorElement, TwitterInt
         />
       </Button>
     );
-  },
+  }
 );
