@@ -136,7 +136,7 @@ export const App: React.FC = () => {
                   URL="https://aruminium.github.io/SPSS2022/day8/index.html#0"
                   imgSRC="https://aruminium.github.io/SPSS2022/day8/img/SPSS2022day8.png"
                   title="day8 UIフレームワーク+Figma"
-                  desc="Comming Soon"
+                  desc="UIフレームワークとFigmaで更にモダンなフロントエンド開発"
                 ></SPSSCard>
               </Grid>
               <Grid xs={12} sm={6} lg={4}>

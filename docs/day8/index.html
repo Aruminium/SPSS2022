@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="theme-color" content="#4F7DC9" />
+    <meta charset="UTF-8" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="SPSS2022-day8 UIフレームワーク+Figma" />
+    <meta
+      property="og:description"
+      content="UIフレームワークとFigmaで更にモダンなフロントエンド開発"
+    />
+    <meta
+      property="og:url"
+      content="https://aruminium.github.io/SPSS2022/day8/index.html#0"
+    />
+    <meta property="og:site_name" content="SPSS2022" />
+    <meta
+      property="og:image"
+      content="https://aruminium.github.io/SPSS2022/day8/img/SPSS2022day8.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@Aruminium_Bana7" />
+
+    <title>SPSS2022-day8 UIフレームワーク&#43;Figma</title>
+    <link
+      rel="stylesheet"
+      href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono"
+    />
+    <link
+      rel="stylesheet"
+      href="//fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      rel="stylesheet"
+      href="https://storage.googleapis.com/codelab-elements/codelab-elements.css"
+    />
+    <style>
+      .success {
+        color: #1e8e3e;
+      }
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+  <link rel="shortcut icon" href="../favicon.ico" />
+
+  <body>
+    <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+    <google-codelab
+      codelab-gaid="168837877"
+      id="SPSS2022-day8"
+      title="SPSS2022-day8 UIフレームワーク&#43;Figma"
+      environment="web"
+      feedback-link="https://twitter.com/Aruminium_Bana7"
+    >
+      <google-codelab-step label="はじめに" duration="0">
+        <p>今回は「UIフレームワーク+Figma」を扱う</p>
+        <p>
+          UIフレームワークとFigmaを用いたwebページ制作はモダンな開発であり、簡単に素早く実装することができる。
+        </p>
+        <p>今回はUIフレームワークとしてMUIを用いる。</p>
+        <p>MUIはドキュメントを通して、ドキュメントの読む大切さも学ぼう</p>
+        <p class="image-container">
+          <img
+            alt="React + MUI + AWS] 今どきの WEB サイト/スマホアプリによくある簡易フィードバックフォームをつくる – TechHarmony"
+            style="width: 310.67px"
+            src="img/c7533aaf0bdd9193.png"
+          />
+        </p>
+        <p class="image-container">
+          <img
+            alt="Figma Japan (@FigmaJapan) / Twitter"
+            style="width: 190.67px"
+            src="img/2f241b6f780e46f0.png"
+          />
+        </p>
+      </google-codelab-step>
+
+      <google-codelab-step label="UIフレームワークとは" duration="0">
+        <p>
+          React.jsはUIパーツを構築するための「JavaScriptライブラリ」であったが、UIフレームワークを用いることによって、React.jsの枠組みに則りながらも高品質なUIを簡単に実装することができる。
+        </p>
+        <p>
+          UIフレームワークはCSSの知識を追求しないが、拡張する際には必要になるので、頼りっぱなしにならないように気をつけよう
+        </p>
+        <p>
+          React.jsで使われるUIフレームワークは多数あるが、今回は「MUI」を用いる。
+        </p>
+      </google-codelab-step>
+
+      <google-codelab-step label="MUIをインストール" duration="0">
+        <p>
+          <a href="https://mui.com/" target="_blank">MUI</a>はGoogleのMaterial
+          Design UIをReactで表現するUIフレームワークです
+        </p>
+        <p>MUIはnpmを用いてインストールすることができる。</p>
+        <p>SPSS2022/day7にcdしておこう</p>
+        <pre><code>$ npm install @mui/material @emotion/react @emotion/styled</code></pre>
+        <p>MUIはドキュメントがわかりやすいのでまず困ったら見てみよう。</p>
+        <p>実装例は後述する。</p>
+      </google-codelab-step>
+
+      <google-codelab-step label="Figmaとは" duration="0">
+        <p>ブラウザ上で共同編集もできるデザインツールである。</p>
+        <p class="image-container">
+          <img
+            alt="FigmaでWebデザインを簡単に！ Googleも採用する理由とは | Web担当者Forum"
+            style="width: 292px"
+            src="img/4b147f95c0c71af9.jpeg"
+          />
+        </p>
+        <p>Figmaを使うと簡単にデザインすることができる</p>
+        <ul>
+          <li>複数人でのリアルタイム編集が可能</li>
+          <li>ブラウザ上で実行できる</li>
+          <li>コンポーネント機能(Reactのコンポーネントと同じ感じ)</li>
+          <li>無料枠で結構できる(無料枠を把握しておこう)</li>
+        </ul>
+      </google-codelab-step>
+
+      <google-codelab-step label="Figmaでwebデザインしよう" duration="0">
+        <p>
+          <a href="https://www.figma.com/" target="_blank">figma</a
+          >にアクセスし、サインアップをしよう
+        </p>
+        <p>サインアップしたら以下のボタンをクリック</p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/94bba8f68e6a6484.png" />
+        </p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/26ebcd1342be96a.png" />
+        </p>
+        <p>このような画面に遷移したらOK</p>
+        <h2 is-upgraded><strong>フレーム(キャンバスの作成)</strong></h2>
+        <p class="image-container">
+          <img
+            alt="generate_frame.png"
+            style="width: 601.7px"
+            src="img/7f48a9ef1ec4b77d.jpeg"
+          />
+        </p>
+        <p>
+          参考:
+          <a
+            href="https://storage.googleapis.com/zenn-user-upload/33metjvpcqy421s2tpar3rczst6r"
+            target="_blank"
+            >https://storage.googleapis.com/zenn-user-upload/33metjvpcqy421s2tpar3rczst6r</a
+          >
+        </p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/a11a1011008dce3e.png" />
+        </p>
+        <p>
+          これらを使いデザインする。が今回はMUIを使う関係上もっと良い方法を用いる。
+        </p>
+        <h2 is-upgraded><strong>FigmaのMUIライブラリを使う</strong></h2>
+        <p>Figmaは有志の方が作成したFigmaのライブラリがある。</p>
+        <p>今回はMUIのUIをfigmaで表現するライブラリを使う。</p>
+        <p>
+          <a
+            href="https://www.figma.com/community/file/912837788133317724"
+            target="_blank"
+            >MUI for Figma v5.9.0(Community)</a
+          >にアクセス
+        </p>
+        <p class="image-container">
+          <img style="width: 430px" src="img/8db0685980eb295d.png" />
+        </p>
+        <p>を押すと、figmaのファイルが開かれます。</p>
+        <h3 is-upgraded><strong>Getting startedをみてみる</strong></h3>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/fe28453e62f1d6ac.png" />
+        </p>
+        <ol type="1" start="1">
+          <li>「コピーを取得」を押して開いたファイルのAssetsから使う</li>
+          <li>コンポーネントをコピーして自分のファイルで用いる</li>
+        </ol>
+        <p>と書いてある。</p>
+        <p>今回は2の手順を使ってみる</p>
+        <p class="image-container">
+          <img style="width: 482px" src="img/3f8caf12723fff98.png" />
+        </p>
+        <p>
+          左側の「レイヤー」タブにさまざまなコンポーネントがあるので、今回はその中から「App
+          Bar」を選択しよう
+        </p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/b4014e7022cda73f.png" />
+        </p>
+        <p>App Barに表示されている、これらがコンポーネントになっている。</p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/d4e83a469b0995c0.png" />
+        </p>
+        <p>右クリックでコピーを選択する(コピーのショートカットでもOK)</p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/3ac08847abd019db.png" />
+        </p>
+        <p>あとは貼り付けるだけで使える。</p>
+      </google-codelab-step>
+
+      <google-codelab-step label="FigmaのデザインをMUIで再現する" duration="0">
+        <p>先のFigmaで用いた「App Bar」はもちろんMUIにある。</p>
+        <p>
+          <a
+            href="https://mui.com/material-ui/getting-started/overview/"
+            target="_blank"
+            >MUI</a
+          >を開いて、ハンバーガーメニューのコンポーネントをみると「App
+          Bar」があるのでクリックする。
+        </p>
+        <p class="image-container">
+          <img style="width: 596px" src="img/e4e0b63e4d22569f.png" />
+        </p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/acef809b49828c9f.png" />
+        </p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/2a9d9b2d63e9d502.png" />
+        </p>
+        <p>目的のApp BarのUIを探すとソースコードがある。</p>
+        <p>しかし、一部しか表示されていないので</p>
+        <p class="image-container">
+          <img style="width: 284px" src="img/2730daac61479a7c.png" />
+        </p>
+        <p>をクリックして</p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/e7d6ba8cc199c8cd.png" />
+        </p>
+        <p>このコードをコピペすることで実装することができる。</p>
+        <p>実際にSPSS2022/day7/src/App.jsにペーストしてみよう</p>
+        <h3 is-upgraded><strong>SPSS2022/day7/src/App.js</strong></h3>
+        <pre><code>import * as React from &#39;react&#39;;
+import AppBar from &#39;@mui/material/AppBar&#39;;
+import Box from &#39;@mui/material/Box&#39;;
+import Toolbar from &#39;@mui/material/Toolbar&#39;;
+import Typography from &#39;@mui/material/Typography&#39;;
+import IconButton from &#39;@mui/material/IconButton&#39;;
+import MenuIcon from &#39;@mui/icons-material/Menu&#39;;
+
+export default function DenseAppBar() {
+  return (
+    &lt;Box sx=&#123;&#123; flexGrow: 1 }}&gt;
+      &lt;AppBar position=&#34;static&#34;&gt;
+        &lt;Toolbar variant=&#34;dense&#34;&gt;
+          &lt;IconButton edge=&#34;start&#34; color=&#34;inherit&#34; aria-label=&#34;menu&#34; sx=&#123;&#123; mr: 2 }}&gt;
+            &lt;MenuIcon /&gt;
+          &lt;/IconButton&gt;
+          &lt;Typography variant=&#34;h6&#34; color=&#34;inherit&#34; component=&#34;div&#34;&gt;
+            Photos
+          &lt;/Typography&gt;
+        &lt;/Toolbar&gt;
+      &lt;/AppBar&gt;
+    &lt;/Box&gt;
+  );
+}</code></pre>
+        <p>SPSS2022/day7/src/index.jsも修正しておこう</p>
+        <h3 is-upgraded><strong>SPSS2022/day7/src/index.js</strong></h3>
+        <pre><code>import React from &#39;react&#39;;
+import ReactDOM from &#39;react-dom/client&#39;;
+import &#39;./index.css&#39;;
+import App from &#39;./App&#39;;
+import reportWebVitals from &#39;./reportWebVitals&#39;;
+
+const root = ReactDOM.createRoot(document.getElementById(&#39;root&#39;));
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;App /&gt;
+
+  &lt;/React.StrictMode&gt;
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
+
+
+            Photos
+          &lt;/Typography&gt;
+        &lt;/Toolbar&gt;
+      &lt;/AppBar&gt;
+    &lt;/Box&gt;
+  );
+}</code></pre>
+        <h2 is-upgraded><strong>実行してみよう</strong></h2>
+        <p>SPSS2022/day7上でnpm run startしよう</p>
+        <p>localhost:3000をみてみると</p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/b762f9c1dbe99cc4.png" />
+        </p>
+        <p>
+          どうやら
+          @mui/icons-materialをインストールする必要があるらしいが、レガシーコードらしいので、MenuIconを消そう
+        </p>
+        <p>
+          ※レガシーというよりmui/icons-materialがバージョンアップされていないの方が正しいかも
+        </p>
+        <h3 is-upgraded><strong>SPSS2022/day7/src/App.js</strong></h3>
+        <pre><code>import * as React from &#39;react&#39;;
+import AppBar from &#39;@mui/material/AppBar&#39;;
+import Box from &#39;@mui/material/Box&#39;;
+import Toolbar from &#39;@mui/material/Toolbar&#39;;
+import Typography from &#39;@mui/material/Typography&#39;;
+import IconButton from &#39;@mui/material/IconButton&#39;;
+
+
+export default function DenseAppBar() {
+  return (
+    &lt;Box sx=&#123;&#123; flexGrow: 1 }}&gt;
+      &lt;AppBar position=&#34;static&#34;&gt;
+        &lt;Toolbar variant=&#34;dense&#34;&gt;
+          &lt;IconButton edge=&#34;start&#34; color=&#34;inherit&#34; aria-label=&#34;menu&#34; sx=&#123;&#123; mr: 2 }}&gt;
+          &lt;/IconButton&gt;
+          &lt;Typography variant=&#34;h6&#34; color=&#34;inherit&#34; component=&#34;div&#34;&gt;
+            Photos
+          &lt;/Typography&gt;
+        &lt;/Toolbar&gt;
+      &lt;/AppBar&gt;
+    &lt;/Box&gt;
+  );
+}</code></pre>
+        <p>もう一度npm run start した後localhost:3000をみてみると</p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/1de6082bf921453.png" />
+        </p>
+        <p>実装できていることを確認しよう</p>
+      </google-codelab-step>
+
+      <google-codelab-step label="確認課題#8" duration="0">
+        <p>Figmaで自由にデザインして、MUIを用いて実装しなさい。</p>
+        <p>day7のフォルダを活用しよう</p>
+        <p>完成したらpushしよう</p>
+      </google-codelab-step>
+
+      <google-codelab-step label="最後に" duration="0">
+        <p>今回はMUIとFigmaを用いてよりモダンなフロントエンド開発を行った。</p>
+        <p>
+          Figmaを用いたUI設計をすることで無駄な実装や、チームでのデザインの齟齬が減る
+        </p>
+        <p>
+          また、MUIのようなUIフレームワークを用いることでCSSの知識が乏しくても高品質なUIを作成することができる。
+        </p>
+        <p>
+          総じて、フロントエンド開発では使うユーザを意識することを心がけよう。
+        </p>
+        <p>次回は「デプロイ」について学び、HTMLファイルを公開しよう。</p>
+      </google-codelab-step>
+
+      <google-codelab-step
+        label="補足 資料のまとめページを作ってみた"
+        duration="0"
+      >
+        <p>
+          <a href="https://aruminium.github.io/SPSS2022/" target="_blank"
+            >https://aruminium.github.io/SPSS2022/</a
+          >にReact.js+MUIでwebページを制作してみた
+        </p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/3b82cfddb8261fc9.png" />
+        </p>
+        <p>
+          勢いで実装したので汚いがソースコードは<a
+            href="https://github.com/Aruminium/SPSS2022/tree/main/docs/src"
+            target="_blank"
+            >こちら</a
+          >から見れる。
+        </p>
+        <p>
+          改善したいので、よろしければPull requestsを送ってくださると幸いです。
+        </p>
+      </google-codelab-step>
+
+      <google-codelab-step label="参考" duration="0">
+        <ul>
+          <li><a href="https://mui.com/" target="_blank">MUI</a></li>
+          <li>
+            <a
+              href="https://www.figma.com/community/file/912837788133317724"
+              target="_blank"
+              >MUI for Figma v5.9.0 (Community)</a
+            >
+          </li>
+        </ul>
+      </google-codelab-step>
+    </google-codelab>
+
+    <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+    <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+    <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+    <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+    <script src="//support.google.com/inapp/api.js"></script>
+  </body>
+</html>
