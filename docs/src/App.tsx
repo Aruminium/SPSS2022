@@ -144,7 +144,7 @@ export const App: React.FC = () => {
                   URL="https://aruminium.github.io/SPSS2022/day9/index.html#0"
                   imgSRC="https://aruminium.github.io/SPSS2022/day9/img/SPSS2022day9.png"
                   title="day9 デプロイ"
-                  desc="Comming Soon"
+                  desc="HTMLファイルをデプロイしよう"
                 ></SPSSCard>
               </Grid>
               <Grid xs={12} sm={6} lg={4}>
@@ -152,7 +152,7 @@ export const App: React.FC = () => {
                   URL="https://aruminium.github.io/SPSS2022/day10/index.html#0"
                   imgSRC="https://aruminium.github.io/SPSS2022/day10/img/SPSS2022day10.png"
                   title="day10 ポートフォリオサイト"
-                  desc="Comming Soon"
+                  desc="ReactをGithubPagesにデプロイしよう"
                 ></SPSSCard>
               </Grid>
             </Grid>

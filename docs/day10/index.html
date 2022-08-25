@@ -1,0 +1,272 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="SPSS2022-day10 ポートフォリオ" />
+  <meta
+    property="og:description"
+    content="ReactをGithubPagesにデプロイしよう"
+  />
+  <meta
+    property="og:url"
+    content="https://aruminium.github.io/SPSS2022/day10/index.html#0"
+  />
+  <meta property="og:site_name" content="SPSS2022" />
+  <meta
+    property="og:image"
+    content="https://aruminium.github.io/SPSS2022/day10/img/SPSS2022day10.png"
+  />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@Aruminium_Bana7" />
+
+
+  <title>SPSS2022-day10 ポートフォリオ</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid="168837877"
+                  id="SPSS2022-day10"
+                  title="SPSS2022-day10 ポートフォリオ"
+                  environment="web"
+                  feedback-link="https://twitter.com/Aruminium_Bana7">
+    
+      <google-codelab-step label="はじめに" duration="0">
+        <p>今回、最後は「ポートフォリオ」を扱う</p>
+<p>ポートフォリオサイトを作成することは、就活はもちろん自分を紹介するサイトになる。</p>
+<p>抽象的な説明が多くなるので、よく分からなくなったら無理して理解せずに、自分のペースで読んでいただきたい。</p>
+<p>難しいので「何か色々設定してんな〜」程度で大丈夫です。プログラミングについてある程度理解し始めてきたら、またこの資料を参考にしてください。きっと役に立つはずです。</p>
+<h2 is-upgraded><strong>Githubで新しくリポジトリ「portfolio」を作成してください</strong></h2>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Reactの環境構築" duration="0">
+        <p>今回はnpxコマンドを用いずに環境構築を行う。</p>
+<p>※npxコマンドで作られたReact環境では少し拡張性に欠けるため</p>
+<h2 is-upgraded><strong>任意の場所にフォルダ「portfolio」を作成</strong></h2>
+<p>VSCodeで開いてください。</p>
+<h2 is-upgraded><strong>初期化</strong></h2>
+<p>npm initを入力すると色々聞かれるが、全てEnterを押して無視する。</p>
+<pre><code>$ git init
+$ npm init
+$ git remote add origin git@github.com:ユーザ名/portfolio.git
+$ git branch -M main</code></pre>
+<h2 is-upgraded><strong>ReactとTypeScript、webpack周りのパッケージをインストール</strong></h2>
+<pre><code>$ npm install react react-dom @types/react @types/react-dom
+$ npm install --save-dev webpack webpack-cli webpack-dev-server babel-loader @babel/core @babel/preset-env @babel/preset-react typescript ts-loader sass css-loader style-loader sass-loader</code></pre>
+<p>TypeScrptとはJavaScriptの強化版のようなもの、詳細は調べてみよう</p>
+<p>webpackは複数のファイルを1つにまとめて出力するツールのこと。詳細は調べよう</p>
+<h2 is-upgraded><strong>webpackの設定とHTMLファイルを作成、Reactの設定をする</strong></h2>
+<h3 is-upgraded><strong>portfolio/webpack.config.js</strong></h3>
+<pre><code>const path = require(&#34;path&#34;);
+const loader = require(&#34;sass-loader&#34;);
+
+module.exports = {
+  mode: &#34;development&#34;,
+  entry: &#34;./src/index.tsx&#34;,
+  output: {
+    path: path.join(__dirname, &#34;docs&#34;),
+    filename: &#34;main.js&#34;,
+  },
+  module: {
+    rules: [
+      // TypeScriptのモジュール
+      {
+        test: /\.(ts|tsx)$/,
+        use: [
+          {
+            loader: &#34;babel-loader&#34;,
+            options: { presets: [&#34;@babel/preset-env&#34;, &#34;@babel/react&#34;] },
+          },
+          {
+            loader: &#34;ts-loader&#34;,
+            options: {
+              configFile: path.resolve(__dirname, &#34;tsconfig.json&#34;),
+            },
+          },
+        ],
+      },
+      // CSSのモジュール
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: &#34;style-loader&#34;,
+          },
+          {
+            loader: &#34;css-loader&#34;,
+          },
+          {
+            loader: &#34;sass-loader&#34;,
+          },
+        ],
+      },
+    ],
+  },
+  devServer: {
+    static: {
+      directory: path.join(__dirname, &#34;docs&#34;),
+    },
+    port: 3000,
+  },
+  resolve: {
+    extensions: [&#34;.ts&#34;, &#34;.tsx&#34;, &#34;.js&#34;, &#34;.json&#34;],
+  },
+  target: &#34;web&#34;,
+};</code></pre>
+<h3 is-upgraded><strong>portfolio/docs/index.html</strong></h3>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;ja&#34;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34; /&gt;
+    &lt;meta http-equiv=&#34;X-UA-Compatible&#34; content=&#34;IE=edge&#34; /&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34; /&gt;
+    &lt;title&gt;webpack × React × TypeScript&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id=&#34;root&#34;&gt;&lt;/div&gt;
+    &lt;script defer src=&#34;main.js&#34;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<h3 is-upgraded><strong>Reactの設定</strong></h3>
+<h3 is-upgraded><strong>portfolio/src/index.tsx</strong></h3>
+<pre><code>import React from &#39;react&#39;;
+import ReactDOM from &#39;react-dom&#39;;
+import Home from &#34;./pages/Home&#34;;
+
+ReactDOM.render(
+  &lt;React.StrictMode&gt;
+    &lt;Home /&gt;
+  &lt;/React.StrictMode&gt;
+  , document.getElementById(&#39;root&#39;)
+);</code></pre>
+<h3 is-upgraded><strong>portfolio/src/pages/Home.tsx</strong></h3>
+<pre><code>import React from &#34;react&#34;;
+
+
+const Home: React.FC = () =&gt; {
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Profile&lt;/h1&gt;
+    &lt;/div&gt;
+  );
+};
+
+export default Home;</code></pre>
+<p>「Home: React.FC」のようにTypeScriptでは 変数名: 型名 と記述するのが特徴だ</p>
+<h3 is-upgraded><strong>portfolio/tsconfig.json</strong></h3>
+<pre><code>{
+  &#34;compilerOptions&#34;: {
+    &#34;sourceMap&#34;: true,
+    &#34;target&#34;: &#34;ES2020&#34;,
+    &#34;module&#34;: &#34;ES2020&#34;,
+    &#34;outDir&#34;: &#34;docs&#34;,
+    &#34;jsx&#34;: &#34;react&#34;,
+    &#34;moduleResolution&#34;: &#34;Node&#34;,
+    &#34;lib&#34;: [&#34;ES2020&#34;, &#34;DOM&#34;],
+    &#34;allowJs&#34;: true,
+    &#34;allowSyntheticDefaultImports&#34;: true
+  },
+  &#34;exclude&#34;: [&#34;./node_modules&#34;]
+}
+</code></pre>
+<h2 is-upgraded><strong>Package.jsonのscriptsに設定を追加</strong></h2>
+<h3 is-upgraded><strong>portfolio/package.json</strong></h3>
+<pre><code>{
+  //  ...
+  &#34;scripts&#34;: {
+    //  ...
+    &#34;build&#34;: &#34;webpack&#34;,
+    &#34;dev&#34;: &#34;webpack serve --open&#34;
+  },
+  //  ...
+}</code></pre>
+<h2 is-upgraded><strong>実行してみる</strong></h2>
+<pre><code>$ npm run dev</code></pre>
+<p>localhost:3000にアクセス</p>
+<p class="image-container"><img style="width: 601.70px" src="img/7bb27c40dc791573.png"></p>
+<p>これで最小限の設定で環境構築を完了した。</p>
+<p>あとはReactで好きなように実装するのみ</p>
+<p>Reactのフォルダ構成とかを学んで、UIフレームワークやFigmaを活用して実装しよう。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="デプロイ" duration="0">
+        <h2 is-upgraded><strong>.gitignoreを設定する</strong></h2>
+<p>.gitignoreはgitにpushしたくないもののPathを書くことでpushされなくなる。</p>
+<p>今回はnode_modulesはpushする必要がないので記述する(1行に1path)</p>
+<h3 is-upgraded><strong>portfolio/.gitignore</strong></h3>
+<pre><code>node_modules</code></pre>
+<h2 is-upgraded><strong>まずはbuildする</strong></h2>
+<p>今回の場合だと、buildするとSPSS2022/docs/main.jsに全ての情報が保存される。</p>
+<p>つまり、変更してもbuildしないと反映されません。(docs/index.htmlでmain.jsを読み込む設定をしているので)</p>
+<pre><code>$ npm run build</code></pre>
+<h2 is-upgraded><strong>pushする</strong></h2>
+<pre><code>$ git add -A
+$ git commit -m &#34;init&#34;
+$ git push -u origin main</code></pre>
+<h2 is-upgraded><strong>Github Pagesの設定をする</strong></h2>
+<p>pushしたらリポジトリに移動しよう</p>
+<p class="image-container"><img style="width: 601.70px" src="img/28e7caf42950c89c.png"></p>
+<p>「Setting」をクリック</p>
+<p class="image-container"><img style="width: 462.00px" src="img/fd3950fb25174d23.png"></p>
+<p>「Pages」をクリック</p>
+<p class="image-container"><img style="width: 601.70px" src="img/ff6d85ba3cd79a88.png"></p>
+<p>このように設定して「Save」を押すとデプロイ完了</p>
+<p class="image-container"><img style="width: 601.70px" src="img/d21c0cc84c6a8fa0.png"></p>
+<p>これがすべてチェックされるまで、待つ(リロード挟みながら)</p>
+<p class="image-container"><img style="width: 601.70px" src="img/443c8d11daf788cb.png"></p>
+<p>「Environments」の「github-pages」をクリック</p>
+<p class="image-container"><img style="width: 601.70px" src="img/aeb519033423a19c.png"></p>
+<p>「View deployment」をクリックする</p>
+<p class="image-container"><img style="width: 601.70px" src="img/143553d474cfa237.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="最後に" duration="0">
+        <p>「ポートフォリオ」の説明より、Reactをデプロイする方法の方が正しいかもしれないがday6~day9までの内容を振り返ってポートフォリオを作成しよう</p>
+<p>10日間お疲れ様でした。</p>
+<p>SPSS2022は「1から教える」事が目的ではなく、「0から1を教える」を目的に、実際に実装しながらプログラミングを体験する勉強会です。</p>
+<p>全体的に説明が乏しいのは事実ですが、少しでも参考になっていれば光栄に思います。</p>
+<p>改めて、10日間お疲れ様でした。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="参考" duration="0">
+        <ul>
+<li><a href="https://zenn.dev/hrkmtsmt/articles/93653309e2a13d" target="_blank">脱 create-react-app! webpackでReact ×TypeScrip開発環境構築からHello World!まで</a></li>
+<li><a href="https://zenn.dev/longbridge/articles/65355d3fdb7939" target="_blank">React: React Router v6 でルーティングする step１</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
