@@ -28,9 +28,9 @@ const SPSSCard = (props: SpssCard) => {
       >
         <CardMedia
           component="img"
-          height="300"
           image={props.imgSRC}
           alt={props.desc}
+          sx={{objectFit: "contain"}}
         />
         <CardContent sx={{ height: 100 }}>
           <Typography gutterBottom variant="h5" component="div">

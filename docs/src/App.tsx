@@ -7,14 +7,12 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import {
   CssBaseline,
-  AppBar,
   Card,
   Typography,
   CardActionArea,
   CardContent,
   CardMedia,
   Divider,
-  Toolbar,
   Tooltip,
 } from "@mui/material";
 
@@ -63,9 +61,9 @@ export const App: React.FC = () => {
                   <Tooltip title="connpassで見てみる">
                     <CardMedia
                       component="img"
-                      height="500"
                       image="https://aruminium.github.io/SPSS2022/SPSS2022.png"
                       alt="connpass"
+                      sx={{objectFit: "contain"}}
                     />
                   </Tooltip>
                 </CardActionArea>
