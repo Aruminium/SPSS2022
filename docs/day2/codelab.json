@@ -1,0 +1,26 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com/codelab-elements",
+  "mainga": "UA-49880327-14",
+  "updated": "2022-08-16T10:42:54Z",
+  "id": "SPSS2022-day2",
+  "duration": 0,
+  "title": "SPSS2022-day2 Python",
+  "authors": "bana7",
+  "summary": "SPSS2022-day2",
+  "source": "1mBHZeUeN96wGcWbu9zYsWDZkdzJrjgnlPc9frluAN3A",
+  "theme": "web",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "web"
+  ],
+  "tags": [
+    "web"
+  ],
+  "feedback": "https://twitter.com/Aruminium_Bana7/codelab-elements",
+  "ga": "168837877",
+  "url": "SPSS2022-day2"
+}
