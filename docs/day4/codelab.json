@@ -1,7 +1,7 @@
 {
   "environment": "web",
   "format": "html",
-  "prefix": "https://storage.googleapis.com/codelab-elements",
+  "prefix": "https://aruminium.github.io/elements/codelab-elements",
   "mainga": "UA-49880327-14",
   "updated": "2022-08-19T10:39:35Z",
   "id": "SPSS2022-day4",
