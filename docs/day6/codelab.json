@@ -1,7 +1,7 @@
 {
   "environment": "web",
   "format": "html",
-  "prefix": "https://storage.googleapis.com/codelab-elements-tmp",
+  "prefix": "https://storage.googleapis.com/codelab-elements",
   "mainga": "UA-49880327-14",
   "updated": "2022-08-23T09:59:27Z",
   "id": "SPSS2022-day6",
