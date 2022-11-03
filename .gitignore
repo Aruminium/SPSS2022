@@ -2,5 +2,6 @@ docs/package.json
 docs/package-lock.json
 out/
 day3/uml.pu
+codelab.json
 .DS_Store
 docs/node_modules

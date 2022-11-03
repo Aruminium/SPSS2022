@@ -1,90 +1,125 @@
-
-<!doctype html>
+<!DOCTYPE html>
 
 <html>
-<head>
-  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-  <meta name="theme-color" content="#4F7DC9">
-  <meta charset="UTF-8">
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="SPSS2022-day9 デプロイ" />
-  <meta
-    property="og:description"
-    content="HTMLファイルをデプロイする"
-  />
-  <meta
-    property="og:url"
-    content="https://aruminium.github.io/SPSS2022/day9/index.html#0"
-  />
-  <meta property="og:site_name" content="SPSS2022" />
-  <meta
-    property="og:image"
-    content="https://aruminium.github.io/SPSS2022/day9/img/SPSS2022day9.png"
-  />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@Aruminium_Bana7" />
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="theme-color" content="#4F7DC9" />
+    <meta charset="UTF-8" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="SPSS2022-day9 デプロイ" />
+    <meta property="og:description" content="HTMLファイルをデプロイする" />
+    <meta
+      property="og:url"
+      content="https://aruminium.github.io/SPSS2022/day9/index.html#0"
+    />
+    <meta property="og:site_name" content="SPSS2022" />
+    <meta
+      property="og:image"
+      content="https://aruminium.github.io/SPSS2022/day9/img/SPSS2022day9.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@Aruminium_Bana7" />
 
-  <title>SPSS2022-day9 デプロイ</title>
-  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
-  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
-  <style>
-    .success {
-      color: #1e8e3e;
-    }
-    .error {
-      color: red;
-    }
-  </style>
-</head>
-<link rel="shortcut icon" href="../favicon.ico" />
+    <title>SPSS2022-day9 デプロイ</title>
+    <link
+      rel="stylesheet"
+      href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono"
+    />
+    <link
+      rel="stylesheet"
+      href="//fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      rel="stylesheet"
+      href="https://storage.googleapis.com/codelab-elements-tmp/codelab-elements.css"
+    />
+    <style>
+      .success {
+        color: #1e8e3e;
+      }
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+  <link rel="shortcut icon" href="../favicon.ico" />
 
-<body>
-  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
-  <google-codelab codelab-gaid="168837877"
-                  id="SPSS2022-day9"
-                  title="SPSS2022-day9 デプロイ"
-                  environment="web"
-                  feedback-link="https://twitter.com/Aruminium_Bana7">
-    
+  <body>
+    <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+    <google-codelab
+      codelab-gaid="168837877"
+      id="SPSS2022-day9"
+      title="SPSS2022-day9 デプロイ"
+      environment="web"
+      feedback-link="https://twitter.com/Aruminium_Bana7"
+    >
       <google-codelab-step label="はじめに" duration="0">
         <p>今回は、「デプロイ」を扱う</p>
-<p>デプロイはクラウドを使うことが多い</p>
-<p>デプロイすることができたら晴れて初学者を卒業だ</p>
-<p>今回はGithub PagesにHTMLファイルをデプロイして、世界へ公開しよう！</p>
-<p class="image-container"><img alt="実質無料で使える Hosting Service の比較や使い分けの紹介 2021 (Firebase Hosting, Cloudflare  Pages, Vercel, Netlify, GitHub Pages, Amplify, CloudRun) | blog.ojisan.io" style="width: 300.00px" src="img/e8f722b75d0a4076.jpeg"></p>
-
-
+        <p>デプロイはクラウドを使うことが多い</p>
+        <p>デプロイすることができたら晴れて初学者を卒業だ</p>
+        <p>
+          今回はGithub PagesにHTMLファイルをデプロイして、世界へ公開しよう！
+        </p>
+        <p class="image-container">
+          <img
+            alt="実質無料で使える Hosting Service の比較や使い分けの紹介 2021 (Firebase Hosting, Cloudflare  Pages, Vercel, Netlify, GitHub Pages, Amplify, CloudRun) | blog.ojisan.io"
+            style="width: 300px"
+            src="img/e8f722b75d0a4076.jpeg"
+          />
+        </p>
       </google-codelab-step>
-    
+
       <google-codelab-step label="デプロイとは" duration="0">
         <p>端的に言うとデプロイ(deploy)とはプログラムを公開することです。</p>
-<p>これまでReact.jsでは「localhost」が度々出ていましたが、どう言う意味でしょうか</p>
-<h2 is-upgraded><strong>localhostは自分自身を表す</strong></h2>
-<p>localhostはホスト名と呼びます。</p>
-<p>MySQLでログインする際に「127.0.0.1」と入力しましたが、これもlocalhostの別の表し方のようなものです。</p>
-<h2 is-upgraded><strong>※余談 localhost:3000の3000とは</strong></h2>
-<p>この3000はポート番号と言い、TCP/IP通信を識別する番号です。</p>
-<p>React.jsの場合、初期設定では「自分自身のポート番号3000」にアクセスしたらwebページを返すといったことをしてくれます。</p>
-<p>自分でこのポート番号を変えることができるが詳細は割愛</p>
-<p>デプロイではこうしたホスト名やポート番号を弄る場面があります。 (AWS EC2 と言うIaaS)</p>
-<p>しかし、今回はそういった手間がかかる事を省くためにGithub Pagesというサービスを使います。</p>
-
-
+        <p>
+          これまでReact.jsでは「localhost」が度々出ていましたが、どう言う意味でしょうか
+        </p>
+        <h2 is-upgraded><strong>localhostは自分自身を表す</strong></h2>
+        <p>localhostはホスト名と呼びます。</p>
+        <p>
+          MySQLでログインする際に「127.0.0.1」と入力しましたが、これもlocalhostの別の表し方のようなものです。
+        </p>
+        <h2 is-upgraded><strong>※余談 localhost:3000の3000とは</strong></h2>
+        <p>この3000はポート番号と言い、TCP/IP通信を識別する番号です。</p>
+        <p>
+          React.jsの場合、初期設定では「自分自身のポート番号3000」にアクセスしたらwebページを返すといったことをしてくれます。
+        </p>
+        <p>自分でこのポート番号を変えることができるが詳細は割愛</p>
+        <p>
+          デプロイではこうしたホスト名やポート番号を弄る場面があります。 (AWS
+          EC2 と言うIaaS)
+        </p>
+        <p>
+          しかし、今回はそういった手間がかかる事を省くためにGithub
+          Pagesというサービスを使います。
+        </p>
       </google-codelab-step>
-    
+
       <google-codelab-step label="Github PagesでHTMLを公開" duration="0">
         <h2 is-upgraded><strong>Github Pagesとは</strong></h2>
-<p>ホスティングサービスでWebページをインターネット上に公開することができる。</p>
-<p>細かい設定要らずで、HTMLファイルなどをpushしてGithub Pagesの設定をONにすることで簡単に使うことができる。</p>
-<h2 is-upgraded><strong>SPSS2022/docsを作成</strong></h2>
-<p>Github Pagesは、SPSS2022(リポジトリのroot)をWebサイトのrootにするか、SPSS2022/docsをrootにするかを選択できる。</p>
-<p class="image-container"><img style="width: 601.70px" src="img/dded084e8d75e719.png"></p>
-<p>今回は/docsを選択する</p>
-<h2 is-upgraded><strong>SPSS2022/docs/index.html</strong></h2>
-<p>今回はh1タグのみの簡単なHTMLファイルをデプロイする。</p>
-<h2 is-upgraded><strong>SPSS2022/docs/index.html</strong></h2>
-<pre><code>&lt;!DOCTYPE html&gt;
+        <p>
+          ホスティングサービスでWebページをインターネット上に公開することができる。
+        </p>
+        <p>
+          細かい設定要らずで、HTMLファイルなどをpushしてGithub
+          Pagesの設定をONにすることで簡単に使うことができる。
+        </p>
+        <h2 is-upgraded><strong>SPSS2022/docsを作成</strong></h2>
+        <p>
+          Github
+          Pagesは、SPSS2022(リポジトリのroot)をWebサイトのrootにするか、SPSS2022/docsをrootにするかを選択できる。
+        </p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/dded084e8d75e719.png" />
+        </p>
+        <p>今回は/docsを選択する</p>
+        <h2 is-upgraded><strong>SPSS2022/docs/index.html</strong></h2>
+        <p>今回はh1タグのみの簡単なHTMLファイルをデプロイする。</p>
+        <h2 is-upgraded><strong>SPSS2022/docs/index.html</strong></h2>
+        <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;meta charset=&#34;UTF-8&#34;&gt;
@@ -94,49 +129,63 @@
     &lt;h1&gt;profile&lt;/h1&gt;
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-<h2 is-upgraded><strong>Githubにpushし、Pagesの設定をする</strong></h2>
-<p>pushしたら自分のリポジトリページにとんで下さい。</p>
-<p class="image-container"><img style="width: 601.70px" src="img/28e7caf42950c89c.png"></p>
-<p>「Setting」をクリック</p>
-<p class="image-container"><img style="width: 462.00px" src="img/fd3950fb25174d23.png"></p>
-<p>「Pages」をクリック</p>
-<p class="image-container"><img style="width: 601.70px" src="img/ff6d85ba3cd79a88.png"></p>
-<p>このように設定して「Save」を押すとデプロイ完了</p>
-<p class="image-container"><img style="width: 601.70px" src="img/d21c0cc84c6a8fa0.png"></p>
-<p>これがすべてチェックされるまで、待つ(リロード挟みながら)</p>
-<p class="image-container"><img style="width: 601.70px" src="img/443c8d11daf788cb.png"></p>
-<p>「Environments」の「github-pages」をクリック</p>
-<p class="image-container"><img style="width: 601.70px" src="img/aeb519033423a19c.png"></p>
-<p>「View deployment」をクリックする</p>
-<p class="image-container"><img style="width: 601.70px" src="img/143553d474cfa237.png"></p>
-<p>表示されていたらOK</p>
-<p>確認課題はありません</p>
-
-
+        <h2 is-upgraded><strong>Githubにpushし、Pagesの設定をする</strong></h2>
+        <p>pushしたら自分のリポジトリページにとんで下さい。</p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/28e7caf42950c89c.png" />
+        </p>
+        <p>「Setting」をクリック</p>
+        <p class="image-container">
+          <img style="width: 462px" src="img/fd3950fb25174d23.png" />
+        </p>
+        <p>「Pages」をクリック</p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/ff6d85ba3cd79a88.png" />
+        </p>
+        <p>このように設定して「Save」を押すとデプロイ完了</p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/d21c0cc84c6a8fa0.png" />
+        </p>
+        <p>これがすべてチェックされるまで、待つ(リロード挟みながら)</p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/443c8d11daf788cb.png" />
+        </p>
+        <p>「Environments」の「github-pages」をクリック</p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/aeb519033423a19c.png" />
+        </p>
+        <p>「View deployment」をクリックする</p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/143553d474cfa237.png" />
+        </p>
+        <p>表示されていたらOK</p>
+        <p>確認課題はありません</p>
       </google-codelab-step>
-    
+
       <google-codelab-step label="最後に" duration="0">
         <p>今回はデプロイの感覚を掴むためにHTMLファイルをデプロイした。</p>
-<p>HTML+CSS+javaScriptを組み合わせたものもデプロイできるが、せっかくなので最終回ではReact.jsとMUIを用いてwebページを作り、それをデプロイする。</p>
-
-
+        <p>
+          HTML+CSS+javaScriptを組み合わせたものもデプロイできるが、せっかくなので最終回ではReact.jsとMUIを用いてwebページを作り、それをデプロイする。
+        </p>
       </google-codelab-step>
-    
+
       <google-codelab-step label="参考" duration="0">
         <ul>
-<li><a href="https://docs.github.com/ja/pages/getting-started-with-github-pages/creating-a-github-pages-site" target="_blank">GitHub Pages サイトを作成する</a></li>
-</ul>
-
-
+          <li>
+            <a
+              href="https://docs.github.com/ja/pages/getting-started-with-github-pages/creating-a-github-pages-site"
+              target="_blank"
+              >GitHub Pages サイトを作成する</a
+            >
+          </li>
+        </ul>
       </google-codelab-step>
-    
-  </google-codelab>
+    </google-codelab>
 
-  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
-  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
-  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
-  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
-  <script src="//support.google.com/inapp/api.js"></script>
-
-</body>
+    <script src="https://storage.googleapis.com/codelab-elements-tmp/native-shim.js"></script>
+    <script src="https://storage.googleapis.com/codelab-elements-tmp/custom-elements.min.js"></script>
+    <script src="https://storage.googleapis.com/codelab-elements-tmp/prettify.js"></script>
+    <script src="https://storage.googleapis.com/codelab-elements-tmp/codelab-elements.js"></script>
+    <script src="//support.google.com/inapp/api.js"></script>
+  </body>
 </html>

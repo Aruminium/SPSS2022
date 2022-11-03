@@ -1,12 +1,14 @@
-
-<!doctype html>
+<!DOCTYPE html>
 
 <html>
-<head>
-  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-  <meta name="theme-color" content="#4F7DC9">
-  <meta charset="UTF-8">
-  <meta property="og:type" content="website" />
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="theme-color" content="#4F7DC9" />
+    <meta charset="UTF-8" />
+    <meta property="og:type" content="website" />
     <meta property="og:title" content="SPSS2022-day6 HTML+CSS" />
     <meta
       property="og:description"
@@ -23,72 +25,143 @@
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@Aruminium_Bana7" />
-  <title>SPSS2022-day6 HTML&#43;CSS</title>
-  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
-  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
-  <style>
-    .success {
-      color: #1e8e3e;
-    }
-    .error {
-      color: red;
-    }
-  </style>
-</head>
-<link rel="shortcut icon" href="../favicon.ico" />
-<body>
-  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
-  <google-codelab codelab-gaid="168837877"
-                  id="SPSS2022-day6"
-                  title="SPSS2022-day6 HTML&#43;CSS"
-                  environment="web"
-                  feedback-link="https://twitter.com/Aruminium_Bana7">
-    
+    <title>SPSS2022-day6 HTML&#43;CSS</title>
+    <link
+      rel="stylesheet"
+      href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono"
+    />
+    <link
+      rel="stylesheet"
+      href="//fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      rel="stylesheet"
+      href="https://storage.googleapis.com/codelab-elements-tmp/codelab-elements.css"
+    />
+    <style>
+      .success {
+        color: #1e8e3e;
+      }
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+  <link rel="shortcut icon" href="../favicon.ico" />
+  <body>
+    <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+    <google-codelab
+      codelab-gaid="168837877"
+      id="SPSS2022-day6"
+      title="SPSS2022-day6 HTML&#43;CSS"
+      environment="web"
+      feedback-link="https://twitter.com/Aruminium_Bana7"
+    >
       <google-codelab-step label="はじめに" duration="0">
         <p>今回は「HTML+CSS」を扱う。</p>
-<p>HTMLとCSSは世界のwebページで使われており、いわゆるフロントエンドである。</p>
-<p>フロントエンドは目で見て成果がわかりやすく、また難易度も易しいことから、初学者に人気な言語だと思われる。</p>
-<p class="image-container"><img alt="CSS/HTML】サイトにソースコードを記述する | Hazu Labo" style="width: 274.67px" src="img/522ad1d4a432c0d.jpeg"></p>
-<p>実際は、HTMLとCSSのみでwebサイトを構成することは少ないが、ここでの基本知識はJavaScriptを扱う際に大いに活きることだろう。</p>
-
-
+        <p>
+          HTMLとCSSは世界のwebページで使われており、いわゆるフロントエンドである。
+        </p>
+        <p>
+          フロントエンドは目で見て成果がわかりやすく、また難易度も易しいことから、初学者に人気な言語だと思われる。
+        </p>
+        <p class="image-container">
+          <img
+            alt="CSS/HTML】サイトにソースコードを記述する | Hazu Labo"
+            style="width: 274.67px"
+            src="img/522ad1d4a432c0d.jpeg"
+          />
+        </p>
+        <p>
+          実際は、HTMLとCSSのみでwebサイトを構成することは少ないが、ここでの基本知識はJavaScriptを扱う際に大いに活きることだろう。
+        </p>
       </google-codelab-step>
-    
+
       <google-codelab-step label="HTMLとは" duration="0">
-        <p>HTML(HyperText Markup Language)は、webページの土台となる言語です。</p>
-<p>このHyperTextは、ハイパーリンクと呼ばれる、要はURLをクリックすると遷移することです。</p>
-<p class="image-container"><img alt="ハイパーリンク" style="width: 501.33px" src="img/f1fb1537b99d7519.png"></p>
-<p>参考: <a href="http://www.htmq.com/htmlkihon/images/001_01.png" target="_blank">http://www.htmq.com/htmlkihon/images/001_01.png</a></p>
-<h2 is-upgraded><strong>マークアップ(Markup)とは</strong></h2>
-<p>目印をつける。つまり、どのような役割を持っているのかを示すことです。</p>
-<p>(例えばhタグは見出しの役割がある)</p>
-<p class="image-container"><img alt="文書の各部分を要素に分ける" style="width: 302.67px" src="img/fcae4346eec786d0.png"></p>
-<p>参考: <a href="http://www.htmq.com/htmlkihon/images/001_02.png" target="_blank">http://www.htmq.com/htmlkihon/images/001_02.png</a></p>
-<p>HTMLがあることによってchromeなどの検索エンジンはwebページの構造を理解することができるということになります。</p>
-<p>(またよく言われるSEO(検索エンジン最適化)はこのHTMLを適切に書くことです。)</p>
-
-
+        <p>
+          HTML(HyperText Markup Language)は、webページの土台となる言語です。
+        </p>
+        <p>
+          このHyperTextは、ハイパーリンクと呼ばれる、要はURLをクリックすると遷移することです。
+        </p>
+        <p class="image-container">
+          <img
+            alt="ハイパーリンク"
+            style="width: 501.33px"
+            src="img/f1fb1537b99d7519.png"
+          />
+        </p>
+        <p>
+          参考:
+          <a
+            href="http://www.htmq.com/htmlkihon/images/001_01.png"
+            target="_blank"
+            >http://www.htmq.com/htmlkihon/images/001_01.png</a
+          >
+        </p>
+        <h2 is-upgraded><strong>マークアップ(Markup)とは</strong></h2>
+        <p>
+          目印をつける。つまり、どのような役割を持っているのかを示すことです。
+        </p>
+        <p>(例えばhタグは見出しの役割がある)</p>
+        <p class="image-container">
+          <img
+            alt="文書の各部分を要素に分ける"
+            style="width: 302.67px"
+            src="img/fcae4346eec786d0.png"
+          />
+        </p>
+        <p>
+          参考:
+          <a
+            href="http://www.htmq.com/htmlkihon/images/001_02.png"
+            target="_blank"
+            >http://www.htmq.com/htmlkihon/images/001_02.png</a
+          >
+        </p>
+        <p>
+          HTMLがあることによってchromeなどの検索エンジンはwebページの構造を理解することができるということになります。
+        </p>
+        <p>
+          (またよく言われるSEO(検索エンジン最適化)はこのHTMLを適切に書くことです。)
+        </p>
       </google-codelab-step>
-    
+
       <google-codelab-step label="CSSとは" duration="0">
-        <p>CSS(Cascading Style Sheets)は、webページのデザインを指定する言語です。</p>
-<p>CSSはHTMLと組み合わせて使用する言語です。</p>
-<p>HTMLが検索エンジンに向けた言語</p>
-<p>CSSがユーザに向けた言語</p>
-<p>になります。つまり、HTMLのh1とh2タグでは文字の大きさが変わりますが、これをデザインとして用いないということです。大きい文字にしたかったらCSSで変えましょうということです。</p>
-<p class="image-container"><img alt="HTML文書にCSSを適用する" style="width: 538.67px" src="img/68d24348839916d9.png"></p>
-<p>参考: <a href="http://www.htmq.com/csskihon/images/001_01.png" target="_blank">http://www.htmq.com/csskihon/images/001_01.png</a></p>
-
-
+        <p>
+          CSS(Cascading Style Sheets)は、webページのデザインを指定する言語です。
+        </p>
+        <p>CSSはHTMLと組み合わせて使用する言語です。</p>
+        <p>HTMLが検索エンジンに向けた言語</p>
+        <p>CSSがユーザに向けた言語</p>
+        <p>
+          になります。つまり、HTMLのh1とh2タグでは文字の大きさが変わりますが、これをデザインとして用いないということです。大きい文字にしたかったらCSSで変えましょうということです。
+        </p>
+        <p class="image-container">
+          <img
+            alt="HTML文書にCSSを適用する"
+            style="width: 538.67px"
+            src="img/68d24348839916d9.png"
+          />
+        </p>
+        <p>
+          参考:
+          <a
+            href="http://www.htmq.com/csskihon/images/001_01.png"
+            target="_blank"
+            >http://www.htmq.com/csskihon/images/001_01.png</a
+          >
+        </p>
       </google-codelab-step>
-    
+
       <google-codelab-step label="実際に書いてみよう" duration="0">
         <p>基本的にhtmlは&lt;body&gt;&lt;/body&gt;の中に書くことになる。</p>
-<p>HTMLやCSSの詳細については割愛するが、後述するサイトで学んだり、実際に書くうちに自ずと分かると思われる。</p>
-<h2 is-upgraded><strong>index.htmlを用意する</strong></h2>
-<h3 is-upgraded><strong>SPSS2022/day6/index.html</strong></h3>
-<pre><code>&lt;!DOCTYPE html&gt;
+        <p>
+          HTMLやCSSの詳細については割愛するが、後述するサイトで学んだり、実際に書くうちに自ずと分かると思われる。
+        </p>
+        <h2 is-upgraded><strong>index.htmlを用意する</strong></h2>
+        <h3 is-upgraded><strong>SPSS2022/day6/index.html</strong></h3>
+        <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;meta charset=&#34;UTF-8&#34;&gt;
@@ -98,15 +171,21 @@
     &lt;h1&gt;Hello World!&lt;/h1&gt;
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-<h2 is-upgraded><strong>動作確認その1</strong></h2>
-<p>htmlファイルをブラウザで表示させることで動作確認をすることができる。</p>
-<p>vscodeのindex.htmlをブラウザのタブに移動させてみよう。以下のように表示されるはずだ。</p>
-<p class="image-container"><img style="width: 601.70px" src="img/4c2f0aaeafefd32a.png"></p>
-<h2 is-upgraded><strong>stylesheet.cssを用意する</strong></h2>
-<p>cssを用いてhtmlのh1タグの色を変えてみよう。</p>
-<p>まずはhtmlでcssファイルを読み込む設定をしよう。</p>
-<h3 is-upgraded><strong>SPSS2022/day6/index.html</strong></h3>
-<pre><code>&lt;!DOCTYPE html&gt;
+        <h2 is-upgraded><strong>動作確認その1</strong></h2>
+        <p>
+          htmlファイルをブラウザで表示させることで動作確認をすることができる。
+        </p>
+        <p>
+          vscodeのindex.htmlをブラウザのタブに移動させてみよう。以下のように表示されるはずだ。
+        </p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/4c2f0aaeafefd32a.png" />
+        </p>
+        <h2 is-upgraded><strong>stylesheet.cssを用意する</strong></h2>
+        <p>cssを用いてhtmlのh1タグの色を変えてみよう。</p>
+        <p>まずはhtmlでcssファイルを読み込む設定をしよう。</p>
+        <h3 is-upgraded><strong>SPSS2022/day6/index.html</strong></h3>
+        <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;link href=&#34;stylesheet.css&#34; rel=&#34;stylesheet&#34; type=&#34;text/css&#34;&gt;
@@ -118,76 +197,139 @@
   &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<p>&lt;link ...&gt;でcssファイルを読み込むことができる。</p>
-<p>次にcssファイルを用意しよう</p>
-<h3 is-upgraded><strong>SPSS2022/day6/stylesheet.css</strong></h3>
-<pre><code>h1 {
+        <p>&lt;link ...&gt;でcssファイルを読み込むことができる。</p>
+        <p>次にcssファイルを用意しよう</p>
+        <h3 is-upgraded><strong>SPSS2022/day6/stylesheet.css</strong></h3>
+        <pre><code>h1 {
   color: aqua;
 }</code></pre>
-<h2 is-upgraded><strong>動作確認</strong></h2>
-<p>ブラウザをリロードして、テキストの色が変わっていることを確認しよう。</p>
-<p class="image-container"><img style="width: 601.70px" src="img/1d943db58af65cdc.png"></p>
-<h2 is-upgraded><strong>HTMLやCSSについてもっと知りたい。</strong></h2>
-<p>例えば<a href="http://www.htmq.com/html/indexm.shtml" target="_blank">HTMLリファレンス</a>を参考にすると、詳細を知ることができる。</p>
-<p>チュートリアルもあり、おすすめ。</p>
-
-
+        <h2 is-upgraded><strong>動作確認</strong></h2>
+        <p>
+          ブラウザをリロードして、テキストの色が変わっていることを確認しよう。
+        </p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/1d943db58af65cdc.png" />
+        </p>
+        <h2 is-upgraded><strong>HTMLやCSSについてもっと知りたい。</strong></h2>
+        <p>
+          例えば<a href="http://www.htmq.com/html/indexm.shtml" target="_blank"
+            >HTMLリファレンス</a
+          >を参考にすると、詳細を知ることができる。
+        </p>
+        <p>チュートリアルもあり、おすすめ。</p>
       </google-codelab-step>
-    
+
       <google-codelab-step label="HTMLとCSSの腕を上げるには" duration="0">
         <p>HTMLとCSSの腕を上げるためには以下の点が重要になる。</p>
-<ul>
-<li>HTMLのタグを理解する点</li>
-<li>CSSのプロパティの効果を理解する点</li>
-<li>UIのパーツを意識する点</li>
-<li>レスポンシブを意識する点</li>
-</ul>
-<p>HTMLとCSSについて理解することはもちろんだが、UIのパーツを意識することは、無駄のないデザインにするために必要である。</p>
-<p class="image-container"><img style="width: 601.70px" src="img/28e26962a8dde84e.png"></p>
-<p>参考: <a href="https://code-step.com/wp-content/themes/code-step/img/html/profile/mainvisual-l.webp" target="_blank">https://code-step.com/wp-content/themes/code-step/img/html/profile/mainvisual-l.webp</a></p>
-<p>簡単なUIパーツではheaderである。headerを構成している要素を1つ1つ分解してコーディングしよう。</p>
-<h2 is-upgraded><strong>模写コーディング</strong></h2>
-<p>最初に1から自分でコーディングするのは、非常に危険だ。なぜなら、webサイトがどういった構成をしているかを把握することができないからだ。</p>
-<p>そこで「模写コーディング」を行って、webサイトの構成を理解するところから始めよう。</p>
-<p>模写コーディングは実際のwebサイトのHTMLとCSSを自分でコーディングすることである。</p>
-<p>そして、模写コーディングを行う方法として、2つの方法がある。</p>
-<ul>
-<li>検証ツールを用いて答えを見ながら模写コーディング</li>
-<li>検証ツールを用いずに模写コーディング</li>
-</ul>
-<p>最初は前者の検証ツールを用いて模写コーディングをおすすめする。慣れてきたら検証ツールを用いずに模写コーディングをしよう。</p>
-<h2 is-upgraded><strong>検証ツールを使おう</strong></h2>
-<p>検証ツールはwebサイト上で「右クリック -&gt; 検証」をクリックすると使える。</p>
-<p>お使いのブラウザやOSによって個人差はあるが、大体検証に似たボタンをクリックすると使える。</p>
-<p class="image-container"><img style="width: 601.70px" src="img/8075d9fd6c163773.png"></p>
-<p>検証をクリックすると右側に何かが表示されるが、これが検証画面である。</p>
-<p class="image-container"><img style="width: 601.70px" src="img/15cb4790180411af.png"></p>
-<p>今右側の「要素」タブで表示されているものが、このwebページでのHTMLである。</p>
-<p class="image-container"><img style="width: 601.70px" src="img/811cc0d45bcbcc0a.png"></p>
-<p>HTMLタグをダブルクリックすると、要素を書き換えることもできる。</p>
-<p class="image-container"><img style="width: 62.00px" src="img/a4a3d0171eb15133.png"></p>
-<p>またこのカーソルアイコンをクリックすると画面にカーソルを当てると、詳細を知ることができる。</p>
-<p class="image-container"><img style="width: 601.70px" src="img/7d3b4d10e17a9c37.png"></p>
-<p>次に、「スタイル」タブをみると、CSSの設定をみることができる。</p>
-<p class="image-container"><img style="width: 601.70px" src="img/e8d36a11d71cb96b.png"></p>
-<p>基本的には、この「要素」と「スタイル」プロパティをみることで模写コーディングすることができるだろう。</p>
-
-
+        <ul>
+          <li>HTMLのタグを理解する点</li>
+          <li>CSSのプロパティの効果を理解する点</li>
+          <li>UIのパーツを意識する点</li>
+          <li>レスポンシブを意識する点</li>
+        </ul>
+        <p>
+          HTMLとCSSについて理解することはもちろんだが、UIのパーツを意識することは、無駄のないデザインにするために必要である。
+        </p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/28e26962a8dde84e.png" />
+        </p>
+        <p>
+          参考:
+          <a
+            href="https://code-step.com/wp-content/themes/code-step/img/html/profile/mainvisual-l.webp"
+            target="_blank"
+            >https://code-step.com/wp-content/themes/code-step/img/html/profile/mainvisual-l.webp</a
+          >
+        </p>
+        <p>
+          簡単なUIパーツではheaderである。headerを構成している要素を1つ1つ分解してコーディングしよう。
+        </p>
+        <h2 is-upgraded><strong>模写コーディング</strong></h2>
+        <p>
+          最初に1から自分でコーディングするのは、非常に危険だ。なぜなら、webサイトがどういった構成をしているかを把握することができないからだ。
+        </p>
+        <p>
+          そこで「模写コーディング」を行って、webサイトの構成を理解するところから始めよう。
+        </p>
+        <p>
+          模写コーディングは実際のwebサイトのHTMLとCSSを自分でコーディングすることである。
+        </p>
+        <p>そして、模写コーディングを行う方法として、2つの方法がある。</p>
+        <ul>
+          <li>検証ツールを用いて答えを見ながら模写コーディング</li>
+          <li>検証ツールを用いずに模写コーディング</li>
+        </ul>
+        <p>
+          最初は前者の検証ツールを用いて模写コーディングをおすすめする。慣れてきたら検証ツールを用いずに模写コーディングをしよう。
+        </p>
+        <h2 is-upgraded><strong>検証ツールを使おう</strong></h2>
+        <p>
+          検証ツールはwebサイト上で「右クリック -&gt;
+          検証」をクリックすると使える。
+        </p>
+        <p>
+          お使いのブラウザやOSによって個人差はあるが、大体検証に似たボタンをクリックすると使える。
+        </p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/8075d9fd6c163773.png" />
+        </p>
+        <p>
+          検証をクリックすると右側に何かが表示されるが、これが検証画面である。
+        </p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/15cb4790180411af.png" />
+        </p>
+        <p>
+          今右側の「要素」タブで表示されているものが、このwebページでのHTMLである。
+        </p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/811cc0d45bcbcc0a.png" />
+        </p>
+        <p>HTMLタグをダブルクリックすると、要素を書き換えることもできる。</p>
+        <p class="image-container">
+          <img style="width: 62px" src="img/a4a3d0171eb15133.png" />
+        </p>
+        <p>
+          またこのカーソルアイコンをクリックすると画面にカーソルを当てると、詳細を知ることができる。
+        </p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/7d3b4d10e17a9c37.png" />
+        </p>
+        <p>次に、「スタイル」タブをみると、CSSの設定をみることができる。</p>
+        <p class="image-container">
+          <img style="width: 601.7px" src="img/e8d36a11d71cb96b.png" />
+        </p>
+        <p>
+          基本的には、この「要素」と「スタイル」プロパティをみることで模写コーディングすることができるだろう。
+        </p>
       </google-codelab-step>
-    
+
       <google-codelab-step label="確認課題#6" duration="0">
         <p>SPSS2022/day6/に「work.html」と「work.css」を用意する。</p>
-<p><a href="https://code-step.com/demo/html/profile/index.html" target="_blank">https://code-step.com/demo/html/profile/index.html</a>のサイトの模写コーディングをやってみよう。</p>
-<h2 is-upgraded><strong>条件1 手打ちでやろう</strong></h2>
-<p>HTMLに限らず最初は手打ちで動作を意識しながらコーディングしよう。</p>
-<p>慣れてきたら、コピペしよう。</p>
-<p>(偏見ですが、最初から全てコピペでプログラミングする人は成長しない傾向がある)</p>
-<h2 is-upgraded><strong>条件2 自分で画像を用意しよう。</strong></h2>
-<p>割愛するが、今回参考にするサイトの画像が手元にないと、完全な模写ができない。</p>
-<p>そこで、<a href="https://unsplash.com/" target="_blank">Unsplash</a>(ロイヤルティーフリーの画像を提供しているサイト)で任意の画像をダウンロードし、SPSS2022/day6/img/上に移動させよう。</p>
-<p>以下のテンプレートをコピペしてから模写コーディングをしよう。</p>
-<h3 is-upgraded><strong>SPSS2022/day6/work.html</strong></h3>
-<pre><code>&lt;!DOCTYPE html&gt;
+        <p>
+          <a
+            href="https://code-step.com/demo/html/profile/index.html"
+            target="_blank"
+            >https://code-step.com/demo/html/profile/index.html</a
+          >のサイトの模写コーディングをやってみよう。
+        </p>
+        <h2 is-upgraded><strong>条件1 手打ちでやろう</strong></h2>
+        <p>HTMLに限らず最初は手打ちで動作を意識しながらコーディングしよう。</p>
+        <p>慣れてきたら、コピペしよう。</p>
+        <p>
+          (偏見ですが、最初から全てコピペでプログラミングする人は成長しない傾向がある)
+        </p>
+        <h2 is-upgraded><strong>条件2 自分で画像を用意しよう。</strong></h2>
+        <p>
+          割愛するが、今回参考にするサイトの画像が手元にないと、完全な模写ができない。
+        </p>
+        <p>
+          そこで、<a href="https://unsplash.com/" target="_blank">Unsplash</a
+          >(ロイヤルティーフリーの画像を提供しているサイト)で任意の画像をダウンロードし、SPSS2022/day6/img/上に移動させよう。
+        </p>
+        <p>以下のテンプレートをコピペしてから模写コーディングをしよう。</p>
+        <h3 is-upgraded><strong>SPSS2022/day6/work.html</strong></h3>
+        <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;link href=&#34;work.css&#34; rel=&#34;stylesheet&#34; type=&#34;text/css&#34;&gt;
@@ -198,37 +340,51 @@
     
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-<p>答えは検証ツールで見られるので省略します。</p>
-<p>各自、先の<a href="http://www.htmq.com/html/indexm.shtml" target="_blank">HTMLリファレンス</a>をやってみてはいかがだろうか。</p>
-
-
+        <p>答えは検証ツールで見られるので省略します。</p>
+        <p>
+          各自、先の<a
+            href="http://www.htmq.com/html/indexm.shtml"
+            target="_blank"
+            >HTMLリファレンス</a
+          >をやってみてはいかがだろうか。
+        </p>
       </google-codelab-step>
-    
+
       <google-codelab-step label="最後に" duration="0">
         <p>今回はHTMLとCSSを扱った。</p>
-<p>HTMLとCSSの他にJavaScriptを用いることによって、より複雑な画面を構成することができるが、day7の「React.js」ではJavaScriptを扱う。</p>
-<p>いつも自分が見ているWebサイトを検証ツールで覗いてみると新たな発見があるかもしれない。</p>
-
-
+        <p>
+          HTMLとCSSの他にJavaScriptを用いることによって、より複雑な画面を構成することができるが、day7の「React.js」ではJavaScriptを扱う。
+        </p>
+        <p>
+          いつも自分が見ているWebサイトを検証ツールで覗いてみると新たな発見があるかもしれない。
+        </p>
       </google-codelab-step>
-    
+
       <google-codelab-step label="参考" duration="0">
         <ul>
-<li><a href="http://www.htmq.com/html/indexm.shtml" target="_blank">HTMLリファレンス</a></li>
-<li><a href="https://creatorquest.jp/lessons/html/" target="_blank">HTML入門</a></li>
-<li><a href="https://developer.mozilla.org/ja/" target="_blank">Resources for Developers, by Developers</a></li>
-</ul>
-
-
+          <li>
+            <a href="http://www.htmq.com/html/indexm.shtml" target="_blank"
+              >HTMLリファレンス</a
+            >
+          </li>
+          <li>
+            <a href="https://creatorquest.jp/lessons/html/" target="_blank"
+              >HTML入門</a
+            >
+          </li>
+          <li>
+            <a href="https://developer.mozilla.org/ja/" target="_blank"
+              >Resources for Developers, by Developers</a
+            >
+          </li>
+        </ul>
       </google-codelab-step>
-    
-  </google-codelab>
+    </google-codelab>
 
-  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
-  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
-  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
-  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
-  <script src="//support.google.com/inapp/api.js"></script>
-
-</body>
+    <script src="https://storage.googleapis.com/codelab-elements-tmp/native-shim.js"></script>
+    <script src="https://storage.googleapis.com/codelab-elements-tmp/custom-elements.min.js"></script>
+    <script src="https://storage.googleapis.com/codelab-elements-tmp/prettify.js"></script>
+    <script src="https://storage.googleapis.com/codelab-elements-tmp/codelab-elements.js"></script>
+    <script src="//support.google.com/inapp/api.js"></script>
+  </body>
 </html>
